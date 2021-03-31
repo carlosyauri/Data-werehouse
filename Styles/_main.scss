@@ -1,0 +1,140 @@
+main {
+    width: 1440px;
+    margin: 0 auto;
+}
+#input {
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.busqueda {
+    display: inline-flex;
+    justify-content: space-between;
+    border: 1px solid #CCCCCC;
+    border-radius: 3.5px;
+    border-radius: 3.5px;
+    width: 502px;
+    height: 41px;
+    margin-left: 29.5px;
+}
+
+#arrow {
+    margin-top: 13px;
+    margin-right: 15.5px;
+    color:  #546D79;
+}
+
+main h1 {
+    font-family: 'Open Sans', sans-serif;
+    color: #333333;
+    margin-left: 29.5px;
+    margin-top: 39.6px;
+}
+
+.container-lupa {
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 3.5px;
+    border-radius: 3.5px;   
+    width: 41px;
+    height: 41px;
+    margin-left: 9px;
+}
+
+#search {
+    color: #1D72C2;
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+
+.busquedaSearch {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inline {
+    display: flex;
+}
+
+.container-arrowUp{
+    display: inline-flex;
+    justify-content: center;
+    border: 1px solid #1D72C2;
+    border-radius: 3.5px;
+    width: 41px;
+    height: 41px;
+    margin-right: 8.5px;
+}
+
+#arrowUp {
+    color: #1D72C2;
+    font-size: 23px;
+    display: flex;
+    justify-content: center;
+    margin-top: -6px;
+}
+
+#spanFlecha {
+    margin-top: 3.5px;
+    display: block;
+    width: 16px;
+    height: 2px;
+    background: #1D72C2;
+}
+
+#spanFlechaDos {
+    display: block;
+    width: 8px;
+    height: 6px;
+    background: #1D72C2;
+    transform: rotate(90deg) translate(-9px,-4px);
+}
+
+.spanArrow {
+    margin-top: 6.5px;
+}
+
+.exportar {
+    display: inline-flex;
+    justify-content: space-around;
+    border: 1px solid #1D72C2;
+    border-radius: 3.5px;
+    width: 172px;
+    height: 41px;
+    margin-right: 8.5px;
+}
+
+.exportar p {
+    color: #1D72C2;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 15.9px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1;
+}
+
+#arrowExportar {
+    margin-top: 13px;
+    margin-right: 14px;
+    color: #1D72C2;
+}
+
+#btn-agregar-contacto{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    border-radius: 2px;
+    width: 173px;
+    height: 42px;
+    letter-spacing: 0;
+    text-align: center;
+    background: #1D72C2;
+    border: 0;
+
+}
+
+.inline-dos {
+    margin-right: 28px;
+}

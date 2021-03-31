@@ -1,0 +1,23 @@
+header {
+    width: 1440px;
+    margin: 0 auto;
+    height: 64px;
+    background-color: #1D72C2;
+
+    display: flex;
+    justify-content: space-between;
+}
+header h2 {
+    margin-left: 30px;
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+}
+.nav {
+    display: flex;
+}
+.nav p {
+    margin-right: 34px;
+    color: #FFFFFF;
+    display: inline;
+    font-family: 'Open Sans', sans-serif;
+}
