@@ -218,4 +218,55 @@ main h1 {
 .inline-dos {
   margin-right: 28px;
 }
+
+thead {
+  max-width: 375px;
+}
+
+table {
+  color: black;
+  margin-top: 73px;
+  font-size: 12.1px;
+  font-family: 'Open Sans', sans-serif;
+  table-layout: fixed;
+  width: 96%;
+  border-collapse: collapse;
+  border: 1px solid #CCCCCC;
+  margin-left: 29.5px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+.container-head {
+  border: 1px solid #CCCCCC;
+}
+
+.titulos {
+  height: 67.5px;
+}
+
+footer {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: 'Open Sans', sans-serif;
+  color: #CCCCCC;
+  font-size: 12px;
+}
+
+.div1, .div2 {
+  margin-top: 23.8px;
+  width: 8%;
+  margin-left: 29px;
+}
 /*# sourceMappingURL=styles.css.map */
