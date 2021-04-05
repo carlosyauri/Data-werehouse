@@ -144,22 +144,26 @@ thead {
 }
 
 table {
+    margin-left: 27.5px;
+    margin-right: 28.5px;
     color: black;
     margin-top: 73px;
     font-size: 12.1px;
     font-family: 'Open Sans', sans-serif;
     table-layout: fixed;
-    width: 96%;
     border-collapse: collapse;
     border: 1px solid #CCCCCC;
-    margin-left: 29.5px;
+
 }
 
-th, td {
-    padding: 10px;
-    text-align: center;
+td, th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
+    width: 250px;
+    height: 56px;
 } 
 
 .container-head {
@@ -169,3 +173,43 @@ th, td {
 .titulos {
     height: 67.5px;
 }
+
+.checkbox {
+    width: 5%;
+    padding-left: 18.5px;
+    color: 2px solid #546D79;
+}
+
+.hola {
+    width: 14px;
+    font-size: 9px;
+    transform: rotate(90deg);
+}
+
+.perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    width: 70%;
+}
+.foto {
+    height: 28px;
+}
+.datos{
+    margin-left: 7px;
+}
+
+.datos p {
+    color: #CCCCCC;
+    margin: 0;
+    height: 10px;
+    width: 130px;
+}
+
+.datos h2 {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
