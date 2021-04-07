@@ -301,6 +301,90 @@ td, th {
   margin: 0;
 }
 
+#nombre {
+  display: inline;
+}
+
+#cargo {
+  display: inline;
+}
+
+#sector-15 {
+  background-color: white;
+  margin-top: 4.5px;
+  margin-left: 29.5px;
+  font-size: 13px;
+  font-family: 'Open Sans', sans-serif;
+  border: 1px solid #CCCCCC;
+  border-radius: 2px;
+  border-radius: 2px;
+  width: 503px;
+  height: 375px;
+  z-index: 1;
+  position: absolute;
+}
+
+#formulario {
+  margin-top: 23.9px;
+}
+
+.campo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.campo label {
+  margin-left: 16px;
+}
+
+.campo input {
+  font-size: 13px;
+  border: none;
+  width: 290px;
+  margin-right: 25px;
+  border-bottom: 1px solid #CCCCCC;
+  background: none;
+}
+
+.campo input:focus {
+  outline: none;
+}
+
+.campoDespl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.campoDespl label {
+  margin-left: 16px;
+}
+
+.campoDespl select {
+  border: 1px solid #CCCCCC;
+  margin-right: 125px;
+  width: 190px;
+  height: 35px;
+}
+
+select {
+  background: url(https://cdn0.iconfinder.com/data/icons/right-direction-1/64/arrow-solid-down-256.png) no-repeat right;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 2px;
+  background-size: 10%;
+  background-position-x: 100%;
+  background-position-y: 42%;
+}
+
 footer {
   max-width: 1440px;
   margin: 0 auto;
