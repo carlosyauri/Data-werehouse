@@ -14,10 +14,37 @@ header h2 {
 }
 .nav {
     display: flex;
+    align-items: center;
 }
-.nav p {
-    margin-right: 34px;
+.nav a {
+    text-decoration: none;
     color: #FFFFFF;
-    display: inline;
     font-family: 'Open Sans', sans-serif;
+    margin-top: 25px;
 }
+
+.nav a:hover {
+    cursor: pointer;
+
+}
+
+
+.span1, .span2, .span3, .span4 {
+    border: 1px solid #FFFFFF;
+    display: block;
+    width: 75%;
+    margin-top: 14px;
+
+}
+
+.nombrePagina {
+    margin-right: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.none {
+    display: none;
+}
+

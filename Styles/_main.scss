@@ -289,5 +289,18 @@ select {
     background-size: 10%;
     background-position-x: 100%;
     background-position-y: 42%;
-    
+
+}
+
+.none {
+    display: none;
+}
+
+#arrow:hover {
+    cursor: pointer;
+}
+
+
+tbody tr:hover {
+    background: #E8E8E8;
 }

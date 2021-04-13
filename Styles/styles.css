@@ -44,13 +44,45 @@ header h2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.nav p {
-  margin-right: 34px;
+.nav a {
+  text-decoration: none;
   color: #FFFFFF;
-  display: inline;
   font-family: 'Open Sans', sans-serif;
+  margin-top: 25px;
+}
+
+.nav a:hover {
+  cursor: pointer;
+}
+
+.span1, .span2, .span3, .span4 {
+  border: 1px solid #FFFFFF;
+  display: block;
+  width: 75%;
+  margin-top: 14px;
+}
+
+.nombrePagina {
+  margin-right: 34px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.none {
+  display: none;
 }
 
 main {
@@ -383,6 +415,18 @@ select {
   background-size: 10%;
   background-position-x: 100%;
   background-position-y: 42%;
+}
+
+.none {
+  display: none;
+}
+
+#arrow:hover {
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background: #E8E8E8;
 }
 
 footer {
