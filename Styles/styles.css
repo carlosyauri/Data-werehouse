@@ -257,6 +257,7 @@ main h1 {
 
 .inline-dos {
   margin-right: 28px;
+  display: inherit;
 }
 
 thead {
@@ -501,11 +502,72 @@ tbody tr:hover {
 .sectionLogin {
   width: 100%;
   padding: 0px;
-  margin-top: 30px;
+  margin-top: 40px;
+}
+
+.sectionUsuario {
+  margin-top: 85px;
+  margin-bottom: 0px;
+  max-width: 503px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.containerUsuario {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  background-color: #F9FAFC;
+  padding: 25px 40px;
+  -webkit-box-shadow: #1d72c2 0 0 10px;
+          box-shadow: #1d72c2 0 0 10px;
+  border-radius: 4px;
+}
+
+.containerUsuario h1 {
+  color: #5E6C84;
+  text-align: center;
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.containerUsuario label {
+  color: #5E6C84;
+}
+
+.containerBtn {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.containerBtn input {
+  width: 38%;
+  background: #1d72c2;
+  border-radius: 4.8px;
+  font-weight: bold;
+  padding: 9.6px 20.8px;
+  border: 0px;
+  color: white;
+  margin-top: 10px;
 }
 
 .parte-1 div {
   margin-top: 30px;
+}
+
+#repetirPass {
+  width: 21%;
+}
+
+#formulario-usuario {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 footer {
