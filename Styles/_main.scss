@@ -304,3 +304,70 @@ select {
 tbody tr:hover {
     background: #E8E8E8;
 }
+
+.containerLogin {
+    background-color: #F9FAFC;
+    width: 100%;
+    padding: 25px 40px;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: #1d72c2 0 0 10px;
+}
+.parte-1 {
+    display: block;
+    flex-direction: column;
+}
+.parte-1 input {
+    font-size: 14px;
+    padding: 7px;
+    border: 2px solid #DFE1E6;
+    border-radius: 3px;
+    height: 44px;
+}
+.parte-1 input, button {
+    display: block;
+    width: 100%;
+}
+
+.parte-1 button {
+    background: #1d72c2;
+    border-radius: 4.8px;
+    font-weight: bold;
+    padding: 9.6px 20.8px;
+    border: 0px;
+    color: white;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.parte-1 h1 {
+
+    text-align: center;
+    color: #5E6C84;
+    font-size: 20px;
+    line-height: 28px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
+.parte-1 h2 {
+    color: #5E6C84;
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.sectionLogin {
+    width: 100%;
+    padding: 0px;
+    margin-top: 30px;
+}
+
+
+.parte-1 div {
+    margin-top: 30px;
+}
