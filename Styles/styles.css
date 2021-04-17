@@ -557,7 +557,7 @@ tbody tr:hover {
   margin-top: 10px;
 }
 
-.parte-1 div {
+.parte-1 div h2 {
   margin-top: 30px;
 }
 
@@ -568,6 +568,27 @@ tbody tr:hover {
 #formulario-usuario {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.password {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.password i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -33px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #5E6C84;
+}
+
+.password .noMostrar {
+  display: none;
 }
 
 footer {
