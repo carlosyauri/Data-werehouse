@@ -1,0 +1,155 @@
+.section-city .flex-container, #section-company .flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 4em 2em;
+  }
+  .section-city  .flex-container div, #section-company .flex-container div {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .section-city .flex-container span, #section-company span {
+    padding: 6px 10px;
+    background-color: #e4f0f6;
+    color: #0079bf;
+    border-radius: 3px;
+    
+  }
+  
+  .section-city h1, #section-company h1{
+    padding-left: 10px;
+  }
+  .fab, .far {
+    /* font-weight: 400; */
+    font-size: 12px;
+  }
+  .section-city .flex-container span,
+  .section-city h1,
+  .section-company h1,
+  .section-city a {
+    margin: 0;
+  }
+  .region {
+  margin: 1em;
+    font-size: 1.3em;
+  
+  }
+  /* Remove default bullets */
+  ul,
+  #myUL {
+    list-style-type: none;
+    height: 100%;
+  }
+  
+  
+  #myUL button {
+    background-color: #e4f0f6;
+    color: #0079bf;
+    border-radius: 3px;
+    border: none;
+    width: 60px;
+    height: 31px;
+    margin: 0;
+    display: inline;
+  }
+  /* Remove margins and padding from the parent ul */
+  #myUL {
+    margin: 0;
+    padding: 0;
+  }
+
+  #myUL .container-btn {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  
+  li {
+    padding: 0.6em;
+    font-size: 16px;
+  }
+  
+  
+  #region-title:hover{
+    background-color: #e4f0f6;
+    color: #0079bf;
+    border-radius: 3px;
+    padding: 10px;
+  }
+  
+  /* Style the caret/arrow */
+  .caret {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+    }
+  
+  /* Create the caret/arrow with a unicode, and style it */
+  .caret::before {
+    content: "\25B6";
+    color: #e2050559;
+  
+    display: inline-block;
+    margin-right: 6px;
+  
+  }
+  
+  /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+
+  .caret-down::before {
+    transform: rotate(90deg);
+
+  }
+  
+  /* Hide the nested list */
+  .nested {
+    display: none;
+  }
+  
+  .nested.active{
+  
+    & .region{
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  
+  
+  .citys li {
+    margin-left: 100px;
+    margin-right: 0;
+   
+  }
+  
+  .citys div{
+    display: flex;
+    height: 3em;
+    align-items: center;
+  }
+  
+  /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+  .active {
+    display: block;
+  }
+  
+  .wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+.city-1 button {
+    background-color: #e4f0f6;
+    color: #0079bf;
+    border-radius: 3px;
+    border: none;
+    width: 60px;
+    height: 31px;
+    margin: 0;
+}
+
+.container-btn {
+     display: flex;
+     justify-content: space-between;
+}

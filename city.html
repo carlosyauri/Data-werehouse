@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/Styles/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/027ad8fa8c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@800&family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@800&family=Open+Sans:wght@300&display=swap" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h2>LOGO</h2>
+        <nav class="nav">
+            <div class="nombrePagina">
+                <a href="" id="contactos">Contactos</a>
+                <span class="span1"></span>
+            </div>
+            <div class="nombrePagina">
+                <a href="" id="compania">Compañias</a>
+                <span class="span2 "></span>
+            </div>
+            <div class="nombrePagina">
+                <a href="./usuarios.html" id="usuario">Usuarios</a>
+                <span class="span3 "></span>
+            </div>
+            <div class="nombrePagina">
+                <a href="" id="region">Región / Ciudad</a>
+                <span class="span4 "></span>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="city-1 section-city" >
+
+
+            <div class="flex-container">
+                <div>
+                    <span><i class="far fa-flag"></i></span>
+                    <h1>Regiones y ciudades</h1>
+                </div>
+                <button id="button-new-region">Agregar región</button>
+            </div>
+
+        </section>
+
+        <section class="city-2 section-city">
+            <ul id="myUL">
+                <li class="region"><span class="caret" id ="region-title">Sudamérica</span>
+                    <button>Agregar Pais</button>
+                    <ul class="nested">
+                        
+                        <li>
+                            <div class="caret country">    
+
+                                <div class="container-btn">
+                                    <div>
+                                        <span>Argentina</span>
+                                        <button>Editar</button> 
+                                        <button>Eliminar</button>    
+                                    </div>
+                                    
+                                    <button>Agregar Ciudad</button>
+
+                                </div>
+                                
+                            </div>
+
+                            
+
+
+                    
+            
+                            <ul class="nested citys">
+                                <div>
+                                    <li>Buenos Aires</li>
+                                    <button>Editar</button> <button>Eliminar</button>
+                                </div>
+                                <div>
+                                    <li>Cordoba</li>
+                                    <button>Editar</button> <button>Eliminar</button>
+                                </div>
+                                <div>
+                                    <li>Rosario</li>
+                                    <button>Editar</button> <button>Eliminar</button>
+                                </div>
+                
+                            </ul>
+                        </li>
+            
+                        <li><span class="caret country">Colombia</span>
+                        <button>Editar</button> <button>Eliminar</button>
+                            <ul class="nested citys">
+                                <div>
+                                    <li>Bogotá</li>
+                                    <button>Editar</button> <button>Eliminar</button>
+                                </div>
+                                <div>
+                                    <li>Medellin</li>
+                                    <button>Editar</button> <button>Eliminar</button>
+                                </div>
+                
+                            </ul>
+                        </li>
+                        <li><span class="caret country">Uruguay</span>
+                        <button>Editar</button> <button>eliminar</button>
+                            <ul class="nested citys">
+                                <div>
+                                    <li>Montevideo</li>
+                                    <button>Editar</button> <button>Eliminar</button>
+                                </div>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul id="myUL">
+                    <li class="region"><span class="caret" id ="region-title">Norteamérica</span>
+                        <ul class="nested">
+                            <button>Agregar Pais</button>
+                            <li><span class="caret country" >Mexico</span>
+
+                                <button>Editar</button> 
+                                <button>Eliminar</button>
+                                <button>Agregar Ciudad</button>
+                        
+                
+                                <ul class="nested citys">
+                                    <div>
+                                        <li>Ciudad de México</li>
+                                        <button>Editar</button> <button>Eliminar</button>
+                                    </div>
+                                    <div>
+                                        <li>Tijuana</li>
+                                        <button>Editar</button> <button>Eliminar</button>
+                                    </div>                
+                                </ul>
+
+                            </li>
+                
+                            <li><span class="caret country">Estados unidos</span>
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                                <ul class="nested citys">
+                                    <div>
+                                        <li>Nueva york</li>
+                                        <button>Editar</button> <button>Eliminar</button>
+                                    </div>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </li>
+            </ul>
+
+            <ul id="myUL">
+                    <li class="region"><span class="caret" id ="region-title">Europa</span>
+                        <ul class="nested">
+                            <button>Agregar Pais</button>
+                            <li><span class="caret country" >Francia</span>
+
+                                <button>Editar</button> 
+                                <button>Eliminar</button>
+                                <button>Agregar Ciudad</button>
+                        
+                
+                                <ul class="nested citys">
+                                    <div>
+                                        <li>Paris</li>
+                                        <button>Editar</button> <button>Eliminar</button>
+                                    </div>             
+                                </ul>
+
+                            </li>
+                
+                            <li><span class="caret country">España</span>
+
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                                <ul class="nested citys">
+                                    <div>
+                                        <li>Barcelona</li>
+                                        <button>Editar</button> <button>Eliminar</button>
+                                    </div>
+                                    <div>
+                                        <li>Madrid</li>
+                                        <button>Editar</button> <button>Eliminar</button>
+                                    </div>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </li>
+            </ul>
+        </section>
+
+    </main>
+    <footer>
+
+    </footer>
+
+    <script src="./Javascripts/city.js"></script>
+
+</body>
+</html>
