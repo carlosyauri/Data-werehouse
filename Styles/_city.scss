@@ -54,6 +54,7 @@
     height: 31px;
     margin: 0;
     display: inline;
+
   }
   /* Remove margins and padding from the parent ul */
   #myUL {
@@ -62,6 +63,9 @@
   }
 
   #myUL .container-btn {
+    width: 83.4%;
+    margin-left: 150px;
+    margin-top: -25px;
       display: flex;
       justify-content: space-between;
   }
@@ -80,6 +84,8 @@
     padding: 10px;
   }
   
+
+
   /* Style the caret/arrow */
   .caret {
     cursor: pointer;
@@ -111,6 +117,7 @@
   .nested.active{
   
     & .region{
+      margin-left: -115px;
       display: flex;
       flex-wrap: wrap;
     }
@@ -124,6 +131,7 @@
   }
   
   .citys div{
+    margin-left: -110px;
     display: flex;
     height: 3em;
     align-items: center;
@@ -132,6 +140,8 @@
   /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
   .active {
     display: block;
+    margin-top: 15px;
+    
   }
   
   .wrap {
@@ -147,9 +157,15 @@
     width: 60px;
     height: 31px;
     margin: 0;
+ 
 }
 
-.container-btn {
-     display: flex;
-     justify-content: space-between;
+
+.mostrar {
+   display: inline;
 }
+
+.noMostrar {
+  display: none;
+}
+

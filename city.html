@@ -51,30 +51,24 @@
 
         <section class="city-2 section-city">
             <ul id="myUL">
-                <li class="region"><span class="caret" id ="region-title">Sudamérica</span>
-                    <button>Agregar Pais</button>
+                <li class="region" id="region-1"><span class="caret" id ="region-title">Sudamérica</span>
+                    <div class="noMostrar" id="pais-1">
+                        <button>Agregar Pais</button>
+                    </div>
+                    
                     <ul class="nested">
                         
-                        <li>
-                            <div class="caret country">    
+                        <li><div class="caret country" id="divCountry">Argentina</div>
 
-                                <div class="container-btn">
+                            <div class="container-btn">
                                     <div>
-                                        <span>Argentina</span>
                                         <button>Editar</button> 
                                         <button>Eliminar</button>    
                                     </div>
                                     
                                     <button>Agregar Ciudad</button>
-
-                                </div>
-                                
                             </div>
-
-                            
-
-
-                    
+                                                  
             
                             <ul class="nested citys">
                                 <div>
@@ -92,9 +86,18 @@
                 
                             </ul>
                         </li>
+                        <li><div class="caret country" id="divCountry">Colombia</div>
+
+                            <div class="container-btn">
+                                    <div>
+                                        <button>Editar</button> 
+                                        <button>Eliminar</button>    
+                                    </div>
+                                    
+                                    <button>Agregar Ciudad</button>
+                            </div>
+                                                  
             
-                        <li><span class="caret country">Colombia</span>
-                        <button>Editar</button> <button>Eliminar</button>
                             <ul class="nested citys">
                                 <div>
                                     <li>Bogotá</li>
@@ -107,28 +110,27 @@
                 
                             </ul>
                         </li>
-                        <li><span class="caret country">Uruguay</span>
-                        <button>Editar</button> <button>eliminar</button>
-                            <ul class="nested citys">
-                                <div>
-                                    <li>Montevideo</li>
-                                    <button>Editar</button> <button>Eliminar</button>
-                                </div>
-                            </ul>
-                        </li>
                     </ul>
                 </li>
             </ul>
             <ul id="myUL">
-                    <li class="region"><span class="caret" id ="region-title">Norteamérica</span>
-                        <ul class="nested">
-                            <button>Agregar Pais</button>
-                            <li><span class="caret country" >Mexico</span>
-
-                                <button>Editar</button> 
-                                <button>Eliminar</button>
-                                <button>Agregar Ciudad</button>
+                <li class="region" id="region-2"><span class="caret" id ="region-title">Norteamérica</span>
+                    <div class="noMostrar" id="pais-2">
+                        <button>Agregar Pais</button>
+                    </div>
                         
+                        <ul class="nested">
+                            <li><div class="caret country" id="divCountry">Mexico</div>
+
+                                <div class="container-btn">
+                                        <div>
+                                            <button>Editar</button> 
+                                            <button>Eliminar</button>    
+                                        </div>
+                                        
+                                        <button>Agregar Ciudad</button>
+                                </div>
+                                                      
                 
                                 <ul class="nested citys">
                                     <div>
@@ -140,12 +142,19 @@
                                         <button>Editar</button> <button>Eliminar</button>
                                     </div>                
                                 </ul>
-
                             </li>
+                            <li><div class="caret country" id="divCountry">Estados Unidos</div>
+
+                                <div class="container-btn">
+                                        <div>
+                                            <button>Editar</button> 
+                                            <button>Eliminar</button>    
+                                        </div>
+                                        
+                                        <button>Agregar Ciudad</button>
+                                </div>
+                                                      
                 
-                            <li><span class="caret country">Estados unidos</span>
-                                <button>Editar</button>
-                                <button>Eliminar</button>
                                 <ul class="nested citys">
                                     <div>
                                         <li>Nueva york</li>
@@ -159,15 +168,24 @@
             </ul>
 
             <ul id="myUL">
-                    <li class="region"><span class="caret" id ="region-title">Europa</span>
-                        <ul class="nested">
-                            <button>Agregar Pais</button>
-                            <li><span class="caret country" >Francia</span>
+                <li class="region" id="region-3"><span class="caret" id ="region-title">Europa</span>
+                    <div class="noMostrar" id="pais-3">
+                        <button>Agregar Pais</button>
+                    </div>
+                    
 
-                                <button>Editar</button> 
-                                <button>Eliminar</button>
-                                <button>Agregar Ciudad</button>
-                        
+                        <ul class="nested">
+                            <li><div class="caret country" id="divCountry">Francia</div>
+
+                                <div class="container-btn">
+                                        <div>
+                                            <button>Editar</button> 
+                                            <button>Eliminar</button>    
+                                        </div>
+                                        
+                                        <button>Agregar Ciudad</button>
+                                </div>
+                                                      
                 
                                 <ul class="nested citys">
                                     <div>
@@ -175,13 +193,19 @@
                                         <button>Editar</button> <button>Eliminar</button>
                                     </div>             
                                 </ul>
-
                             </li>
-                
-                            <li><span class="caret country">España</span>
+                            <li><div class="caret country" id="divCountry">España</div>
 
-                                <button>Editar</button>
-                                <button>Eliminar</button>
+                                <div class="container-btn">
+                                        <div>
+                                            <button>Editar</button> 
+                                            <button>Eliminar</button>    
+                                        </div>
+                                        
+                                        <button>Agregar Ciudad</button>
+                                </div>
+                                                      
+                
                                 <ul class="nested citys">
                                     <div>
                                         <li>Barcelona</li>
@@ -192,8 +216,7 @@
                                         <button>Editar</button> <button>Eliminar</button>
                                     </div>
                                 </ul>
-                            </li>
-                            
+                            </li>                                               
                         </ul>
                     </li>
             </ul>

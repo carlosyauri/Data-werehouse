@@ -688,6 +688,9 @@ ul,
 }
 
 #myUL .container-btn {
+  width: 83.4%;
+  margin-left: 150px;
+  margin-top: -25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -738,6 +741,7 @@ li {
 }
 
 .nested.active .region {
+  margin-left: -115px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -751,6 +755,7 @@ li {
 }
 
 .citys div {
+  margin-left: -110px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -763,6 +768,7 @@ li {
 /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
 .active {
   display: block;
+  margin-top: 15px;
 }
 
 .wrap {
@@ -783,12 +789,11 @@ li {
   margin: 0;
 }
 
-.container-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+.mostrar {
+  display: inline;
+}
+
+.noMostrar {
+  display: none;
 }
 /*# sourceMappingURL=styles.css.map */
