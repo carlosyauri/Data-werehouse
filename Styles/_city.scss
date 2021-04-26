@@ -54,8 +54,9 @@
     height: 31px;
     margin: 0;
     display: inline;
-
   }
+
+
   /* Remove margins and padding from the parent ul */
   #myUL {
     margin: 0;
@@ -63,8 +64,8 @@
   }
 
   #myUL .container-btn {
-    width: 83.4%;
-    margin-left: 150px;
+    width: 82.7%;
+    margin-left: 159px;
     margin-top: -25px;
       display: flex;
       justify-content: space-between;
@@ -76,14 +77,32 @@
     font-size: 16px;
   }
   
+  #region-title-1, #region-title-2, #region-title-3 {
+    display: flex;
+    align-items: center;
+  }
   
-  #region-title:hover{
+  #region-title-1:hover{
     background-color: #e4f0f6;
     color: #0079bf;
     border-radius: 3px;
-    padding: 10px;
+
+    
+  }
+
+  #region-title-2:hover{
+    background-color: #e4f0f6;
+    color: #0079bf;
+    border-radius: 3px;
+
   }
   
+  #region-title-3:hover{
+    background-color: #e4f0f6;
+    color: #0079bf;
+    border-radius: 3px;
+
+  }
 
 
   /* Style the caret/arrow */
@@ -127,7 +146,7 @@
   .citys li {
     margin-left: 100px;
     margin-right: 0;
-   
+    width: 100px;
   }
   
   .citys div{
@@ -136,7 +155,7 @@
     height: 3em;
     align-items: center;
   }
-  
+
   /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
   .active {
     display: block;
@@ -163,9 +182,28 @@
 
 .mostrar {
    display: inline;
+   margin-left: 20px;
 }
 
 .noMostrar {
   display: none;
 }
 
+// #region-title-1 p, #region-title-2 p, #region-title-3 p {
+//   display: inline;
+  
+// }
+
+#pais-1, #pais-2, #pais-3 {
+  position: absolute;
+  margin-left: 1236px;
+}
+.cia {
+  display: flex;
+  align-items: center;
+}
+.cia span {
+  position: absolute;
+  margin-left: 120px;
+  color: #0079bf;
+}
