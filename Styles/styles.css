@@ -95,6 +95,131 @@ header h2 {
   margin: auto;
 }
 
+.fondoTransparente {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.agregarContainer {
+  position: absolute;
+  width: 1215px;
+  height: 577px;
+  background-color: white;
+  z-index: 3;
+  margin: 96px 95px;
+}
+
+.agregarHeader {
+  width: 1215px;
+  height: 140px;
+  background-color: #1D72C2;
+}
+
+#agregarDatosPersonales {
+  width: 1172px;
+  height: 131px;
+  background-color: white;
+  border: 3px solid #0683f9;
+  border-radius: 6.5px;
+  margin-top: -65px;
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-size: 12px;
+}
+
+#agregarDatosPersonales input {
+  width: 190px;
+  height: 35px;
+  border: 1px solid #CCCCCC;
+  border-radius: 3px;
+  background: none;
+  outline: none;
+}
+
+.agregarCentrar {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.agregarTitulo {
+  margin: 0;
+  font-size: 21px;
+  padding-top: 21px;
+  padding-left: 40px;
+  color: white;
+}
+
+.agregarLoguito {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 85px;
+  height: 84px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px solid #0683F9;
+  border-radius: 42px;
+}
+
+.agregarDatos {
+  text-align: initial;
+}
+
+.agregarDatos span {
+  color: #F03738;
+}
+
+#perfil {
+  font-size: 36px;
+  color: #0683F9;
+}
+
+#camara {
+  margin-left: -46px;
+  margin-top: 57px;
+  background: #0683F9;
+  border: 3px solid #FFFFFF;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#camara i {
+  color: white;
+  font-size: 11px;
+}
+
+.agregar {
+  width: 1440px;
+  margin: 0 auto;
+}
+
 main {
   width: 1440px;
   margin: 0 auto;
