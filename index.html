@@ -27,6 +27,7 @@
             <div class="agregarCentrar">
     
                 <div id="agregarDatosPersonales">
+
                     <div class="agregarLoguito">
                         <i class="fas fa-user" id="perfil"></i>
                     </div>
@@ -58,11 +59,11 @@
                     </div>
                 </div>
     
-                <div>
+                <div class="containerDatos">
                     <div>
                         <label for="region">Región</label>
                         <select name="region" id="region">
-                            <option value="todos">Seleccionar region</option>
+                            <option value="todos" class="placeholder">Seleccionar region</option>
                             <option value="region1">Sudamerica</option>
                             <option value="region2">Norteamerica</option>
                             <option value="region3">Europa</option>
@@ -70,16 +71,16 @@
                     </div>
                     <div>
                         <label for="pais">Pais</label>
-                        <select name="pais" id="pais">
-                            <option value="todos">Seleccionar país</option>
+                        <select name="pais" id="pais" disabled>
+                            <option value="todos" class="placeholder">Seleccionar país</option>
                             <option value="pais1">Argentina</option>
                             <option value="pais2">Colombia</option>
                         </select>  
                     </div>
                     <div>
                         <label for="ciudad">Ciudad</label>
-                        <select name="ciudad" id="ciudad">
-                            <option value="todos">Seleccionar ciudad</option>
+                        <select name="ciudad" id="ciudad" disabled>
+                            <option value="todos" class="placeholder">Seleccionar ciudad</option>
                             <option value="ciudad1">Buenos aires</option>
                             <option value="ciudad2">Córdoba</option>
                             <option value="ciudad3">Rosario</option>
@@ -87,25 +88,48 @@
                     </div>
                     <div>
                         <p>Direccíon</p>
-                        <input type="text" name="" id="" placeholder="Ing una direccion">
+                        <input type="text" name="" id="" placeholder="Ing una direccion" disabled>
                     </div>
                     <div>
                         <p style="display: inline;">interes</p>
-                        <div style="background: #FFFFFF;
-                        border: 1px solid #C6CACC;
-                        width: 235px;
-                        height: 13px;
-                        border-radius: 3.5px;">
-                        </div>
+                        <span></span>
                     </div>
                     <div>
-
+                        <label for="canal">Canal de contacto </label>
+                        <select name="canal" id="canal">
+                            <option value="cualquiera" class="placeholder">Seleccionar canal</option>
+                            <option value="canal1">Acamica</option>
+                            <option value="canal2">WhatSapp</option>
+                            <option value="canal3">Instagram</option>
+                            <option value="canal4">Facebook</option>
+                            <option value="canal5">Twitter</option>
+                        </select>  
                     </div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div>
+                        <p>Cuenta de usuario</p>
+                        <input type="text" name="" id="" placeholder="@ejemplo" disabled>
+                    </div>
+                    <div>
+                        <label for="preferencias">Preferencias </label>
+                        <select name="preferencias" id="preferencias" disabled>
+                            <option value="cualquiera" class="placeholder">Sin preferencia</option>
+                            <option value="canal1">preferencia 1</option>
+                            <option value="canal2">preferencia 2</option>
+                            <option value="canal3">preferencia 3</option>
+                            <option value="canal4">preferencia 4</option>
+                            <option value="canal5">preferencia 5</option>
+                        </select>  
+                    </div>
+                    <div>
+                        <button><i class="fas fa-plus"></i>Agregar canal</button>
+                    </div>
     
                 </div>
+            </div>
+
+            <div class="btn">
+                <button class="cancel">Cancelar</button>
+                <button class="guardar">Guardar contacto</button>
             </div>
             
         </div>
@@ -241,6 +265,101 @@
                 </tr>
                 </thead>
             <tbody>
+                <tr>
+                    <td class="checkbox"><input type="checkbox"></td>
+                    <td>
+                        <div class="perfil"> 
+                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+
+                            <div class="datos">
+                                <h2>Carlos Yauri</h2>
+                                <p>carlosyauri97@gmail.com</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Dubai</td>
+                    <td>Mister Burgers</td>
+                    <td>Jefesuli</td>
+                    <td>Instagram</td>
+                    <td>100%</td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                    <td class="checkbox"><input type="checkbox"></td>
+                    <td>
+                        <div class="perfil"> 
+                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+
+                            <div class="datos">
+                                <h2>Carlos Yauri</h2>
+                                <p>carlosyauri97@gmail.com</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Dubai</td>
+                    <td>Mister Burgers</td>
+                    <td>Jefesuli</td>
+                    <td>Instagram</td>
+                    <td>100%</td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                    <td class="checkbox"><input type="checkbox"></td>
+                    <td>
+                        <div class="perfil"> 
+                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+
+                            <div class="datos">
+                                <h2>Carlos Yauri</h2>
+                                <p>carlosyauri97@gmail.com</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Dubai</td>
+                    <td>Mister Burgers</td>
+                    <td>Jefesuli</td>
+                    <td>Instagram</td>
+                    <td>100%</td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                    <td class="checkbox"><input type="checkbox"></td>
+                    <td>
+                        <div class="perfil"> 
+                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+
+                            <div class="datos">
+                                <h2>Carlos Yauri</h2>
+                                <p>carlosyauri97@gmail.com</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Dubai</td>
+                    <td>Mister Burgers</td>
+                    <td>Jefesuli</td>
+                    <td>Instagram</td>
+                    <td>100%</td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                    <td class="checkbox"><input type="checkbox"></td>
+                    <td>
+                        <div class="perfil"> 
+                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+
+                            <div class="datos">
+                                <h2>Carlos Yauri</h2>
+                                <p>carlosyauri97@gmail.com</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Dubai</td>
+                    <td>Mister Burgers</td>
+                    <td>Jefesuli</td>
+                    <td>Instagram</td>
+                    <td>100%</td>
+                    <td>...</td>
+                </tr>
                 <tr>
                     <td class="checkbox"><input type="checkbox"></td>
                     <td>
