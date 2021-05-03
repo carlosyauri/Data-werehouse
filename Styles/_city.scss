@@ -54,6 +54,8 @@
     height: 31px;
     margin: 0;
     display: inline;
+    z-index: 4;
+ 
   }
 
 
@@ -80,6 +82,7 @@
   #region-title-1, #region-title-2, #region-title-3 {
     display: flex;
     align-items: center;
+    width: 300px;
   }
   
   #region-title-1:hover{
@@ -206,4 +209,39 @@
   position: absolute;
   margin-left: 120px;
   color: #0079bf;
+}
+
+.containerRegion {
+  width: 650px;
+  margin: 120px 380px;
+}
+
+
+.containerRegion select {
+  margin-top: 8px;
+  border: 1px solid #CCCCCC;
+  width: 190px;
+  height: 35px;
+  outline: none;
+  font-size: 12px;
+  margin-right: 10px;
+
+}
+
+
+
+.containerRegion button {
+  border: 1px solid #CCCCCC;
+  width: 190px;
+  height: 35px;
+  outline: none;
+  margin-top: 24px;
+  font-size: 12px;
+  background: white;
+  color: #CCCCCC;
+}
+
+.containerRegion button i {
+  font-size: 15px;
+  margin-right: 6px;
 }

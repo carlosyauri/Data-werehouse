@@ -6,6 +6,12 @@ var pais1 = document.getElementById("pais-1");
 var pais2 = document.getElementById("pais-2");
 var pais3 = document.getElementById("pais-3");
 var i;
+var nvoRegion = document.getElementById("button-new-region");
+var fondoNegro = document.getElementById("fondoNegro");
+var containerContacto = document.getElementById("containerContacto");
+var cerrarNuevaRegion = document.getElementById("nvoContacto");
+var newRegion = document.getElementById("button-new-region")
+
 
 for (i = 0; i < toggler.length; i++) {
   toggler[i].addEventListener("click", function() {
@@ -33,8 +39,25 @@ region2.addEventListener("click", () => {
 region3.addEventListener("click", () => {
   pais3.classList.toggle("noMostrar")
   pais3.classList.toggle("mostrar")
-
-
 })
 
 
+
+nvoRegion.addEventListener("click", () => {
+    fondoNegro.classList.toggle("noDisplay")
+    containerContacto.classList.toggle("noDisplay")
+})
+
+
+cerrarNuevaRegion.addEventListener("click", () => {
+    fondoNegro.classList.toggle("noDisplay")
+    containerContacto.classList.toggle("noDisplay")
+})
+
+
+var agregarPais = document.getElementById("agregarPais");
+
+agregarPais.addEventListener("click", () => {
+  console.log("HOLAAAAA")
+
+})
