@@ -54,7 +54,7 @@
     height: 31px;
     margin: 0;
     display: inline;
-    z-index: 4;
+    // z-index: 4;
  
   }
 
@@ -192,15 +192,16 @@
   display: none;
 }
 
-// #region-title-1 p, #region-title-2 p, #region-title-3 p {
-//   display: inline;
-  
-// }
+#region-title-1 p, #region-title-2 p, #region-title-3 p {
+  margin: 0;
+}
 
 #pais-1, #pais-2, #pais-3 {
   position: absolute;
   margin-left: 1236px;
+  margin-top: -38px;
 }
+
 .cia {
   display: flex;
   align-items: center;
@@ -214,6 +215,16 @@
 .containerRegion {
   width: 650px;
   margin: 120px 380px;
+}
+
+.containerCity {
+  width: 500px;
+  margin: 120px 380px;
+}
+
+.containerCity .btn {
+  justify-content: center;
+  margin-right: 0;
 }
 
 
