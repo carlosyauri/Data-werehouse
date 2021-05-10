@@ -8,6 +8,7 @@ var codigoToken;
 
 
 ////////////////// VALIDACION DE TOKEN POR POSTMAN ///////////////////
+
 const validacionJwt = (req, res, next) => {
     const codigoToken = req.headers.authorization.split(' ')[1];
     jwt.verify( codigoToken, jwtClave, (err, decoded) => {
@@ -33,11 +34,13 @@ const datosLogin = async (req, res, next) => {
     }
 
     let access = await validateUser(email, password)
+
     if (access) {
         req.token = access.codigoToken
         req.email = access.email
         next();
     }
+    
     else {
         res.status(401).json({       
             error: "email o password invalidas"          
