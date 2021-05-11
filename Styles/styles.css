@@ -655,7 +655,7 @@ td, th {
 .campo input {
   font-size: 13px;
   border: none;
-  width: 290px;
+  width: 252px;
   margin-right: 25px;
   border-bottom: 1px solid #CCCCCC;
   background: none;
@@ -858,6 +858,10 @@ tbody tr:hover {
 
 .password .noMostrar {
   display: none;
+}
+
+#admin {
+  margin-right: 183px;
 }
 
 footer {

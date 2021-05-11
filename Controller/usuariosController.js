@@ -57,12 +57,8 @@ router.post ('/login', datosLogin, async(req, res)=>{
 })
 
 
-router.post("/", validacionJwt, datosRecibidos, async (req,res) => {
+router.post("/", datosRecibidos, async (req,res) => {
 
-    if(req.user.admin == false){
-        res.status(401).json({message: "No estas autorizado para crear un usuario nuevo"})
-        return
-    }
 
     const {nombre,apellido,email,usuario,password,isadmin} = req.body
     const nuevoUsuario = { 

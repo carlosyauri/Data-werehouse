@@ -137,8 +137,8 @@ function validarEmail(valor) {
 ////////////// VALIDACION DE DATOS RECIBIDOS PARA LA CREACION DE USUARIO /////////
 
 const datosRecibidos = (req, res, next) => {
-    const {nombre, apellido, email, usuario, password, isadmin } = req.body;
-    if (!nombre || !apellido || !email || !usuario || !password || !isadmin) {
+    const {nombre, apellido, email, usuario, password, passwordRepetida, isadmin } = req.body;
+    if (!nombre || !apellido || !email || !usuario || !password || !passwordRepetida || !isadmin) {
         return res.status(400).json({
             error: 'faltan campos'
         })
@@ -161,6 +161,12 @@ const datosRecibidos = (req, res, next) => {
     if (validarClave(password) === false) {
         return res.status(400).json({
             error: 'Password incorrecto'
+        })
+    }
+
+    if(password != passwordRepetida){
+        return res.status(400).json({
+            error: "Las contraseñas no coinciden"
         })
     }
 

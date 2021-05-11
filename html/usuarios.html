@@ -38,11 +38,11 @@
     <main>
         <section class="sectionUsuario">
             <div class="containerUsuario"> 
-                <form action="" method="POST" target="_blank" rel="noopener noreferrer" id="formulario-usuario">
+                
                     <h1>Crear usuario</h1>
                     <div class="campo">
-                        <label for="name">Nombre </label>
-                        <input type="text" name="nombre" id="name" placeholder="Ej: Carlos" required>
+                        <label for="nombre">Nombre </label>
+                        <input type="text" name="nombre" id="nombre" placeholder="Ej: Carlos" required>
                     </div>
                     <div class="campo">
                         <label for="apellido">Apellido </label>
@@ -53,35 +53,46 @@
                         <input type="text" name="email" id="email" placeholder="example@mail.com" required>
                     </div>
                     <div class="campo">
-                        <label for="perfil">Perfil </label>
-                        <input type="text" name="perfil" id="perfil" required>
+                        <label for="usuario">Usuario </label>
+                        <input type="text" name="usuario" id="usuario" required>
                     </div>
                     <div class="campo">
                         <label for="password">Contraseña </label>
                         <input type="password" name="password" id="password" required>
                     </div>
                     <div class="campo">
-                        <label for="password-rep" id="repetirPass">Repetir contraseña </label>
-                        <input type="password" name="password-rep" id="password-rep" required>
+                        <label for="passwordRepetida">Repetir contraseña </label>
+                        <input type="password" name="passwordRepetida" id="passwordRepetida" required>
                     </div>
+
+                    <!-- <div class="campo">
+                        <label for="admin">Admin</label>
+                        <input type="checkbox" name="" id="admin">
+                    </div>
+                     -->
+                    
 
                     <div class="containerBtn">
-                        <input type="submit" value="Crear">
+                        <button id="crear">Crear</button>                          
                     </div>
-                </form>
-                <div class="datosUsuario">
+
+                    <p id="creado" hidden>Usuario creado con exito!</p>
+                    <p id="noCreado" hidden>El usuario no se pudo crear</p>
+           
+                <!-- <div class="datosUsuario">
                     <div>
 
                     </div>
                     <div>
 
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
     </main>
     <footer>
 
     </footer>
+    <script src="../Javascripts/usuarios.js"></script>
 </body>
 </html>
