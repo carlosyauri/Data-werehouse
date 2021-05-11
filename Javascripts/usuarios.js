@@ -33,8 +33,6 @@ let getCrear = async (nombre, apellido, email, usuario, password, passwordRepeti
         isadmin
     }
 
-    console.log(data)
-
 
     let searchApi = await fetch(`http://localhost:3000/usuarios`, {
         method: 'POST',
@@ -48,7 +46,7 @@ let getCrear = async (nombre, apellido, email, usuario, password, passwordRepeti
     })
 
     let res = await searchApi.json();
-    console.log(res)
+
 
     if(res.message){
         creado.removeAttribute("hidden")

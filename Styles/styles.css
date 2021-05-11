@@ -815,7 +815,7 @@ tbody tr:hover {
           justify-content: center;
 }
 
-.containerBtn input {
+.containerBtn button {
   width: 38%;
   background: #1d72c2;
   border-radius: 4.8px;
