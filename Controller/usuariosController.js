@@ -59,14 +59,13 @@ router.post ('/login', datosLogin, async(req, res)=>{
 
 router.post("/", datosRecibidos, async (req,res) => {
 
-
-    const {nombre,apellido,email,usuario,password,isadmin} = req.body
+    const {isadmin} = req.body
     const nuevoUsuario = { 
-        nombre,
-        apellido,
-        email,
-        usuario,
-        password,
+        nombre: req.user.nombre,
+        apellido: req.user.apellido,
+        email: req.user.email,
+        usuario: req.user.usuario,
+        password: req.user.password,
         isadmin
     }
 

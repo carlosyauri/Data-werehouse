@@ -122,7 +122,7 @@ function validarClave(password) {
     return false;
 }
 
-////////////VALIDAMOS EMAIL PARA LA CREACION DE USUARIO //////////////
+//////////VALIDAMOS EMAIL PARA LA CREACION DE USUARIO //////////////
 
 function validarEmail(valor) {
 
@@ -137,8 +137,8 @@ function validarEmail(valor) {
 ////////////// VALIDACION DE DATOS RECIBIDOS PARA LA CREACION DE USUARIO /////////
 
 const datosRecibidos = (req, res, next) => {
-    const {nombre, apellido, email, usuario, password, passwordRepetida, isadmin } = req.body;
-    if (!nombre || !apellido || !email || !usuario || !password || !passwordRepetida || !isadmin) {
+    const {nombre, apellido, email, usuario, password, passwordRepetida} = req.body;
+    if (!nombre || !apellido || !email || !usuario || !password || !passwordRepetida) {
         return res.status(400).json({
             error: 'faltan campos'
         })
@@ -170,6 +170,10 @@ const datosRecibidos = (req, res, next) => {
         })
     }
 
+    else {
+        req.user = req.body;
+    }
+    
     next()
 }
 
