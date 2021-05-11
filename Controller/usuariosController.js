@@ -57,4 +57,36 @@ router.post ('/login', datosLogin, async(req, res)=>{
 })
 
 
+router.post("/", validacionJwt, datosRecibidos, async (req,res) => {
+
+    if(req.user.admin == false){
+        res.status(401).json({message: "No estas autorizado para crear un usuario nuevo"})
+        return
+    }
+
+    const {nombre,apellido,email,usuario,password,isadmin} = req.body
+    const nuevoUsuario = { 
+        nombre,
+        apellido,
+        email,
+        usuario,
+        password,
+        isadmin
+    }
+
+   
+    const usu = await models.usuario.create(nuevoUsuario)
+ 
+    if(usu) return res.status(200).json({
+        message: "Usuario creado con exito", usu
+    });
+
+    res.status(400).json({
+        message: "No se pudo crear el usuario"
+    })
+
+
+
+})
+
 module.exports = router;
