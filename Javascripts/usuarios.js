@@ -21,8 +21,6 @@ crear.addEventListener("click", () => {
 
 let getCrear = async (nombre, apellido, email, usuario, password, passwordRepetida, isadmin) => {
 
-    console.log(admin.checked)
-
     var data = {
         nombre,
         apellido,

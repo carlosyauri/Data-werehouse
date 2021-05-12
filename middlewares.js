@@ -11,6 +11,7 @@ var codigoToken;
 
 const validacionJwt = (req, res, next) => {
     const codigoToken = req.headers.authorization.split(' ')[1];
+    
     jwt.verify( codigoToken, jwtClave, (err, decoded) => {
         if (err) { 
             res.send('No está autorizado');
@@ -173,7 +174,7 @@ const datosRecibidos = (req, res, next) => {
     else {
         req.user = req.body;
     }
-    
+
     next()
 }
 
