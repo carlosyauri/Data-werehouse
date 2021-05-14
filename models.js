@@ -23,4 +23,43 @@ usuario.init({
     modelName: "Usuario"
 });
 
-module.exports = {usuario}
+class region extends Model {}
+region.init({
+         id : {
+               type: DataTypes.INTEGER,
+               autoIncrement: true,
+               primaryKey: true
+          },         
+          nombre : DataTypes.STRING, 
+}, {
+    sequelize,
+    modelName: "Region"
+});
+
+class pais extends Model {}
+pais.init({
+         id : {
+               type: DataTypes.INTEGER,
+               autoIncrement: true,
+               primaryKey: true
+          },         
+          nombre : DataTypes.STRING,
+}, {
+    sequelize,
+    modelName: "Pais"
+});
+
+class ciudad extends Model {}
+ciudad.init({
+         id : {
+               type: DataTypes.INTEGER,
+               autoIncrement: true,
+               primaryKey: true
+          },         
+          nombre : DataTypes.STRING, 
+}, {
+    sequelize,
+    modelName: "Ciudad"
+});
+
+module.exports = {usuario, region, pais, ciudad}
