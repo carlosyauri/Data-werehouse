@@ -1,10 +1,4 @@
 var toggler = document.getElementsByClassName("caret");
-var region1 = document.getElementById("region-title-1");
-var region2 = document.getElementById("region-title-2");
-var region3 = document.getElementById("region-title-3");
-var pais1 = document.getElementById("pais-1");
-var pais2 = document.getElementById("pais-2");
-var pais3 = document.getElementById("pais-3");
 var i;
 var nvoRegion = document.getElementById("button-new-region");
 var fondoNegro = document.getElementById("fondoNegro");
@@ -24,27 +18,10 @@ for (i = 0; i < toggler.length; i++) {
     this.parentElement.querySelector(".nested").classList.toggle("active");
     this.classList.toggle("caret-down");
     
+    this.parentElement.querySelector(".pais-ag").classList.toggle("noMostrar")
+    
   });
 }
-
-
-region1.addEventListener("click", () => {
-
-  pais1.classList.toggle("noMostrar")
-  pais1.classList.toggle("mostrar")
-
-})
-region2.addEventListener("click", () => {
-
-  pais2.classList.toggle("noMostrar")
-  pais2.classList.toggle("mostrar")
-
-
-})
-region3.addEventListener("click", () => {
-  pais3.classList.toggle("noMostrar")
-  pais3.classList.toggle("mostrar")
-})
 
 
 
@@ -95,4 +72,6 @@ cerrarNuevoCiudad.addEventListener("click", () => {
   containerCiudad.classList.toggle("noDisplay")
   
 })
+
+
 

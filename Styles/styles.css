@@ -975,7 +975,7 @@ li {
   font-size: 16px;
 }
 
-#region-title-1, #region-title-2, #region-title-3 {
+#myUL li .region-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -985,19 +985,7 @@ li {
   width: 300px;
 }
 
-#region-title-1:hover {
-  background-color: #e4f0f6;
-  color: #0079bf;
-  border-radius: 3px;
-}
-
-#region-title-2:hover {
-  background-color: #e4f0f6;
-  color: #0079bf;
-  border-radius: 3px;
-}
-
-#region-title-3:hover {
+#myUL li .region-title:hover {
   background-color: #e4f0f6;
   color: #0079bf;
   border-radius: 3px;
@@ -1095,7 +1083,7 @@ li {
   margin: 0;
 }
 
-#pais-1, #pais-2, #pais-3 {
+.pais-ag {
   position: absolute;
   margin-left: 1236px;
   margin-top: -38px;
