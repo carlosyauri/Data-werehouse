@@ -17,7 +17,7 @@ for (i = 0; i < toggler.length; i++) {
 
     this.parentElement.querySelector(".nested").classList.toggle("active");
     this.classList.toggle("caret-down");
-    
+
     this.parentElement.querySelector(".pais-ag").classList.toggle("noMostrar")
     
   });
@@ -72,6 +72,9 @@ cerrarNuevoCiudad.addEventListener("click", () => {
   containerCiudad.classList.toggle("noDisplay")
   
 })
+
+
+
 
 
 
