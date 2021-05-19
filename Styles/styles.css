@@ -985,19 +985,7 @@ li {
   width: 300px;
 }
 
-#region-title-1:hover {
-  background-color: #e4f0f6;
-  color: #0079bf;
-  border-radius: 3px;
-}
-
-#region-title-2:hover {
-  background-color: #e4f0f6;
-  color: #0079bf;
-  border-radius: 3px;
-}
-
-#region-title-3:hover {
+#myUL li .region-title:hover {
   background-color: #e4f0f6;
   color: #0079bf;
   border-radius: 3px;
@@ -1091,11 +1079,11 @@ li {
   display: none;
 }
 
-#region-title-1 p, #region-title-2 p, #region-title-3 p {
+.region-title p {
   margin: 0;
 }
 
-#pais-1, #pais-2, #pais-3 {
+.pais-ag {
   position: absolute;
   margin-left: 1236px;
   margin-top: -38px;
