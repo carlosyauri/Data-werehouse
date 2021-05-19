@@ -62,4 +62,21 @@ ciudad.init({
     modelName: "Ciudad"
 });
 
-module.exports = {usuario, region, pais, ciudad}
+class compania extends Model {}
+compania.init({
+         id : {
+               type: DataTypes.INTEGER,
+               autoIncrement: true,
+               primaryKey: true
+          },         
+          nombre : DataTypes.STRING, 
+          direccion: DataTypes.STRING,
+          email: DataTypes.STRING,
+          telefono: DataTypes.STRING,
+}, {
+    sequelize,
+    modelName: "Compania"
+});
+
+
+module.exports = {usuario, region, pais, ciudad, compania}

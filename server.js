@@ -42,3 +42,7 @@ models.pais.belongsTo(models.region)
 
 models.pais.hasMany(models.ciudad)
 models.ciudad.belongsTo(models.pais)
+
+
+models.ciudad.hasMany(models.compania)
+models.compania.belongsTo(models.ciudad)

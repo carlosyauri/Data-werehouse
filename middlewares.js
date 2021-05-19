@@ -178,5 +178,22 @@ const datosRecibidos = (req, res, next) => {
     next()
 }
 
-module.exports = { datosLogin, validacionJwt, validateUser, datosRecibidos, validarClave, validarEmail};
+
+const datosCiudad = (req, res, next) => {
+    const {nombre, direccion, email, telefono, id_ciudad} = req.body;
+
+    if (!nombre || !direccion || !email || !telefono || !id_ciudad) {
+        return res.status(400).json({
+            error: 'faltan campos'
+        })
+    }
+
+    else {
+        req.datos = req.body;
+    }
+
+    next()
+}
+
+module.exports = { datosLogin, validacionJwt, validateUser, datosRecibidos, validarClave, validarEmail, datosCiudad};
 
