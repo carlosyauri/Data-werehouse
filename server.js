@@ -6,13 +6,15 @@ const db = require("./conexion.js")
 const models = require("./models.js")
 const usuariosController = require("./Controller/usuariosController")
 const regionesController = require("./Controller/regionesController")
+const companiasController = require("./Controller/companiasController")
 
 
 app.use(helmet());
 app.use(express.json())
 app.use(cors());
 app.use("/usuarios", usuariosController);
-app.use("/regiones", regionesController)
+app.use("/regiones", regionesController);
+app.use("/companias", companiasController)
 
 
 db.init()
