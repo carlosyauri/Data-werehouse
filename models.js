@@ -78,5 +78,27 @@ compania.init({
     modelName: "Compania"
 });
 
+class contacto extends Model {}
+contacto.init({
+         id : {
+               type: DataTypes.INTEGER,
+               autoIncrement: true,
+               primaryKey: true
+          },         
+          nombre : DataTypes.STRING, 
+          apellido: DataTypes.STRING,
+          cargo: DataTypes.STRING,
+          email: DataTypes.STRING,
+          compania: DataTypes.STRING,
+          id_region: DataTypes.INTEGER,
+          id_pais: DataTypes.INTEGER,
+          id_ciudad: DataTypes.INTEGER,
+          canal_contacto: DataTypes.STRING,
+          cuenta_contacto: DataTypes.STRING,
+}, {
+    sequelize,
+    modelName: "Contacto"
+});
 
-module.exports = {usuario, region, pais, ciudad, compania}
+
+module.exports = {usuario, region, pais, ciudad, compania, contacto}

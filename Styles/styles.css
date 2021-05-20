@@ -296,12 +296,12 @@ header h2 {
   margin-right: 6px;
 }
 
-.containerDatos div span {
+.containerDatos div progress {
   background: #FFFFFF;
   border: 1px solid #C6CACC;
   width: 235px;
   height: 13px;
-  border-radius: 3.5px;
+  border-radius: 5px;
   display: block;
 }
 
