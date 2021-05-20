@@ -43,7 +43,7 @@ pais.init({
                autoIncrement: true,
                primaryKey: true
           },         
-          nombre : DataTypes.STRING,
+          nombre : DataTypes.STRING,      
 }, {
     sequelize,
     modelName: "Pais"

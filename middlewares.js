@@ -189,6 +189,7 @@ const datosCiudad = (req, res, next) => {
     }
 
     else {
+        
         req.datos = req.body;
     }
 

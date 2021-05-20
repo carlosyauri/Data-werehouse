@@ -20,6 +20,7 @@ router.post("/", datosCiudad, async(req, res) => {
     })
 
     if(ciudadExistente.length > 0){
+        
         const compania = await models.compania.create(nuevaCompania);
         await models.compania.update({CiudadId: req.datos.id_ciudad},{
             where: {CiudadId: null}
