@@ -48,3 +48,11 @@ models.ciudad.belongsTo(models.pais)
 
 models.ciudad.hasMany(models.compania)
 models.compania.belongsTo(models.ciudad)
+
+models.region.hasMany(models.contacto)
+models.pais.hasMany(models.contacto)
+models.ciudad.hasMany(models.contacto)
+
+models.contacto.belongsTo(models.region)
+models.contacto.belongsTo(models.pais)
+models.contacto.belongsTo(models.ciudad)

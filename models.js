@@ -90,9 +90,6 @@ contacto.init({
           cargo: DataTypes.STRING,
           email: DataTypes.STRING,
           compania: DataTypes.STRING,
-          id_region: DataTypes.INTEGER,
-          id_pais: DataTypes.INTEGER,
-          id_ciudad: DataTypes.INTEGER,
           canal_contacto: DataTypes.STRING,
           cuenta_contacto: DataTypes.STRING,
 }, {
