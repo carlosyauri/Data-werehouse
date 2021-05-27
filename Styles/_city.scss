@@ -39,13 +39,13 @@
   }
   /* Remove default bullets */
   ul,
-  #myUL {
+  .myUL {
     list-style-type: none;
     height: 100%;
   }
   
   
-  #myUL button {
+  .myUL button {
     background-color: #e4f0f6;
     color: #0079bf;
     border-radius: 3px;
@@ -60,12 +60,12 @@
 
 
   /* Remove margins and padding from the parent ul */
-  #myUL {
+  .myUL {
     margin: 0;
     padding: 0;
   }
 
-  #myUL .container-btn {
+  .myUL .container-btn {
     width: 82.7%;
     margin-left: 159px;
     margin-top: -25px;
@@ -79,13 +79,13 @@
     font-size: 16px;
   }
   
-  #myUL li .region-title {
+  .myUL li .region-title {
     display: flex;
     align-items: center;
     width: 300px;
   }
   
-  #myUL li .region-title:hover{
+  .myUL li .region-title:hover{
     background-color: #e4f0f6;
     color: #0079bf;
     border-radius: 3px;
@@ -94,6 +94,9 @@
 
   /* Style the caret/arrow */
   .caret {
+    display: flex;
+    align-items: center;
+    width: 300px;
     cursor: pointer;
     user-select: none; /* Prevent text selection */
     }

@@ -57,9 +57,17 @@ router.get("/", async(req, res)=>{
         include: [
             {
                 model: models.pais,
-                required: true,
-                attributes: ["id", "nombre"]
+                required: false,
+                attributes: ["id", "nombre"],
+                include: [
+                    {
+                        model: models.ciudad,
+                        required: false,
+                        attributes: ["id", "nombre"]
+                    }
+                ]
             }
+
         ]
     });
     if(regiones.length > 0) return res.status(200).json({
@@ -118,7 +126,7 @@ router.get("/paises", async(req, res) => {
         include: [
             {
                 model: models.ciudad,
-                required: true,
+                required: false,
                 attributes: ["nombre"]
             }
         ]
