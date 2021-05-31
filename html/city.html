@@ -33,25 +33,23 @@
                             </div>
                             <div>
                                 <label for="region">Región</label>
-                                <select name="region" id="region">
-                                    <option value="todos" class="placeholder">Seleccionar region</option>
-                                    
-                                </select>  
+                                <input type="text" name="" id="region" required>
+  
                             </div>
-                            <div>
+                            <!-- <div>
                                 <label for="pais">Pais</label>
                                 <select name="pais" id="pais" disabled>
                                     <option value="todos" class="placeholder">Seleccionar país</option>
 
                                 </select>  
-                            </div>
+                            </div> -->
                             
                         </div>
                         
                     </div>
                     <div class="btn">
-                        <button class="cancel">Cancelar</button>
-                        <button class="guardar">Guardar región</button>
+                        <button class="cancel" id="cancelar">Cancelar</button>
+                        <button class="guardar" id="guardar">Guardar región</button>
                     </div>
                     
                 </div>
@@ -76,21 +74,15 @@
                     </div>
                     <div>
                         <label for="pais">Pais</label>
-                        <select name="pais" id="pais">
-                            <option value="todos" class="placeholder">Seleccionar país</option>
-                            <option value="pais1">Argentina</option>
-                            <option value="pais2">Colombia</option>
-                            <option value="pais2">Brasil</option>
-                            <option value="pais2">Chile</option>
-                        </select>  
+                        <input type="text" name="" id="pais">
                     </div>
                     
                 </div>
                 
             </div>
             <div class="btn">
-                <button class="cancel">Cancelar</button>
-                <button class="guardar">Agregar</button>
+                <button class="cancel" id="cancelarPais">Cancelar</button>
+                <button class="guardar" id="guardarPais">Agregar</button>
             </div>
             
         </div>
@@ -111,22 +103,17 @@
                 <div id="agregarDatosPersonales">
 
                     <div>
-                        <label for="pais">Ciudad</label>
-                        <select name="pais" id="pais">
-                            <option value="todos" class="placeholder">Seleccionar ciudad</option>
-                            <option value="pais1">Formosa</option>
-                            <option value="pais2">Buenos aires</option>
-                            <option value="pais2">Tucuman</option>
-                            <option value="pais2">Córdoba</option>
-                        </select>  
+                        <label for="ciudad">Ciudad</label>
+                        <input type="text" name="" id="ciudad">
+                        
                     </div>
                     
                 </div>
                 
             </div>
             <div class="btn">
-                <button class="cancel">Cancelar</button>
-                <button class="guardar">Agregar</button>
+                <button class="cancel" id="cancelarCiudad">Cancelar</button>
+                <button class="guardar" id="guardarCiudad">Agregar</button>
             </div>
             
         </div>

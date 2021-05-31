@@ -1,8 +1,8 @@
-
 let newRegion = document.getElementById("button-new-region")
 let fondoNegro = document.getElementById("fondoNegro");
 let containerContacto = document.getElementById("containerContacto");
 var cerrarNuevaRegion = document.getElementById("nvoContacto");
+let cancelar = document.getElementById("cancelar")
 
 newRegion.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
@@ -11,6 +11,18 @@ newRegion.addEventListener("click", () => {
 
 
 cerrarNuevaRegion.addEventListener("click", () => {
+  fondoNegro.classList.toggle("noDisplay")
+  containerContacto.classList.toggle("noDisplay")
+})
+
+
+
+cancelar.addEventListener("click", () => {
+  fondoNegro.classList.toggle("noDisplay")
+  containerContacto.classList.toggle("noDisplay")
+})
+
+cancelarCiudad.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
   containerContacto.classList.toggle("noDisplay")
 })
@@ -184,10 +196,16 @@ async function completar (){
 
     for (i = 0; i < pais.length; i++){
 
-      pais[i].addEventListener("click", function() {
+      pais[i].addEventListener("click", async function() {
 
         fondoNegro.classList.toggle("noDisplay")
         containerPais.classList.toggle("noDisplay")
+
+        let nombreRegion = this.parentNode.querySelector(".pais").parentElement.previousSibling.firstChild.firstChild
+        
+
+
+        console.log(nombreRegion)
 
       })
 
@@ -195,6 +213,7 @@ async function completar (){
         fondoNegro.classList.toggle("noDisplay")
         containerPais.classList.toggle("noDisplay")
       })
+
 
     }
 
@@ -221,80 +240,164 @@ async function completar (){
 completar()
 
 
-////////////////////////// CARGAR DATOS DE REGIONES ///////////////////////////
+////////////////////////// CARGAR DATOS DE REGIONES - SIRVE PARA CREAR CONTACTOS///////////////////////////
 
-async function agregarRegion () {
+// async function agregarRegion () {
 
 
-  let arrayRegiones = await getLogin()
-  let selectRegion = document.getElementById("region");
+//   let arrayRegiones = await getLogin()
+//   let selectRegion = document.getElementById("region");
 
-  for (let i = 0; i < arrayRegiones.regiones.length; i++) {
+//   for (let i = 0; i < arrayRegiones.regiones.length; i++) {
     
     
 
-    let option = document.createElement("option")
-    option.innerHTML = arrayRegiones.regiones[i].nombre
-    selectRegion.appendChild(option)
+//     let option = document.createElement("option")
+//     option.innerHTML = arrayRegiones.regiones[i].nombre
+//     selectRegion.appendChild(option)
 
 
 
-    selectRegion.addEventListener("click", async(e)=>{
+//     selectRegion.addEventListener("click", async(e)=>{
 
 
-      let regionIngresada = e.target.value
-      if(regionIngresada != "todos"){
-        document.getElementById("pais").disabled = false
+//       let regionIngresada = e.target.value
+//       if(regionIngresada != "todos"){
+//         document.getElementById("pais").disabled = false
         
         
-      }
+//       }
 
-      if(regionIngresada == arrayRegiones.regiones[i].nombre){
+//       if(regionIngresada == arrayRegiones.regiones[i].nombre){
 
-          //////////  ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVOS PAISES ////////////
-          let paisEliminar = document.getElementById("pais")
-          if(paisEliminar.options.length>1){
-            for (let i = paisEliminar.options.length; i >= 1; i--) {
-              paisEliminar.remove(i);
-            }
-          }
-         
+//           //////////  ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVOS PAISES ///////////
 
-          for (let j = 0; j < arrayRegiones.regiones[i].Pais.length; j++) {
+//           let paisEliminar = document.getElementById("pais")
+//           if(paisEliminar.options.length>1){
+//             for (let i = paisEliminar.options.length; i >= 1; i--) {
+//               paisEliminar.remove(i);
+//             }
+//           }
+
+//           /////////////////////////////////////////////////////////////////////////////////
+
+
+//           for (let j = 0; j < arrayRegiones.regiones[i].Pais.length; j++) {
         
             
       
     
-            let pais = document.getElementById("pais")
-            let optionPais = document.createElement("option")
+//             let pais = document.getElementById("pais")
+//             let optionPais = document.createElement("option")
         
-            optionPais.value = `pais${j}`
-            optionPais.id = `pais${j}`
-            optionPais.innerHTML = arrayRegiones.regiones[i].Pais[j].nombre
+//             optionPais.value = `pais${j}`
+//             optionPais.id = `pais${j}`
+//             optionPais.innerHTML = arrayRegiones.regiones[i].Pais[j].nombre
         
-            pais.appendChild(optionPais)
-          }
-          
-    
-      }
+//             pais.appendChild(optionPais)
+//           }            
+//       } 
+//     })
+//   }
+
+// }
+
+// agregarRegion()
+
+////////////////// GUARDAR NUEVA REGION COMPLETADA DESDE EL FRONT ////////////////////
+
+
+
+// regionNombre.addEventListener("keypress", (e) => {
+
+//   let nombre = e.target.value
+//   if (nombre.length = 0){
+//     regionNombre.value = ""
+//   }
   
-    })
+//   if(nombre.length > 0 && nombre != " "){
+//     guardar.classList.toggle("guardar")
+//     guardar.classList.toggle("guardarOk")
 
-    
-    
-
-  }
-  
-
-
-
-
-}
-
-agregarRegion()
-
-
-// newRegion.addEventListener("click", () =>{
+//     guardar.classList.toggle("cancel")
+//     guardar.classList.toggle("cancelOk")
+//   }
 
 // })
 
+////////////////// GUARDAR NUEVA REGION COMPLETADA DESDE EL FRONT ////////////////////
+
+let guardar = document.getElementById("guardar")
+let regionNombre = document.getElementById("region")
+
+guardar.addEventListener("click", () =>{
+  postRegion(regionNombre.value)
+  fondoNegro.classList.toggle("noDisplay")
+  containerContacto.classList.toggle("noDisplay")
+})
+
+
+let postRegion = async (nombre) => {
+
+    var data = {
+        nombre
+    }
+
+    let serachApi = await fetch (`http://localhost:3000/regiones`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+  let res = await serachApi.json()
+
+}
+
+////////////////// GUARDAR UN PAIS COMPLETADO DESDE EL FRONT ////////////////////
+
+let guardarPais = document.getElementById("guardarPais")
+let paisNombre = document.getElementById("pais")
+
+
+
+guardarPais.addEventListener("click", () =>{
+
+  postPais(paisNombre.value, buscarIdRegion())
+
+  fondoNegro.classList.toggle("noDisplay")
+  containerContacto.classList.toggle("noDisplay")
+
+})
+
+
+let postPais = async (nombre, id_region) => {
+
+    var data = {
+        nombre,
+        id_region
+    }
+
+    let serachApi = await fetch (`http://localhost:3000/regiones/paises`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+  let res = await serachApi.json()
+
+}
+
+
+
+
+// let buscarIdRegion = async (nombre) => {
+//   let regionEncontrada = await region.findAll({
+//     where: {nombre: nombre}
+//   })
+
+//   if(regionEncontrada) return regionEncontrada.id
+// }

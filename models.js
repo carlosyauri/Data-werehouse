@@ -25,12 +25,12 @@ usuario.init({
 
 class region extends Model {}
 region.init({
-         id : {
+        id : {
                type: DataTypes.INTEGER,
                autoIncrement: true,
                primaryKey: true
           },         
-          nombre : DataTypes.STRING, 
+        nombre : DataTypes.STRING, 
 }, {
     sequelize,
     modelName: "Region"

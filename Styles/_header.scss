@@ -268,7 +268,10 @@ header h2 {
     outline: none;
     font-size: 15px;
     font-weight: 700;
+}
 
+.btn .guardarOk {
+    background: #EE6723;
 }
 
 .btn .cancel {
@@ -280,6 +283,10 @@ header h2 {
     font-size: 15px;
     font-weight: 700;
     color: #CCCCCC;
+}
+
+.btn .cancelOk {
+    color: #EE6723;
 }
 
 .btn {
