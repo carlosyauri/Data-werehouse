@@ -70,7 +70,8 @@ router.get("/", async(req, res)=>{
 
         ]
     });
-    if(regiones.length > 0) return res.status(200).json({
+    
+    if(regiones.length >= 0) return res.status(200).json({
             exito: "Operacion exitosa", regiones});
     res.status(400).json({
         message: "No se encontraron regiones"
@@ -127,7 +128,7 @@ router.get("/paises", async(req, res) => {
             {
                 model: models.ciudad,
                 required: false,
-                attributes: ["nombre"]
+                attributes: ["id", "nombre"]
             }
         ]
 

@@ -1,8 +1,56 @@
+
 let newRegion = document.getElementById("button-new-region")
 let fondoNegro = document.getElementById("fondoNegro");
 let containerContacto = document.getElementById("containerContacto");
 var cerrarNuevaRegion = document.getElementById("nvoContacto");
 let cancelar = document.getElementById("cancelar")
+let cancelarPais = document.getElementById("cancelarPais")
+let cancelarCiudad = document.getElementById("cancelarCiudad")
+let cerrarNuevoPais = document.getElementById("nvoPais");
+let cerrarNuevoCiudad = document.getElementById("nvoCiudad");
+
+/////////////////////////////////////// GET REGIONES ///////////////////////////////////////
+
+let getRegiones = async () => {
+
+  let serachApi = await fetch (`http://localhost:3000/regiones`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+
+let res = await serachApi.json()
+
+if(res.exito)
+
+  return res
+
+}
+
+
+/////////////////////////////////////// GET PAISES //////////////////////////////////////
+
+let getPaises = async () => {
+
+  let serachApi = await fetch (`http://localhost:3000/regiones/paises`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+
+let res = await serachApi.json()
+
+if(res.exito)
+
+  return res
+
+
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
 
 newRegion.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
@@ -24,35 +72,23 @@ cancelar.addEventListener("click", () => {
 
 cancelarCiudad.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
-  containerContacto.classList.toggle("noDisplay")
+  containerCiudad.classList.toggle("noDisplay")
 })
 
+cancelarPais.addEventListener("click", () => {
+  fondoNegro.classList.toggle("noDisplay")
+  containerPais.classList.toggle("noDisplay")
+})
 
+cerrarNuevoPais.addEventListener("click", () => {
+  fondoNegro.classList.toggle("noDisplay")
+  containerPais.classList.toggle("noDisplay")
+})
 
-////////////////////// FUNCION GET REGIONES //////////////////////
-
-let getLogin = async () => {
-
-  let serachApi = await fetch (`http://localhost:3000/regiones`, {
-      method: 'GET',
-      headers: {
-          'Content-Type': 'application/json'
-      }
-  })
-
-let res = await serachApi.json()
-
-if(res.exito){
-
-  return res
-
-}
-
-  else {
-    alert("NO FUNCIONO")
-  }
-
-}
+cerrarNuevoCiudad.addEventListener("click", () => {
+  fondoNegro.classList.toggle("noDisplay")
+  containerCiudad.classList.toggle("noDisplay")
+})
 
 
 
@@ -61,13 +97,15 @@ async function completar (){
 
     ///////////////////// OBTENEMOS ARRAY DE BASE DE DATOS CON GET ////////////////////////
 
-    let arrayRegiones = await getLogin()
+    let arrayRegiones = await getRegiones()
+    
 
     ////////////////////// COMPLETAR REGIONES ////////////////////////
 
     let nuevaRegion = document.getElementById("regionesNuevas");
     let ul = document.createElement("ul");
     ul.className = "myUL"
+
 
 
     for (let i = 0; i < arrayRegiones.regiones.length; i++) {
@@ -174,66 +212,84 @@ async function completar (){
     ////////////////////// EVENTOS CRUD ////////////////////////
 
     var toggler = document.getElementsByClassName("caret");
-    var i;
     var fondoNegro = document.getElementById("fondoNegro");
     var pais = document.getElementsByClassName("pais");
     var ciudad = document.getElementsByClassName("ciudad");
     var containerPais = document.getElementById("containerPais");
     var containerCiudad = document.getElementById("containerCiudad")
-    var cerrarNuevoPais = document.getElementById("nvoPais");
-    var cerrarNuevoCiudad = document.getElementById("nvoCiudad");
+    
 
-    for (i = 0; i < toggler.length; i++) {
+    for (let i = 0; i < toggler.length; i++) {
       toggler[i].addEventListener("click", function() {
 
         this.parentElement.querySelector(".nested").classList.toggle("active");
         this.classList.toggle("caret-down");
-
         this.parentElement.querySelector(".pais-ag").classList.toggle("noMostrar")
+        
         
       });
     }
+  
+    for (let y = 0; y < pais.length; y++){
+      
+      
+      pais[y].addEventListener("click", async function() {
 
-    for (i = 0; i < pais.length; i++){
-
-      pais[i].addEventListener("click", async function() {
-
-        fondoNegro.classList.toggle("noDisplay")
-        containerPais.classList.toggle("noDisplay")
-
-        let nombreRegion = this.parentNode.querySelector(".pais").parentElement.previousSibling.firstChild.firstChild
+        console.log(pais[y].nombre)
         
-
-
-        console.log(nombreRegion)
-
-      })
-
-      cerrarNuevoPais.addEventListener("click", () => {
         fondoNegro.classList.toggle("noDisplay")
         containerPais.classList.toggle("noDisplay")
-      })
+        
+        let array = await getRegiones();
 
+        let guardarPais = document.getElementById("guardarPais")
+        let paisNombre = document.getElementById("pais")
+        
+        guardarPais.addEventListener("click", () =>{
+          y = y + 1
+          fondoNegro.classList.toggle("noDisplay")
+          containerPais.classList.toggle("noDisplay")
+          postPais(paisNombre.value, array.regiones[y].id)
+
+          location.href = "../html/city.html"        
+        
+        })
+
+      })
+      
 
     }
 
+    for (let i = 0; i < ciudad.length; i++){
 
-    for (i = 0; i < ciudad.length; i++){
+      ciudad[i].addEventListener("click", async function() {
 
-      ciudad[i].addEventListener("click", function() {
 
         fondoNegro.classList.toggle("noDisplay")
         containerCiudad.classList.toggle("noDisplay")
 
+        let array = await getPaises();  
+  
+        console.log(array.paises[i].nombre)
+        let guardarCiudad = document.getElementById("guardarCiudad");
+        let ciudadNombre = document.getElementById("ciudad");
+
+        guardarCiudad.addEventListener("click", () => {
+
+          fondoNegro.classList.toggle("noDisplay")
+          containerCiudad.classList.toggle("noDisplay")
+          postCiudad(ciudadNombre.value, array.paises[i].id)
+          location.href = "../html/city.html" 
+
+        })
+        
+
       })
     }
 
-    cerrarNuevoCiudad.addEventListener("click", () => {
+    
 
-      fondoNegro.classList.toggle("noDisplay")
-      containerCiudad.classList.toggle("noDisplay")
-      
-    })
+
 
 }
 
@@ -245,7 +301,7 @@ completar()
 // async function agregarRegion () {
 
 
-//   let arrayRegiones = await getLogin()
+//   let arrayRegiones = await getRegiones()
 //   let selectRegion = document.getElementById("region");
 
 //   for (let i = 0; i < arrayRegiones.regiones.length; i++) {
@@ -325,17 +381,18 @@ completar()
 
 // })
 
-////////////////// GUARDAR NUEVA REGION COMPLETADA DESDE EL FRONT ////////////////////
+//////////////////////////////////////////////////
 
 let guardar = document.getElementById("guardar")
-let regionNombre = document.getElementById("region")
+guardar.addEventListener("click", ()=>{
 
-guardar.addEventListener("click", () =>{
-  postRegion(regionNombre.value)
-  fondoNegro.classList.toggle("noDisplay")
-  containerContacto.classList.toggle("noDisplay")
+    let nombreRegion = document.getElementById("region")
+    postRegion(nombreRegion.value)
+    location.href = "../html/city.html"
+    
 })
 
+////////////////// POST REGION ////////////////////
 
 let postRegion = async (nombre) => {
 
@@ -355,22 +412,7 @@ let postRegion = async (nombre) => {
 
 }
 
-////////////////// GUARDAR UN PAIS COMPLETADO DESDE EL FRONT ////////////////////
-
-let guardarPais = document.getElementById("guardarPais")
-let paisNombre = document.getElementById("pais")
-
-
-
-guardarPais.addEventListener("click", () =>{
-
-  postPais(paisNombre.value, buscarIdRegion())
-
-  fondoNegro.classList.toggle("noDisplay")
-  containerContacto.classList.toggle("noDisplay")
-
-})
-
+////////////////// POST PAIS ////////////////////
 
 let postPais = async (nombre, id_region) => {
 
@@ -387,17 +429,35 @@ let postPais = async (nombre, id_region) => {
         }
     })
 
-  let res = await serachApi.json()
+  await serachApi.json()
+
+}
+
+/////////////// POST CIUDAD /////////////////
+
+let postCiudad = async (nombre, id_pais) => {
+  var data = {
+    nombre,
+    id_pais
+  }
+
+  let searchApi = await fetch (`http://localhost:3000/regiones/ciudades`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+  await searchApi.json() 
 
 }
 
 
 
 
-// let buscarIdRegion = async (nombre) => {
-//   let regionEncontrada = await region.findAll({
-//     where: {nombre: nombre}
-//   })
 
-//   if(regionEncontrada) return regionEncontrada.id
-// }
+
+
+
+

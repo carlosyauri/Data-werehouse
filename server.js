@@ -10,14 +10,14 @@ const companiasController = require("./Controller/companiasController")
 const contactosController = require("./Controller/contactosController")
 
 
+
 app.use(helmet());
 app.use(express.json())
 app.use(cors());
 app.use("/usuarios", usuariosController);
 app.use("/regiones", regionesController);
-app.use("/companias", companiasController);
+app.use("/compania", companiasController);
 app.use("/contactos", contactosController);
-
 
 db.init()
     .then(async () => {
