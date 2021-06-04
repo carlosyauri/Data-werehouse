@@ -235,18 +235,16 @@ async function completar (){
       
       pais[y].addEventListener("click", async function() {
 
-        console.log(pais[y].nombre)
-        
         fondoNegro.classList.toggle("noDisplay")
         containerPais.classList.toggle("noDisplay")
         
         let array = await getRegiones();
+        console.log(array.regiones[y].id)
 
         let guardarPais = document.getElementById("guardarPais")
         let paisNombre = document.getElementById("pais")
         
         guardarPais.addEventListener("click", () =>{
-          y = y + 1
           fondoNegro.classList.toggle("noDisplay")
           containerPais.classList.toggle("noDisplay")
           postPais(paisNombre.value, array.regiones[y].id)
@@ -289,7 +287,7 @@ async function completar (){
 
     
 
-
+    //// FALTA ARREGLAR CIUDAD /////
 
 }
 
