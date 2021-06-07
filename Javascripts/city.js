@@ -1,4 +1,5 @@
 
+
 let newRegion = document.getElementById("button-new-region")
 let fondoNegro = document.getElementById("fondoNegro");
 let containerContacto = document.getElementById("containerContacto");
@@ -200,7 +201,7 @@ async function completar (){
 
 
 
-          ////////////////    AGREGAR CIUDADES    ///////////////////////////
+          ////////////////        AGREGAR CIUDADES       ///////////////////////////
 
 
           AgregarCiudad.addEventListener("click", async function() {
@@ -288,7 +289,6 @@ async function completar (){
     var fondoNegro = document.getElementById("fondoNegro");
     var containerPais = document.getElementById("containerPais");
     var containerCiudad = document.getElementById("containerCiudad")
-   
 
     for (let i = 0; i < toggler.length; i++) {
 
@@ -296,14 +296,16 @@ async function completar (){
 
         this.parentElement.querySelector(".nested").classList.toggle("active");
         this.classList.toggle("caret-down");
-        if(this.parentElement.querySelector(".pais-ag") != null){
+        if( this.parentElement.querySelector(".pais-ag") != null){
           this.parentElement.querySelector(".pais-ag").classList.toggle("noMostrar")
         }
-       
         
+
       }); 
        
     }
+  
+    //// FALTA ARREGLAR CIUDAD /////
 
 }
 
@@ -375,6 +377,14 @@ completar()
 // agregarRegion()
 
 
+let guardar = document.getElementById("guardar")
+guardar.addEventListener("click", ()=>{
+
+    let nombreRegion = document.getElementById("region")
+    postRegion(nombreRegion.value)
+    location.href = "../html/city.html"
+    
+})
 
 ////////////////// POST REGION ////////////////////
 
@@ -453,9 +463,25 @@ let deleteGeneral = async (id, lugar) => {
 }
 
 
-///////////////////////////////////////////
+//////////////////   PUT   ///////////////////
 
+let putGeneral = async (id, nombre, lugar) => {
 
+  var data = {
+    nombre
+  }
+
+  let searchApi = await fetch (`http://localhost:3000/regiones/${lugar}/${id}` , {
+    method: 'PUT',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+  })
+
+  await searchApi.json()
+
+}
 
 
 
