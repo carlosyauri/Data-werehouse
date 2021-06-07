@@ -112,7 +112,7 @@ async function completar (){
 
       let li = document.createElement("li");
       li.className = "region"
-
+      
       let div1 = document.createElement("div");
       div1.classList="caret region-tittle"
       let p = document.createElement("p");
@@ -129,6 +129,30 @@ async function completar (){
       li.appendChild(div1)
       li.appendChild(div2)
 
+
+      ////////////////////// EVENTO AGREGAR PAIS /////////////////////
+
+
+      button.addEventListener("click", async function() {
+
+        fondoNegro.classList.toggle("noDisplay")
+        containerPais.classList.toggle("noDisplay")
+
+        let guardarPais = document.getElementById("guardarPais")
+        let paisNombre = document.getElementById("pais")
+        
+        guardarPais.addEventListener("click", () =>{
+          fondoNegro.classList.toggle("noDisplay")
+          containerPais.classList.toggle("noDisplay")
+          postPais(paisNombre.value, arrayRegiones.regiones[i].id)
+
+          location.href = "../html/city.html"        
+        
+        })
+
+      })
+
+      //////////////////////////////////////////////////////////////////
 
 
       ////////////////////// COMPLETAR PAISES ////////////////////////
@@ -151,6 +175,8 @@ async function completar (){
           let div5 = document.createElement("div")
           let editar = document.createElement("button")
           let eliminar = document.createElement("button")
+          eliminar.id = "eliminarPais"
+          editar.id = "editarPais"
           editar.innerHTML = "Editar"
           eliminar.innerHTML = "Eliminar"
           div5.appendChild(editar)
@@ -161,11 +187,47 @@ async function completar (){
           div4.appendChild(div5)
           div4.appendChild(AgregarCiudad)
           li2.appendChild(div4)    
-
           ul2.appendChild(li2)
 
+          /////////// EVENTO DELETE PAIS ///////////
+
+          eliminar.addEventListener("click", () => {
+            deleteGeneral(arrayRegiones.regiones[i].Pais[j].id, "paises")
+            location.href = "../html/city.html"
+
+          })
 
 
+
+
+          ////////////////    AGREGAR CIUDADES    ///////////////////////////
+
+
+          AgregarCiudad.addEventListener("click", async function() {
+        
+
+            fondoNegro.classList.toggle("noDisplay")
+            containerCiudad.classList.toggle("noDisplay")
+    
+            let guardarCiudad = document.getElementById("guardarCiudad");
+            let ciudadNombre = document.getElementById("ciudad");
+       
+ 
+            guardarCiudad.addEventListener("click", () => {
+    
+                fondoNegro.classList.toggle("noDisplay")
+                containerCiudad.classList.toggle("noDisplay")
+                postCiudad(ciudadNombre.value, arrayRegiones.regiones[i].Pais[j].id)
+                location.href = "../html/city.html" 
+      
+              })
+           
+
+          })
+
+
+          ///////////////////////////////////////////////////////////////////////
+          
           ////////////////////// COMPLETAR CIUDADES ////////////////////////
 
           let ulCitys = document.createElement("ul");
@@ -191,6 +253,17 @@ async function completar (){
             divPcia.appendChild(liPcia)
             ulCitys.appendChild(divPcia)
 
+            /////////// EVENTO DELETE PAIS ///////////////////////////////////////////
+
+            i2.addEventListener("click", () => {
+              deleteGeneral(arrayRegiones.regiones[i].Pais[j].Ciudads[k].id, "ciudades")
+              location.href = "../html/city.html"
+
+            })
+          
+            /////////////////////////////////////////////////////////////////////////
+
+            
           }
           
           
@@ -213,81 +286,24 @@ async function completar (){
 
     var toggler = document.getElementsByClassName("caret");
     var fondoNegro = document.getElementById("fondoNegro");
-    var pais = document.getElementsByClassName("pais");
-    var ciudad = document.getElementsByClassName("ciudad");
     var containerPais = document.getElementById("containerPais");
     var containerCiudad = document.getElementById("containerCiudad")
-    
+   
 
     for (let i = 0; i < toggler.length; i++) {
+
       toggler[i].addEventListener("click", function() {
 
         this.parentElement.querySelector(".nested").classList.toggle("active");
         this.classList.toggle("caret-down");
-        this.parentElement.querySelector(".pais-ag").classList.toggle("noMostrar")
+        if(this.parentElement.querySelector(".pais-ag") != null){
+          this.parentElement.querySelector(".pais-ag").classList.toggle("noMostrar")
+        }
+       
         
-        
-      });
+      }); 
+       
     }
-  
-    for (let y = 0; y < pais.length; y++){
-      
-      
-      pais[y].addEventListener("click", async function() {
-
-        fondoNegro.classList.toggle("noDisplay")
-        containerPais.classList.toggle("noDisplay")
-        
-        let array = await getRegiones();
-        console.log(array.regiones[y].id)
-
-        let guardarPais = document.getElementById("guardarPais")
-        let paisNombre = document.getElementById("pais")
-        
-        guardarPais.addEventListener("click", () =>{
-          fondoNegro.classList.toggle("noDisplay")
-          containerPais.classList.toggle("noDisplay")
-          postPais(paisNombre.value, array.regiones[y].id)
-
-          location.href = "../html/city.html"        
-        
-        })
-
-      })
-      
-
-    }
-
-    for (let i = 0; i < ciudad.length; i++){
-
-      ciudad[i].addEventListener("click", async function() {
-
-
-        fondoNegro.classList.toggle("noDisplay")
-        containerCiudad.classList.toggle("noDisplay")
-
-        let array = await getPaises();  
-  
-        console.log(array.paises[i].nombre)
-        let guardarCiudad = document.getElementById("guardarCiudad");
-        let ciudadNombre = document.getElementById("ciudad");
-
-        guardarCiudad.addEventListener("click", () => {
-
-          fondoNegro.classList.toggle("noDisplay")
-          containerCiudad.classList.toggle("noDisplay")
-          postCiudad(ciudadNombre.value, array.paises[i].id)
-          location.href = "../html/city.html" 
-
-        })
-        
-
-      })
-    }
-
-    
-
-    //// FALTA ARREGLAR CIUDAD /////
 
 }
 
@@ -358,37 +374,7 @@ completar()
 
 // agregarRegion()
 
-////////////////// GUARDAR NUEVA REGION COMPLETADA DESDE EL FRONT ////////////////////
 
-
-
-// regionNombre.addEventListener("keypress", (e) => {
-
-//   let nombre = e.target.value
-//   if (nombre.length = 0){
-//     regionNombre.value = ""
-//   }
-  
-//   if(nombre.length > 0 && nombre != " "){
-//     guardar.classList.toggle("guardar")
-//     guardar.classList.toggle("guardarOk")
-
-//     guardar.classList.toggle("cancel")
-//     guardar.classList.toggle("cancelOk")
-//   }
-
-// })
-
-//////////////////////////////////////////////////
-
-let guardar = document.getElementById("guardar")
-guardar.addEventListener("click", ()=>{
-
-    let nombreRegion = document.getElementById("region")
-    postRegion(nombreRegion.value)
-    location.href = "../html/city.html"
-    
-})
 
 ////////////////// POST REGION ////////////////////
 
@@ -452,7 +438,22 @@ let postCiudad = async (nombre, id_pais) => {
 }
 
 
+/////////////// DETELE ///////////////
 
+
+
+let deleteGeneral = async (id, lugar) => {
+
+  let searchApi = await fetch (`http://localhost:3000/regiones/${lugar}/${id}` , {
+    method: 'DELETE'
+  })
+
+  await searchApi.json()
+
+}
+
+
+///////////////////////////////////////////
 
 
 
