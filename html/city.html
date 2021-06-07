@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>
+<body class="" id="body">
     <div class="fondoTransparente noDisplay" id="fondoNegro"></div>
 
     <section class="agregar"> 
@@ -114,7 +114,6 @@
     </section>
 
 
-
     <header>
         <h2>M!</h2>
         <nav class="nav">
@@ -146,6 +145,18 @@
                 </div>
                 <button id="button-new-region" class="cursorPoint">Agregar región</button>
             </div>
+        </section>
+
+        <section class="agregarEdit">
+
+            <div class="divEditar noDisplay" id="containerEdit"> 
+                <input type="text" class="inputEditar" id="inputEditar" required>
+                <div class="btnEdit">
+                    <i class="fas fa-check-circle aceptar" id="aceptarEdit"></i>
+                    <i class="fas fa-times-circle cancelar" id="cancelarEdit"></i>
+                </div>
+            </div>
+            
         </section>
 
         <section class="city-2 section-city" id="regionesNuevas">

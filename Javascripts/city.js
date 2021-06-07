@@ -56,12 +56,14 @@ if(res.exito)
 newRegion.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
   containerContacto.classList.toggle("noDisplay")
+  body.classList.toggle("noHidden")
 })
 
 
 cerrarNuevaRegion.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
   containerContacto.classList.toggle("noDisplay")
+  body.classList.toggle("noHidden")
 })
 
 
@@ -69,26 +71,31 @@ cerrarNuevaRegion.addEventListener("click", () => {
 cancelar.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
   containerContacto.classList.toggle("noDisplay")
+  body.classList.toggle("noHidden")
 })
 
 cancelarCiudad.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
   containerCiudad.classList.toggle("noDisplay")
+  body.classList.toggle("noHidden")
 })
 
 cancelarPais.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
   containerPais.classList.toggle("noDisplay")
+  body.classList.toggle("noHidden")
 })
 
 cerrarNuevoPais.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
   containerPais.classList.toggle("noDisplay")
+  body.classList.toggle("noHidden")
 })
 
 cerrarNuevoCiudad.addEventListener("click", () => {
   fondoNegro.classList.toggle("noDisplay")
   containerCiudad.classList.toggle("noDisplay")
+  body.classList.toggle("noHidden")
 })
 
 
@@ -136,6 +143,8 @@ async function completar (){
 
       button.addEventListener("click", async function() {
 
+        let body = document.getElementById("body")
+        body.classList.toggle("noHidden")
         fondoNegro.classList.toggle("noDisplay")
         containerPais.classList.toggle("noDisplay")
 
@@ -143,6 +152,7 @@ async function completar (){
         let paisNombre = document.getElementById("pais")
         
         guardarPais.addEventListener("click", () =>{
+          body.classList.toggle("noHidden")
           fondoNegro.classList.toggle("noDisplay")
           containerPais.classList.toggle("noDisplay")
           postPais(paisNombre.value, arrayRegiones.regiones[i].id)
@@ -190,6 +200,50 @@ async function completar (){
           li2.appendChild(div4)    
           ul2.appendChild(li2)
 
+          /////////////EVENTO EDITAR PAIS ////////////////
+
+          editar.addEventListener("click", () => {
+
+            let input = document.getElementById("inputEditar")
+            let aceptar = document.getElementById("aceptarEdit")
+            let cancelar = document.getElementById("cancelarEdit")
+      
+            let containerEdit = document.getElementById("containerEdit")
+            let body = document.getElementById("body")
+            body.classList.toggle("noHidden")
+            fondoNegro.classList.toggle("noDisplay")
+            containerEdit.classList.toggle("noDisplay")
+
+            
+              aceptar.addEventListener("click", () => {
+
+                if(input.value.length > 0){
+                  putGeneral(arrayRegiones.regiones[i].Pais[j].id, input.value, "paises")
+                  body.classList.toggle("noHidden")
+                  fondoNegro.classList.toggle("noDisplay")
+                  containerEdit.classList.toggle("noDisplay")
+                  location.href = "../html/city.html"
+                }else{
+                  alert("El campo es requerido")
+                }
+
+                
+                
+              })
+            
+
+           
+
+            cancelar.addEventListener("click", () => {
+              body.classList.toggle("noHidden")
+              fondoNegro.classList.toggle("noDisplay")
+              containerEdit.classList.toggle("noDisplay")
+              location.href = "../html/city.html"
+            })
+
+
+          })
+
           /////////// EVENTO DELETE PAIS ///////////
 
           eliminar.addEventListener("click", () => {
@@ -201,14 +255,17 @@ async function completar (){
 
 
 
-          ////////////////        AGREGAR CIUDADES       ///////////////////////////
+          ////////////////  AGREGAR CIUDADES  ///////////////////////////
 
 
           AgregarCiudad.addEventListener("click", async function() {
         
+            
 
             fondoNegro.classList.toggle("noDisplay")
             containerCiudad.classList.toggle("noDisplay")
+            let body = document.getElementById("body")
+            body.classList.toggle("noHidden")
     
             let guardarCiudad = document.getElementById("guardarCiudad");
             let ciudadNombre = document.getElementById("ciudad");
@@ -218,6 +275,7 @@ async function completar (){
     
                 fondoNegro.classList.toggle("noDisplay")
                 containerCiudad.classList.toggle("noDisplay")
+                body.classList.toggle("noHidden")
                 postCiudad(ciudadNombre.value, arrayRegiones.regiones[i].Pais[j].id)
                 location.href = "../html/city.html" 
       
