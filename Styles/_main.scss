@@ -458,3 +458,22 @@ tbody tr:hover {
 #admin {
     margin-right: 183px;
 }
+
+#interes {
+    display: inline;
+}
+
+#barraNumerica {
+    width: 55px;
+    margin: 0;
+    margin-right: -50px;
+
+}
+
+#containerInteres{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}

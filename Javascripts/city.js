@@ -210,6 +210,10 @@ async function completar (){
       
             let containerEdit = document.getElementById("containerEdit")
             let body = document.getElementById("body")
+            let h3 = document.getElementById("h3Edit")
+            h3.innerHTML = `Editando: ${arrayRegiones.regiones[i].Pais[j].nombre}`
+            
+
             body.classList.toggle("noHidden")
             fondoNegro.classList.toggle("noDisplay")
             containerEdit.classList.toggle("noDisplay")

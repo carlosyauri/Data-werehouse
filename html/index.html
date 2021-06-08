@@ -41,23 +41,23 @@
     
                     <div class="agregarDatos">
                         <p>Nombre<span>*</span></p>
-                        <input type="text" name="">
+                        <input type="text" name="" id="nombre">
                     </div>
                     <div class="agregarDatos">
                         <p>Apellido<span>*</span></p>
-                        <input type="text" name=""">
+                        <input type="text" name=""" id="apellido">
                     </div>
                     <div class="agregarDatos">
                         <p>Cargo<span>*</span></p>
-                        <input type="text" name="">
+                        <input type="text" name="" id="cargoUsuario">
                     </div>
                     <div class="agregarDatos">
                         <p>Email<span>*</span></p>
-                        <input type="text" name="">
+                        <input type="text" name="" id="email">
                     </div>
                     <div class="agregarDatos">
                         <p>Companía<span>*</span></p>
-                        <input type="text" name="" placeholder=" Ing nombre de la companía">
+                        <input type="text" name="" id="compania" placeholder=" Ing nombre de la companía">
                     </div>
                 </div>
     
@@ -65,70 +65,60 @@
                     <div>
                         <label for="region">Región</label>
                         <select name="region" id="region">
-                            <option value="todos" class="placeholder">Seleccionar region</option>
-                            <option value="region1">Sudamerica</option>
-                            <option value="region2">Norteamerica</option>
-                            <option value="region3">Europa</option>
+                            <option value="todos" class="placeholder" disabled selected>Seleccionar region</option>
                         </select>  
                     </div>
                     <div>
                         <label for="pais">Pais</label>
                         <select name="pais" id="pais" disabled>
-                            <option value="todos" class="placeholder">Seleccionar país</option>
-                            <option value="pais1">Argentina</option>
-                            <option value="pais2">Colombia</option>
+                            <option value="todos" class="placeholder" disabled selected>Seleccionar país</option>
                         </select>  
                     </div>
                     <div>
                         <label for="ciudad">Ciudad</label>
                         <select name="ciudad" id="ciudad" disabled>
-                            <option value="todos" class="placeholder">Seleccionar ciudad</option>
-                            <option value="ciudad1">Buenos aires</option>
-                            <option value="ciudad2">Córdoba</option>
-                            <option value="ciudad3">Rosario</option>
+                            <option value="todos" class="placeholder" disabled selected>Seleccionar ciudad</option>
                         </select>  
                     </div>
                     <div>
                         <p>Direccíon</p>
-                        <input type="text" name="" id="" placeholder="Ing una direccion" disabled>
+                        <input type="text" name="" id="direccion" placeholder="Ing una direccion" disabled>
                     </div>
                     <div>
-                        <p style="display: inline;">interes</p>
-                        <progress max="100" value="50">
-                            <span class="progreso"></span>
-                            <span class="progreso"></span>
-                            <span class="progreso"></span>
-                            <span class="progreso"></span>
-                            <span class="progreso"></span>
-                        </progress>
-                        
+                        <p id="interes">interes</p>
+                        <div id="containerInteres">
+                            <progress max="100" value="50" id="barraProgreso"></progress>
+                            <select name="" id="barraNumerica">
+                                <option value="" class="placeholder" disabled selected>%</option>
+                                <option value="25">25%</option>
+                                <option value="50">50%</option>
+                                <option value="75">75%</option>
+                                <option value="100">100%</option>
+                            </select>   
+                        </div>
+              
                     </div>
                     <div>
                         <label for="canal">Canal de contacto </label>
                         <select name="canal" id="canal">
-                            <option value="cualquiera" class="placeholder">Seleccionar canal</option>
-                            <option value="canal1">Acamica</option>
-                            <option value="canal2">WhatSapp</option>
-                            <option value="canal3">Instagram</option>
-                            <option value="canal4">Facebook</option>
-                            <option value="canal5">Twitter</option>
+                            <option value="cualquiera" class="placeholder" disabled selected>Seleccionar canal</option>
                         </select>  
                     </div>
                     <div>
                         <p>Cuenta de usuario</p>
-                        <input type="text" name="" id="" placeholder="@ejemplo" disabled>
+                        <input type="text" name="" id="cuenta" placeholder="@ejemplo" disabled>
                     </div>
                     
                     <div>
-                        <button><i class="fas fa-plus"></i>Agregar canal</button>
+                        <button id="agregarCanal"><i class="fas fa-plus"></i>Agregar canal</button>
                     </div>
     
                 </div>
             </div>
 
             <div class="btn">
-                <button class="cancel">Cancelar</button>
-                <button class="guardar">Guardar contacto</button>
+                <button class="cancel" id="cancelarContacto">Cancelar</button>
+                <button class="guardar" id="guardarContacto">Guardar contacto</button>
             </div>
             
         </div>
