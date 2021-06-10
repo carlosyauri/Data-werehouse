@@ -38,9 +38,13 @@ async function agregarRegion () {
 
   let arrayRegiones = await getRegiones()
   let selectRegion = document.getElementById("region");
+  let selectPais = document.getElementById("pais")
+  let selectCiudad = document.getElementById("ciudad")
+  let direccion = document.getElementById("direccion")
+  let canal = document.getElementById("canal")
+  
 
   for (let i = 0; i < arrayRegiones.regiones.length; i++) {
-    
     
 
     let option = document.createElement("option")
@@ -50,22 +54,28 @@ async function agregarRegion () {
 
 
     selectRegion.addEventListener("click", async(e)=>{
-
-      let regionIngresada = e.target.value
-      if(regionIngresada != "todos"){
-        document.getElementById("pais").disabled = false
+        
+        let regionIngresada = e.target.value
+        if(regionIngresada != "todos"){
+            document.getElementById("pais").disabled = false
          
-    }
+        }
+
+
 
     if(regionIngresada == arrayRegiones.regiones[i].nombre){
-        let pais = document.getElementById("pais")
 
         //////////  ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVOS PAISES ///////////
+ 
+        if(selectPais.options.length>1){
+            for (let i = selectPais.options.length; i >= 1; i--) {
+                selectPais.remove(i);
+            }
+        }
 
-        
-        if(pais.options.length>1){
-            for (let i = pais.options.length; i >= 1; i--) {
-                pais.remove(i);
+        if(selectCiudad.options.length>1){
+            for (let i = selectCiudad.options.length; i >= 1; i--) {
+                selectCiudad.remove(i);
             }
         }
 
@@ -74,28 +84,29 @@ async function agregarRegion () {
         for (let j = 0; j < arrayRegiones.regiones[i].Pais.length; j++) {
 
             let optionPais = document.createElement("option")
-        
-            optionPais.value = `pais${j}`
-            optionPais.id = `pais${j}`
+
             optionPais.innerHTML = arrayRegiones.regiones[i].Pais[j].nombre
-            pais.appendChild(optionPais)
+            selectPais.appendChild(optionPais)
 
 
 
-            pais.addEventListener("click", async(e) => {
+            selectPais.addEventListener("click", async(e) => {
+
                 let paisIngresado = e.target.value
+
                 if(paisIngresado != "todos"){
                     document.getElementById("ciudad").disabled = false
                 }
 
+
                 if(paisIngresado == arrayRegiones.regiones[i].Pais[j].nombre){
-                    let ciudad = document.getElementById("ciudad")
+                    
     
                     ////// ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVAS CIUDADES/////
 
-                    if(ciudad.options.length>1){
-                        for (let i = ciudad.options.length; i >= 1; i--) {
-                            ciudad.remove(i);
+                    if(selectCiudad.options.length>1){
+                        for (let i = selectCiudad.options.length; i >= 1; i--) {
+                            selectCiudad.remove(i);
                         }
                     }
                     //////////////////////////////////////////////////////////////////////
@@ -103,10 +114,20 @@ async function agregarRegion () {
                     for (let k = 0; k < arrayRegiones.regiones[i].Pais[j].Ciudads.length; k++) {
                         
                         let optionCiudades = document.createElement("option")
-                        optionCiudades.value = `ciudad${k}`
-                        optionCiudades.id = `ciudad${k}`
+         
                         optionCiudades.innerHTML =  arrayRegiones.regiones[i].Pais[j].Ciudads[k].nombre   
-                        ciudad.appendChild(optionCiudades)
+                        selectCiudad.appendChild(optionCiudades)
+
+
+                        selectCiudad.addEventListener("click", (e) => {
+
+                            let ciudadIngresada = e.target.value
+
+                            if(ciudadIngresada != "todos"){
+                                direccion.disabled = false
+                            }
+
+                        })
     
                     }
     
@@ -121,6 +142,71 @@ async function agregarRegion () {
       } 
     })
   }
+  let cuenta = document.getElementById("cuenta")
+  let agregarCanal = document.getElementById("agregarCanal")
+  let divCanales = document.getElementById("canales")
+  let divCuentas = document.getElementById("cuentas")
+
+
+  canal.addEventListener("click", () => {
+      if(canal.value != "todos"){
+        cuenta.disabled = false
+      }
+  })
+
+
+  cuenta.addEventListener("keyup",(e) => {
+
+    console.log(e.target.value.length)
+
+    if(e.target.value.length > 0){
+        agregarCanal.disabled = false
+    }
+
+    if(e.target.value.length < 1){
+        agregarCanal.disabled = true
+    }
+
+  })
+  
+  agregarCanal.addEventListener("click", ()=>{
+
+    let canales = ["linkedIn", "Facebook", "Instagram", "GitHub"]
+    let select = document.createElement("select")
+    let input = document.createElement("input")
+
+    for (let i = 0; i < canales.length; i++) { 
+        let option = document.createElement("option")
+        option.innerHTML = canales[i]
+        select.appendChild(option)
+    }
+
+    divCanales.appendChild(select)
+    divCuentas.appendChild(input)
+  })
+
+  let barraNumerica = document.getElementById("barraNumerica")
+  let barraProgreso = document.getElementById("barraProgreso")
+
+
+  barraNumerica.addEventListener("click", (e) => {
+    let num = e.target.value
+    
+    if (num == "25%"){
+        barraProgreso.value = 25
+    }
+    if (num == "50%"){
+        barraProgreso.value = 50
+    }
+    if (num == "75%"){
+        barraProgreso.value = 75
+    }
+    if (num == "100%"){
+        barraProgreso.value = 100
+    }
+
+  })
+    
 
 }
 

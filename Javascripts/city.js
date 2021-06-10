@@ -44,12 +44,9 @@ let getPaises = async () => {
 let res = await serachApi.json()
 
 if(res.exito)
-
   return res
-
-
-
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -374,69 +371,7 @@ async function completar (){
 completar()
 
 
-////////////////////////// CARGAR DATOS DE REGIONES - SIRVE PARA CREAR CONTACTOS///////////////////////////
 
-// async function agregarRegion () {
-
-
-//   let arrayRegiones = await getRegiones()
-//   let selectRegion = document.getElementById("region");
-
-//   for (let i = 0; i < arrayRegiones.regiones.length; i++) {
-    
-    
-
-//     let option = document.createElement("option")
-//     option.innerHTML = arrayRegiones.regiones[i].nombre
-//     selectRegion.appendChild(option)
-
-
-
-//     selectRegion.addEventListener("click", async(e)=>{
-
-
-//       let regionIngresada = e.target.value
-//       if(regionIngresada != "todos"){
-//         document.getElementById("pais").disabled = false
-        
-        
-//       }
-
-//       if(regionIngresada == arrayRegiones.regiones[i].nombre){
-
-//           //////////  ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVOS PAISES ///////////
-
-//           let paisEliminar = document.getElementById("pais")
-//           if(paisEliminar.options.length>1){
-//             for (let i = paisEliminar.options.length; i >= 1; i--) {
-//               paisEliminar.remove(i);
-//             }
-//           }
-
-//           /////////////////////////////////////////////////////////////////////////////////
-
-
-//           for (let j = 0; j < arrayRegiones.regiones[i].Pais.length; j++) {
-        
-            
-      
-    
-//             let pais = document.getElementById("pais")
-//             let optionPais = document.createElement("option")
-        
-//             optionPais.value = `pais${j}`
-//             optionPais.id = `pais${j}`
-//             optionPais.innerHTML = arrayRegiones.regiones[i].Pais[j].nombre
-        
-//             pais.appendChild(optionPais)
-//           }            
-//       } 
-//     })
-//   }
-
-// }
-
-// agregarRegion()
 
 
 let guardar = document.getElementById("guardar")

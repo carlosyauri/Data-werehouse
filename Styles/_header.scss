@@ -198,8 +198,8 @@ header h2 {
 }
 
 .containerDatos div p {
-    margin-bottom: 8px;
-    margin-top: 0px;
+
+    margin: 0px;
 }
 
 .containerDatos select {
@@ -219,6 +219,7 @@ header h2 {
     height: 35px;
     outline: none;
     font-size: 12px;
+    margin-top: 8px;
 }
 
 .containerDatos button {

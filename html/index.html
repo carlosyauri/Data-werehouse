@@ -87,30 +87,35 @@
                     <div>
                         <p id="interes">interes</p>
                         <div id="containerInteres">
-                            <progress max="100" value="50" id="barraProgreso"></progress>
+                            <progress max="100" value="0" id="barraProgreso"></progress>
                             <select name="" id="barraNumerica">
                                 <option value="" class="placeholder" disabled selected>%</option>
-                                <option value="25">25%</option>
-                                <option value="50">50%</option>
-                                <option value="75">75%</option>
-                                <option value="100">100%</option>
+                                <option >25%</option>
+                                <option >50%</option>
+                                <option >75%</option>
+                                <option >100%</option>
                             </select>   
                         </div>
               
                     </div>
-                    <div>
+                    <div id="canales">
                         <label for="canal">Canal de contacto </label>
                         <select name="canal" id="canal">
-                            <option value="cualquiera" class="placeholder" disabled selected>Seleccionar canal</option>
-                        </select>  
+                            <option value="todos" class="placeholder" disabled selected>Seleccionar canal</option>
+                            <option>LinkedIn</option>
+                            <option>Facebook</option>
+                            <option>Instagram</option>
+                            <option>GitHub</option>
+                        </select>
+                        
                     </div>
-                    <div>
+                    <div id="cuentas">
                         <p>Cuenta de usuario</p>
                         <input type="text" name="" id="cuenta" placeholder="@ejemplo" disabled>
                     </div>
                     
                     <div>
-                        <button id="agregarCanal"><i class="fas fa-plus"></i>Agregar canal</button>
+                        <button id="agregarCanal" disabled><i class="fas fa-plus"></i>Agregar canal</button>
                     </div>
     
                 </div>
