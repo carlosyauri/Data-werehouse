@@ -64,7 +64,7 @@ header h2 {
 
 .agregarContainer {
     position: absolute;
-    width: 1215px;
+    width: 64%;
     max-height: 100%;
     background-color: white;
     z-index: 3;
@@ -72,6 +72,14 @@ header h2 {
 
     
     // display: none;
+}
+.agregarContainer-c {
+    position: absolute;
+    max-height: 100%;
+    background-color: white;
+    z-index: 3;
+    margin: 96px 95px;
+
 }
 
 .agregarHeader {

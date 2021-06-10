@@ -108,7 +108,15 @@ header h2 {
 
 .agregarContainer {
   position: absolute;
-  width: 1215px;
+  width: 64%;
+  max-height: 100%;
+  background-color: white;
+  z-index: 3;
+  margin: 96px 95px;
+}
+
+.agregarContainer-c {
+  position: absolute;
   max-height: 100%;
   background-color: white;
   z-index: 3;
@@ -1113,7 +1121,7 @@ li {
   color: #0079bf;
   border-radius: 3px;
   border: none;
-  width: 60px;
+  width: 70px;
   height: 31px;
   margin: 0;
 }
@@ -1154,6 +1162,11 @@ li {
 
 .containerRegion {
   width: 650px;
+  margin: 120px 380px;
+  position: fixed;
+}
+
+.containerRegion-c {
   margin: 120px 380px;
   position: fixed;
 }

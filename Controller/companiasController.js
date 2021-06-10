@@ -40,7 +40,7 @@ router.post("/", datosCiudad, async(req, res) => {
 router.get("/", async(req, res) => {
 
     const companias = await models.compania.findAll({
-        attributes: ["id", "nombre", "direccion", "email", "telefono"],
+        attributes: ["nombre", "direccion", "email", "telefono"],
         include: [
             {
                 model: models.ciudad,
@@ -51,7 +51,7 @@ router.get("/", async(req, res) => {
 
     });
 
-    if(companias.length > 0) return res.status(200).json({exito: "Operacion exitosa", companias})
+    if(companias.length > 0) return res.status(200).json(companias)
     return res.status(400).json({
         message: "No se encontraron companias"
     })

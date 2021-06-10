@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Styles/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/027ad8fa8c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@800&family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@800&family=Open+Sans:wght@300&display=swap" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="fondoTransparente noDisplay" id="fondoNegro"></div>
+
+    <section class="agregar"> 
+        <div class="agregarContainer containerRegion-c noDisplay" id="containerContacto">
+
+            <div class="agregarHeader">
+                <h2 class="agregarTitulo">Nueva compania</h2>
+                <i class="fas fa-times" id="nvoContacto"></i>
+            </div>
+    
+            <div class="agregarCentrar">
+    
+                <div id="agregarDatosPersonales">
+
+                    <div class="agregarLoguito">
+                        <i class="far fa-building" id="perfil-2"></i>
+                    </div>
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="" id="nombre" required>
+                    </div>
+                    <div>
+                        <label for="direccion">Direccion</label>
+                        <input type="text" name="" id="direccion" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="text" name="" id="email" required>
+                    </div>
+                    <div>
+                        <label for="telefono">Telefono</label>
+                        <input type="text" name="" id="telefono" required>
+                    </div>
+                    <div>
+                        <label for="ciudad">Ciudad</label>
+                        <select name="" id="ciudad">
+                            <option selected>Selec. una ciudad</option>
+                        </select>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="btn">
+                <button class="cancel" id="cancelar">Cancelar</button>
+                <button class="guardar" id="guardar">Guardar compania</button>
+            </div>
+            
+        </div>
+    </section>
+
+    <header>
+        <h2>M!</h2>
+        <nav class="nav">
+            <div class="nombrePagina">
+                <a href="./index.html" id="contactos">Contactos</a>
+                <span class="span1"></span>
+            </div>
+            <div class="nombrePagina">
+                <a href="./compania.html" id="compania">Compañias</a>
+                <span class="span2 "></span>
+            </div>
+            <div class="nombrePagina">
+                <a href="./usuarios.html" id="usuario">Usuarios</a>
+                <span class="span3 "></span>
+            </div>
+            <div class="nombrePagina">
+                <a href="./city.html" id="region">Región / Ciudad</a>
+                <span class="span4 "></span>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="city-1 section-city" >
+            <div class="flex-container">
+                <div>
+                    <span><i class="far fa-building"></i></span>
+                    <h1>Compania</h1>
+                </div>
+                <button id="btn-compania" class="cursorPoint">Agregar compania</button>
+            </div>
+        </section>
+
+        <section id="companias">
+            <table>
+                <thead class="container-head">
+                    <tr class="titulos">
+                        <th class="checkbox"><input type="checkbox"></th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Ciudad</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaBody">
+
+                </tbody>               
+            </table> 
+        </section>
+
+
+    </main>
+    <footer></footer>
+    <script src="../Javascripts/compania.js"></script>
+</body>
+</html>

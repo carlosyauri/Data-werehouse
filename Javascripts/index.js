@@ -42,6 +42,9 @@ async function agregarRegion () {
   let selectCiudad = document.getElementById("ciudad")
   let direccion = document.getElementById("direccion")
   let canal = document.getElementById("canal")
+  let regionId;
+  let paisId;
+  let ciudadId;
   
 
   for (let i = 0; i < arrayRegiones.regiones.length; i++) {
@@ -49,6 +52,7 @@ async function agregarRegion () {
 
     let option = document.createElement("option")
     option.innerHTML = arrayRegiones.regiones[i].nombre
+   
     selectRegion.appendChild(option)
 
 
@@ -64,6 +68,7 @@ async function agregarRegion () {
 
 
     if(regionIngresada == arrayRegiones.regiones[i].nombre){
+        regionId = arrayRegiones.regiones[i].id
 
         //////////  ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVOS PAISES ///////////
  
@@ -86,20 +91,22 @@ async function agregarRegion () {
             let optionPais = document.createElement("option")
 
             optionPais.innerHTML = arrayRegiones.regiones[i].Pais[j].nombre
+            
             selectPais.appendChild(optionPais)
 
 
 
             selectPais.addEventListener("click", async(e) => {
+               
 
                 let paisIngresado = e.target.value
-
                 if(paisIngresado != "todos"){
                     document.getElementById("ciudad").disabled = false
                 }
 
 
                 if(paisIngresado == arrayRegiones.regiones[i].Pais[j].nombre){
+                    paisId = arrayRegiones.regiones[i].Pais[j].id
                     
     
                     ////// ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVAS CIUDADES/////
@@ -126,6 +133,11 @@ async function agregarRegion () {
                             if(ciudadIngresada != "todos"){
                                 direccion.disabled = false
                             }
+                            if(ciudadIngresada == arrayRegiones.regiones[i].Pais[j].Ciudads[k].nombre){
+                                ciudadId = arrayRegiones.regiones[i].Pais[j].Ciudads[k].id
+                                
+                            }
+
 
                         })
     
@@ -142,6 +154,11 @@ async function agregarRegion () {
       } 
     })
   }
+  let nombre = document.getElementById("nombre")
+  let apellido = document.getElementById("apellido")
+  let cargoUsuario = document.getElementById("cargoUsuario")
+  let email = document.getElementById("email")
+  let compania = document.getElementById("compania")
   let cuenta = document.getElementById("cuenta")
   let agregarCanal = document.getElementById("agregarCanal")
   let divCanales = document.getElementById("canales")
@@ -206,30 +223,16 @@ async function agregarRegion () {
     }
 
   })
-    
+    let agregar = document.getElementById("guardarContacto")
+    agregar.addEventListener("click", () => {
 
+        postContacto(nombre.value, apellido.value, cargoUsuario.value, email.value, compania.value, regionId, paisId, ciudadId, canal.value, cuenta.value)
+        location.href = "../html/index.html" 
+    })
+    
 }
 
 agregarRegion()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let agregar = document.getElementById("guardarContacto")
-agregar.addEventListener("click", () => {
-})
-
-
 
 /////////////////////////////////////// POST CONTACTOS ///////////////////////////////////////
 

@@ -163,7 +163,7 @@
     color: #0079bf;
     border-radius: 3px;
     border: none;
-    width: 60px;
+    width: 70px;
     height: 31px;
     margin: 0;
  
@@ -201,6 +201,11 @@
 
 .containerRegion {
   width: 650px;
+  margin: 120px 380px;
+  position: fixed;
+}
+.containerRegion-c {
+
   margin: 120px 380px;
   position: fixed;
 }
