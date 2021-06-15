@@ -260,7 +260,7 @@ td, th {
 .campo input {
     font-size: 13px;
     border: none;
-    width: 290px;
+    width: 255px;
     margin-right: 25px;
     border-bottom: 1px solid #CCCCCC;
     background: none;
@@ -476,4 +476,47 @@ tbody tr:hover {
     align-items: center;
     padding: 0;
     margin: 0;
+}
+
+.btnAccion {
+    color: #0079bf;
+    margin-right: 20px;
+}
+
+.btn-acciones {
+    display: flex;
+    align-items: center;
+    width: 1440px;
+    margin: 0 auto;
+    height: 45px;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: -45px;
+}
+
+#btn-acciones:hover {
+    width: 96%;
+    margin-left: 27px;
+    background: #d4dce3;
+}
+
+.btn-acciones p {
+    display: inline;
+    font-weight: 700;
+    color: red;
+}
+
+.btn-acciones i {
+    margin-left: 10px;
+    color: #0079bf;   
+    font-size: 15px;
+}
+.btn-acciones i:hover{
+    cursor: pointer;
+}
+
+.btn-acciones i span {
+    margin-left: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
 }

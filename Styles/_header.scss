@@ -141,11 +141,12 @@ header h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 85px;
+    width: 90px;
     height: 84px;
     background: rgba(0,0,0,0.05);
     border: 2px solid #0683F9;
     border-radius: 42px;
+    margin: 14px;
 }
 
 .agregarDatos {
@@ -162,7 +163,7 @@ header h2 {
 }
 
 #camara {
-    margin-left: -46px;
+    margin-left: -55px;
     margin-top: 57px;
     background: #0683F9;
     border: 3px solid #FFFFFF;
@@ -178,6 +179,7 @@ header h2 {
 #camara i {
     color: white;
     font-size: 11px;
+    margin-bottom: 2px;
 }
 
 .agregar {

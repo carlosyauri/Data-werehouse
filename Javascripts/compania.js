@@ -41,23 +41,57 @@ async function completarCompanias (){
         let tr = document.createElement("tr")
         let th = document.createElement("th")
         th.className = "checkbox"
+
         let input = document.createElement("input")
         input.type = "checkbox"
+
+        input.id = array[0] ///////////<-----------------------------------------
+
         th.appendChild(input)
         tr.appendChild(th)
 
-        for (let j = 0; j < array.length; j++) {
+        for (let j = 1; j < array.length; j++) {
            
             let td = document.createElement("td")
-            if(j != 4){
+            if(j != 5){
+
                 td.innerHTML = array[j]
-            }
-            
-            if (j == 4){
-                td.innerHTML = array[j].nombre
+                tr.appendChild(td)
             }
 
-            tr.appendChild(td)
+            let i = document.createElement("i")
+            let i2 = document.createElement("i")
+            let idCompania;
+
+            if (j == 5){
+
+                td.innerHTML = array[j].nombre
+                let td2 = document.createElement("td")
+                idCompania = array[0]
+
+                i.classList = "far fa-edit btnAccion"
+                i2.classList = "far fa-trash-alt btnAccion"
+
+                td2.appendChild(i)
+                td2.appendChild(i2)
+
+                tr.appendChild(td)
+                tr.appendChild(td2)
+
+            }
+
+            i.addEventListener("click", () => {
+                console.log(idCompania)
+            })
+
+
+            i2.addEventListener("click", () => {
+                deleteCompania(idCompania)
+                location.href = "../html/compania.html"
+            })
+
+            
+            
         }
         tabla.appendChild(tr)
     } 
@@ -73,6 +107,12 @@ let container = document.getElementById("containerContacto")
 let cerrarAgregar = document.getElementById("nvoContacto")
 let guardar = document.getElementById("guardar")
 let cancelar = document.getElementById("cancelar")
+let nombre = document.getElementById("nombre")
+let direccion = document.getElementById("direccion")
+let email = document.getElementById("email")
+let telefono = document.getElementById("telefono")
+let idCiudad;
+
 
 cerrarAgregar.addEventListener("click", () => {
     fondoNegro.classList.toggle("noDisplay")
@@ -91,11 +131,7 @@ btnAgregarCompania.addEventListener("click", () => {
     container.classList.toggle("noDisplay")
 })
 
-let nombre = document.getElementById("nombre")
-let direccion = document.getElementById("direccion")
-let email = document.getElementById("email")
-let telefono = document.getElementById("telefono")
-let idCiudad;
+
 
 guardar.addEventListener("click", () => {
 
@@ -103,6 +139,7 @@ guardar.addEventListener("click", () => {
     location.href = "../html/compania.html" 
 
 })
+
 
 async function agregarCiudades () {
 
@@ -128,10 +165,8 @@ async function agregarCiudades () {
 
         })
 
-    }
+    }   
 
-
-      
 }
 
 agregarCiudades()
@@ -162,3 +197,63 @@ let postCompania = async (nombre, direccion, email, telefono, id_ciudad) => {
     await serachApi.json()
 }
 
+let boxGeneral = document.getElementById("boxGeneral")
+let btnAcionnes = document.getElementById("btn-acciones")
+let arrayIdCompanias;
+
+boxGeneral.addEventListener("click", (e) => {
+
+    btnAcionnes.toggleAttribute("hidden")
+
+    arrayIdCompanias = []
+
+    
+    let checks = document.getElementsByClassName("checkbox")
+
+ 
+    
+    if (e.target.checked == true){
+
+        for (let i = 1; i < checks.length; i++) {
+
+            arrayIdCompanias.push(checks[i].firstChild.id)
+            checks[i].firstChild.checked = true;
+        }
+
+        console.log(arrayIdCompanias)
+    }
+
+    if (e.target.checked == false){
+
+        for (let i = 1; i < checks.length; i++) {
+            checks[i].firstChild.checked = false;
+        }
+    }
+
+})
+
+
+
+
+let eliminarTodo = document.getElementById("eliminarTodo")
+
+eliminarTodo.addEventListener("click", () => {
+
+    for (let i = 0; i < arrayIdCompanias.length; i++) {
+        deleteCompania(arrayIdCompanias[i])     
+    }
+
+    location.href = "../html/compania.html" 
+
+})
+
+let deleteCompania = async (id) => {
+
+    let searchApi = await fetch (`http://localhost:3000/compania/${id}` , {
+      method: 'DELETE'
+    })
+  
+    await searchApi.json()
+  
+  }
+  

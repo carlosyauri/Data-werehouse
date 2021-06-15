@@ -40,7 +40,7 @@ router.post("/", datosCiudad, async(req, res) => {
 router.get("/", async(req, res) => {
 
     const companias = await models.compania.findAll({
-        attributes: ["nombre", "direccion", "email", "telefono"],
+        attributes: ["id", "nombre", "direccion", "email", "telefono"],
         include: [
             {
                 model: models.ciudad,

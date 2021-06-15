@@ -67,91 +67,91 @@ async function agregarRegion () {
 
 
 
-    if(regionIngresada == arrayRegiones.regiones[i].nombre){
-        regionId = arrayRegiones.regiones[i].id
+        if(regionIngresada == arrayRegiones.regiones[i].nombre){
+            regionId = arrayRegiones.regiones[i].id
 
-        //////////  ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVOS PAISES ///////////
- 
-        if(selectPais.options.length>1){
-            for (let i = selectPais.options.length; i >= 1; i--) {
-                selectPais.remove(i);
-            }
-        }
-
-        if(selectCiudad.options.length>1){
-            for (let i = selectCiudad.options.length; i >= 1; i--) {
-                selectCiudad.remove(i);
-            }
-        }
-
-        ///////////////////////////////////////////////////////////////////////////////
-
-        for (let j = 0; j < arrayRegiones.regiones[i].Pais.length; j++) {
-
-            let optionPais = document.createElement("option")
-
-            optionPais.innerHTML = arrayRegiones.regiones[i].Pais[j].nombre
-            
-            selectPais.appendChild(optionPais)
-
-
-
-            selectPais.addEventListener("click", async(e) => {
-               
-
-                let paisIngresado = e.target.value
-                if(paisIngresado != "todos"){
-                    document.getElementById("ciudad").disabled = false
+            //////////  ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVOS PAISES ///////////
+    
+            if(selectPais.options.length>1){
+                for (let i = selectPais.options.length; i >= 1; i--) {
+                    selectPais.remove(i);
                 }
+            }
+
+            if(selectCiudad.options.length>1){
+                for (let i = selectCiudad.options.length; i >= 1; i--) {
+                    selectCiudad.remove(i);
+                }
+            }
+
+            ///////////////////////////////////////////////////////////////////////////////
+
+            for (let j = 0; j < arrayRegiones.regiones[i].Pais.length; j++) {
+
+                let optionPais = document.createElement("option")
+
+                optionPais.innerHTML = arrayRegiones.regiones[i].Pais[j].nombre
+                
+                selectPais.appendChild(optionPais)
 
 
-                if(paisIngresado == arrayRegiones.regiones[i].Pais[j].nombre){
-                    paisId = arrayRegiones.regiones[i].Pais[j].id
-                    
-    
-                    ////// ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVAS CIUDADES/////
 
-                    if(selectCiudad.options.length>1){
-                        for (let i = selectCiudad.options.length; i >= 1; i--) {
-                            selectCiudad.remove(i);
-                        }
+                selectPais.addEventListener("click", async(e) => {
+                
+
+                    let paisIngresado = e.target.value
+                    if(paisIngresado != "todos"){
+                        document.getElementById("ciudad").disabled = false
                     }
-                    //////////////////////////////////////////////////////////////////////
-    
-                    for (let k = 0; k < arrayRegiones.regiones[i].Pais[j].Ciudads.length; k++) {
+
+
+                    if(paisIngresado == arrayRegiones.regiones[i].Pais[j].nombre){
+                        paisId = arrayRegiones.regiones[i].Pais[j].id
                         
-                        let optionCiudades = document.createElement("option")
-         
-                        optionCiudades.innerHTML =  arrayRegiones.regiones[i].Pais[j].Ciudads[k].nombre   
-                        selectCiudad.appendChild(optionCiudades)
+        
+                        ////// ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVAS CIUDADES/////
 
-
-                        selectCiudad.addEventListener("click", (e) => {
-
-                            let ciudadIngresada = e.target.value
-
-                            if(ciudadIngresada != "todos"){
-                                direccion.disabled = false
+                        if(selectCiudad.options.length>1){
+                            for (let i = selectCiudad.options.length; i >= 1; i--) {
+                                selectCiudad.remove(i);
                             }
-                            if(ciudadIngresada == arrayRegiones.regiones[i].Pais[j].Ciudads[k].nombre){
-                                ciudadId = arrayRegiones.regiones[i].Pais[j].Ciudads[k].id
-                                
-                            }
+                        }
+                        //////////////////////////////////////////////////////////////////////
+        
+                        for (let k = 0; k < arrayRegiones.regiones[i].Pais[j].Ciudads.length; k++) {
+                            
+                            let optionCiudades = document.createElement("option")
+            
+                            optionCiudades.innerHTML =  arrayRegiones.regiones[i].Pais[j].Ciudads[k].nombre   
+                            selectCiudad.appendChild(optionCiudades)
 
 
-                        })
-    
+                            selectCiudad.addEventListener("click", (e) => {
+
+                                let ciudadIngresada = e.target.value
+
+                                if(ciudadIngresada != "todos"){
+                                    direccion.disabled = false
+                                }
+                                if(ciudadIngresada == arrayRegiones.regiones[i].Pais[j].Ciudads[k].nombre){
+                                    ciudadId = arrayRegiones.regiones[i].Pais[j].Ciudads[k].id
+                                    
+                                }
+
+
+                            })
+        
+                        }
+        
                     }
-    
-                }
 
-            })
+                })
 
-            
-            
+                
+                
 
-        }            
-      } 
+            }            
+        } 
     })
   }
   let nombre = document.getElementById("nombre")

@@ -198,11 +198,12 @@ header h2 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 85px;
+  width: 90px;
   height: 84px;
   background: rgba(0, 0, 0, 0.05);
   border: 2px solid #0683F9;
   border-radius: 42px;
+  margin: 14px;
 }
 
 .agregarDatos {
@@ -219,7 +220,7 @@ header h2 {
 }
 
 #camara {
-  margin-left: -46px;
+  margin-left: -55px;
   margin-top: 57px;
   background: #0683F9;
   border: 3px solid #FFFFFF;
@@ -240,6 +241,7 @@ header h2 {
 #camara i {
   color: white;
   font-size: 11px;
+  margin-bottom: 2px;
 }
 
 .agregar {
@@ -688,7 +690,7 @@ td, th {
 .campo input {
   font-size: 13px;
   border: none;
-  width: 290px;
+  width: 255px;
   margin-right: 25px;
   border-bottom: 1px solid #CCCCCC;
   background: none;
@@ -919,6 +921,54 @@ tbody tr:hover {
           align-items: center;
   padding: 0;
   margin: 0;
+}
+
+.btnAccion {
+  color: #0079bf;
+  margin-right: 20px;
+}
+
+.btn-acciones {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 1440px;
+  margin: 0 auto;
+  height: 45px;
+  margin-left: 30px;
+  margin-top: 10px;
+  margin-bottom: -45px;
+}
+
+#btn-acciones:hover {
+  width: 96%;
+  margin-left: 27px;
+  background: #d4dce3;
+}
+
+.btn-acciones p {
+  display: inline;
+  font-weight: 700;
+  color: red;
+}
+
+.btn-acciones i {
+  margin-left: 10px;
+  color: #0079bf;
+  font-size: 15px;
+}
+
+.btn-acciones i:hover {
+  cursor: pointer;
+}
+
+.btn-acciones i span {
+  margin-left: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
 }
 
 footer {
@@ -1166,6 +1216,10 @@ li {
   position: absolute;
   margin-left: 120px;
   color: #0079bf;
+}
+
+.cia span i {
+  margin-right: 10px;
 }
 
 .containerRegion {
