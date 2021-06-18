@@ -16,6 +16,7 @@ router.post("/", async(req, res) => {
         cuenta_contacto
     }
 
+
     const pais = await models.pais.findAll({
         where: {RegionId: id_region}
     })
@@ -33,6 +34,7 @@ router.post("/", async(req, res) => {
                 if (ciudad[i].id == id_ciudad){
 
                     const contacto = await models.contacto.create(nuevoContacto)
+
                     await models.contacto.update({RegionId: id_region},{
                         where: {RegionId: null}
                     })
@@ -59,6 +61,9 @@ router.post("/", async(req, res) => {
     else{
         return res.status(400).json({message: "No se encontro ningun pais con el id de la region ingresada"})
     }
+
+
+
 
 })
 

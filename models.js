@@ -92,6 +92,7 @@ contacto.init({
           compania: DataTypes.STRING,
           canal_contacto: DataTypes.STRING,
           cuenta_contacto: DataTypes.STRING,
+          preferencia_contacto: DataTypes.STRING
 }, {
     sequelize,
     modelName: "Contacto"

@@ -90,34 +90,42 @@
                             <progress max="100" value="0" id="barraProgreso"></progress>
                             <select name="" id="barraNumerica">
                                 <option value="" class="placeholder" disabled selected>%</option>
-                                <option >25%</option>
-                                <option >50%</option>
-                                <option >75%</option>
-                                <option >100%</option>
+                                <option>25%</option>
+                                <option>50%</option>
+                                <option>75%</option>
+                                <option>100%</option>
                             </select>   
                         </div>
               
                     </div>
+
                     <div id="canales">
                         <label for="canal">Canal de contacto </label>
-                        <select name="canal" id="canal">
+                        <select name="canal" id="canal" class="listaCanal">
                             <option value="todos" class="placeholder" disabled selected>Seleccionar canal</option>
                             <option>LinkedIn</option>
                             <option>Facebook</option>
                             <option>Instagram</option>
                             <option>GitHub</option>
-                        </select>
-                        
+                        </select>               
                     </div>
+
                     <div id="cuentas">
                         <p>Cuenta de usuario</p>
-                        <input type="text" name="" id="cuenta" placeholder="@ejemplo" disabled>
+                        <input type="text" name="" id="cuenta" placeholder="@ejemplo" class="listaCuenta" disabled>
                     </div>
-                    
-                    <div>
+                    <div id="divPreferencias">
+                        <label for="preferencias">Preferencias</label>
+                        <select name="preferencias" id="preferencias" class="listaReferencias" disabled> 
+                            <option value="" disabled selected>Seleccinar preferencia</option>
+                            <option >Sin preferencia</option>
+                            <option >Canal favorito</option>
+                            <option >No molestar</option>
+                        </select>
+                    </div>                  
+                    <div id="divBtnNone">
                         <button id="agregarCanal" disabled><i class="fas fa-plus"></i>Agregar canal</button>
                     </div>
-    
                 </div>
             </div>
 

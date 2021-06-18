@@ -7,9 +7,33 @@ btnAgregarContacto.addEventListener("click", () => {
     fondoNegro.classList.toggle("noDisplay")
     containerContacto.classList.toggle("noDisplay")
 })
+
+let listaCuenta = document.getElementsByClassName("listaCuenta")
+let listaCanal = document.getElementsByClassName("listaCanal")
+let listaReferencias = document.getElementsByClassName("listaReferencias")
+
+let cuentas;
+let canales;
+let referencias;
+
 cerrar.addEventListener("click", () => {
     fondoNegro.classList.toggle("noDisplay")
     containerContacto.classList.toggle("noDisplay")
+
+    cuentas = []
+    canales = []
+    referencias = []
+
+    for (let i = 0; i < listaCuenta.length; i++) {
+        cuentas.push(listaCuenta[i].value)  
+        canales.push(listaCanal[i].value)
+        referencias.push(listaReferencias[i].value)      
+    }
+
+    console.log(cuentas)
+    console.log(canales)
+    console.log(referencias)
+
 })
 
 /////////////////////////////////////// GET REGIONES ///////////////////////////////////////
@@ -163,6 +187,9 @@ async function agregarRegion () {
   let agregarCanal = document.getElementById("agregarCanal")
   let divCanales = document.getElementById("canales")
   let divCuentas = document.getElementById("cuentas")
+  let preferencias = document.getElementById("preferencias")
+  let divPreferencias = document.getElementById("divPreferencias")
+  let divBtnNone = document.getElementById("divBtnNone")
 
 
   canal.addEventListener("click", () => {
@@ -177,20 +204,33 @@ async function agregarRegion () {
     console.log(e.target.value.length)
 
     if(e.target.value.length > 0){
-        agregarCanal.disabled = false
+        preferencias.disabled = false
     }
 
     if(e.target.value.length < 1){
-        agregarCanal.disabled = true
+        preferencias.disabled = true
     }
 
+  })
+
+  preferencias.addEventListener("click", (e)=>{
+      if(e.target.value != ""){
+          agregarCanal.disabled = false
+      }
   })
   
   agregarCanal.addEventListener("click", ()=>{
 
     let canales = ["linkedIn", "Facebook", "Instagram", "GitHub"]
     let select = document.createElement("select")
+    select.classList = "listaCanal"
     let input = document.createElement("input")
+    input.classList = "listaCuenta"
+    let selectPreferencias = document.createElement("select")
+    selectPreferencias.classList = "listaReferencias"
+    let preferencias = ["Sin preferencia", "Canal favorito", "No molestar"]
+    // let btn = document.createElement("button")
+    // btn.style = "border: none;"
 
     for (let i = 0; i < canales.length; i++) { 
         let option = document.createElement("option")
@@ -198,13 +238,29 @@ async function agregarRegion () {
         select.appendChild(option)
     }
 
+    for (let i = 0; i < preferencias.length; i++) {
+        
+        let option = document.createElement("option")
+        option.innerHTML = preferencias[i]
+        selectPreferencias.appendChild(option)
+
+    }
+
+
+
     divCanales.appendChild(select)
     divCuentas.appendChild(input)
+    divPreferencias.appendChild(selectPreferencias)
+
+    
+    // divBtnNone.insertBefore(btn,agregarCanal)
   })
 
   let barraNumerica = document.getElementById("barraNumerica")
   let barraProgreso = document.getElementById("barraProgreso")
 
+
+ 
 
   barraNumerica.addEventListener("click", (e) => {
     let num = e.target.value
@@ -223,12 +279,17 @@ async function agregarRegion () {
     }
 
   })
+
     let agregar = document.getElementById("guardarContacto")
     agregar.addEventListener("click", () => {
+
+
 
         postContacto(nombre.value, apellido.value, cargoUsuario.value, email.value, compania.value, regionId, paisId, ciudadId, canal.value, cuenta.value)
         location.href = "../html/index.html" 
     })
+
+
     
 }
 
