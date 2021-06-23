@@ -27,7 +27,9 @@ noEye.addEventListener("click", () =>{
 ////// LOGIN //////
 
 login.addEventListener("click", () => {
+
     getLogin(email.value, password.value)
+
 })
 
 
@@ -49,6 +51,8 @@ let getLogin = async (email, password) => {
     let res = await serachApi.json()
 
     if(res.exito){
+
+        localStorage.setItem("token", res.exito.token)
         location.href = "../html/index.html"
         
     }

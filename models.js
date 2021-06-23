@@ -90,13 +90,10 @@ contacto.init({
           cargo: DataTypes.STRING,
           email: DataTypes.STRING,
           compania: DataTypes.STRING,
-          canal_contacto: DataTypes.STRING,
-          cuenta_contacto: DataTypes.STRING,
-          preferencia_contacto: DataTypes.STRING
+          datosContacto: DataTypes.STRING
 }, {
     sequelize,
     modelName: "Contacto"
 });
-
 
 module.exports = {usuario, region, pais, ciudad, compania, contacto}

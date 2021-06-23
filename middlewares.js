@@ -10,9 +10,10 @@ var codigoToken;
 ////////////////// VALIDACION DE TOKEN POR POSTMAN ///////////////////
 
 const validacionJwt = (req, res, next) => {
-    const codigoToken = req.headers.authorization.split(' ')[1];
+
+    const {token} = req.body || null
     
-    jwt.verify( codigoToken, jwtClave, (err, decoded) => {
+    jwt.verify( token, jwtClave, (err, decoded) => {
         if (err) { 
             res.send('No está autorizado');
         }
@@ -87,7 +88,7 @@ function tokenGenerado(nombre, isadmin) {
     } 
     
     var token = jwt.sign(payload, jwtClave);
- 
+    
     //envio Token
     return token
 }

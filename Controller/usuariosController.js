@@ -41,6 +41,7 @@ router.post ("/usuariosIniciales", async(req,res) => {
         message: "Usuarios creados con exito", nuevoUsuario
     })
 
+
 })
 
 

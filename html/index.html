@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@800&family=Open+Sans:wght@300&display=swap" rel="stylesheet">   
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Document</title>
 </head>
 <body>
@@ -103,10 +104,10 @@
                         <label for="canal">Canal de contacto </label>
                         <select name="canal" id="canal" class="listaCanal">
                             <option value="todos" class="placeholder" disabled selected>Seleccionar canal</option>
-                            <option>LinkedIn</option>
-                            <option>Facebook</option>
-                            <option>Instagram</option>
-                            <option>GitHub</option>
+                            <option id="1">LinkedIn</option>
+                            <option id="2">Whatsapp</option>
+                            <option id="3">GitHub</option>
+                            <option id="4">Instagram</option>
                         </select>               
                     </div>
 
@@ -118,9 +119,9 @@
                         <label for="preferencias">Preferencias</label>
                         <select name="preferencias" id="preferencias" class="listaReferencias" disabled> 
                             <option value="" disabled selected>Seleccinar preferencia</option>
-                            <option >Sin preferencia</option>
-                            <option >Canal favorito</option>
-                            <option >No molestar</option>
+                            <option id="1">Sin preferencia</option>
+                            <option id="2">Canal favorito</option>
+                            <option id="3">No molestar</option>
                         </select>
                     </div>                  
                     <div id="divBtnNone">
@@ -251,184 +252,180 @@
         <section id="sector-2">
             <table>
                 <thead class="container-head">
-                <tr class="titulos">
-                    <th class="checkbox"><input type="checkbox"></th>
-                    <th>Contacto<i class="fas fa-exchange-alt hola" ></i></th>
-                    <th>Pais/Region<i class="fas fa-exchange-alt hola" ></i>
-                    </th>
-                    <th>Compañia<i class="fas fa-exchange-alt hola" ></i>
-                    </th>
-                    <th>Cargo<i class="fas fa-exchange-alt hola" ></i>
-                    </th>
-                    <th>Interes<i class="fas fa-exchange-alt hola" ></i>
-                    </th>
-                    <th>Acciones</th>
-                </tr>
+                    <tr class="titulos">
+                        <th class="checkbox"><input type="checkbox"></th>
+                        <th>Contacto<i class="fas fa-exchange-alt hola" ></i></th>
+                        <th>Pais/Region<i class="fas fa-exchange-alt hola" ></i></th>
+                        <th>Compañia<i class="fas fa-exchange-alt hola" ></i></th>
+                        <th>Cargo<i class="fas fa-exchange-alt hola" ></i></th>
+                        <th>Interes<i class="fas fa-exchange-alt hola" ></i></th>
+                        <th>Acciones</th>
+                    </tr>
                 </thead>
-            <tbody>
-                <tr>
-                    <td class="checkbox"><input type="checkbox"></td>
-                    <td>
-                        <div class="perfil"> 
-                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+                <tbody>
+                    <tr>
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td>
+                            <div class="perfil"> 
+                                <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
 
-                            <div class="datos">
-                                <h2>Carlos Yauri</h2>
-                                <p>carlosyauri97@gmail.com</p>
+                                <div class="datos">
+                                    <h2>Carlos Yauri</h2>
+                                    <p>carlosyauri97@gmail.com</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>Dubai</td>
-                    <td>Mister Burgers</td>
-                    <td>Jefesuli</td>
-                    <td>100%</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td class="checkbox"><input type="checkbox"></td>
-                    <td>
-                        <div class="perfil"> 
-                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+                        </td>
+                        <td>Dubai</td>
+                        <td>Mister Burgers</td>
+                        <td>Jefesuli</td>
+                        <td>100%</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td>
+                            <div class="perfil"> 
+                                <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
 
-                            <div class="datos">
-                                <h2>Carlos Yauri</h2>
-                                <p>carlosyauri97@gmail.com</p>
+                                <div class="datos">
+                                    <h2>Carlos Yauri</h2>
+                                    <p>carlosyauri97@gmail.com</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>Dubai</td>
-                    <td>Mister Burgers</td>
-                    <td>Jefesuli</td>
-                    <td>100%</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td class="checkbox"><input type="checkbox"></td>
-                    <td>
-                        <div class="perfil"> 
-                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+                        </td>
+                        <td>Dubai</td>
+                        <td>Mister Burgers</td>
+                        <td>Jefesuli</td>
+                        <td>100%</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td>
+                            <div class="perfil"> 
+                                <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
 
-                            <div class="datos">
-                                <h2>Carlos Yauri</h2>
-                                <p>carlosyauri97@gmail.com</p>
+                                <div class="datos">
+                                    <h2>Carlos Yauri</h2>
+                                    <p>carlosyauri97@gmail.com</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>Dubai</td>
-                    <td>Mister Burgers</td>
-                    <td>Jefesuli</td>
-                    <td>100%</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td class="checkbox"><input type="checkbox"></td>
-                    <td>
-                        <div class="perfil"> 
-                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+                        </td>
+                        <td>Dubai</td>
+                        <td>Mister Burgers</td>
+                        <td>Jefesuli</td>
+                        <td>100%</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td>
+                            <div class="perfil"> 
+                                <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
 
-                            <div class="datos">
-                                <h2>Carlos Yauri</h2>
-                                <p>carlosyauri97@gmail.com</p>
+                                <div class="datos">
+                                    <h2>Carlos Yauri</h2>
+                                    <p>carlosyauri97@gmail.com</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>Dubai</td>
-                    <td>Mister Burgers</td>
-                    <td>Jefesuli</td>
-                    <td>100%</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td class="checkbox"><input type="checkbox"></td>
-                    <td>
-                        <div class="perfil"> 
-                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+                        </td>
+                        <td>Dubai</td>
+                        <td>Mister Burgers</td>
+                        <td>Jefesuli</td>
+                        <td>100%</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td>
+                            <div class="perfil"> 
+                                <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
 
-                            <div class="datos">
-                                <h2>Carlos Yauri</h2>
-                                <p>carlosyauri97@gmail.com</p>
+                                <div class="datos">
+                                    <h2>Carlos Yauri</h2>
+                                    <p>carlosyauri97@gmail.com</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>Dubai</td>
-                    <td>Mister Burgers</td>
-                    <td>Jefesuli</td>
-                    <td>100%</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td class="checkbox"><input type="checkbox"></td>
-                    <td>
-                        <div class="perfil"> 
-                            <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
+                        </td>
+                        <td>Dubai</td>
+                        <td>Mister Burgers</td>
+                        <td>Jefesuli</td>
+                        <td>100%</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td>
+                            <div class="perfil"> 
+                                <img src="https://image.ibb.co/nBjAef/perfilblogger.jpg" alt="" class="foto">
 
-                            <div class="datos">
-                                <h2>Carlos Yauri</h2>
-                                <p>carlosyauri97@gmail.com</p>
+                                <div class="datos">
+                                    <h2>Carlos Yauri</h2>
+                                    <p>carlosyauri97@gmail.com</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>Dubai</td>
-                    <td>Mister Burgers</td>
-                    <td>Jefesuli</td>
-                    <td>100%</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td class="checkbox"><input type="checkbox"></td>
-                    <td>
-                        <div class="perfil"> 
-                            <img src="https://i0.wp.com/public21.es/wp-content/uploads/2016/10/foto-perfil-redonda.png?fit=2363%2C1903&ssl=1" alt="" class="foto">
+                        </td>
+                        <td>Dubai</td>
+                        <td>Mister Burgers</td>
+                        <td>Jefesuli</td>
+                        <td>100%</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td>
+                            <div class="perfil"> 
+                                <img src="https://i0.wp.com/public21.es/wp-content/uploads/2016/10/foto-perfil-redonda.png?fit=2363%2C1903&ssl=1" alt="" class="foto">
 
-                            <div class="datos">
-                                <h2>Sara Migoya</h2>
-                                <p>saritamaster@gmail.com</p>
+                                <div class="datos">
+                                    <h2>Sara Migoya</h2>
+                                    <p>saritamaster@gmail.com</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>Francia</td>
-                    <td>Globant</td>
-                    <td>Master</td>
-                    <td>100%</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td class="checkbox"><input type="checkbox"></td>
-                    <td>
-                        <div class="perfil"> 
-                            <img src="https://img1.freepng.es/20180713/aaw/kisspng-user-profile-linkedin-netwerk-money-order-fulfillm-round-face-5b494408cd2468.5239235115315282008403.jpg" alt="" class="foto">
+                        </td>
+                        <td>Francia</td>
+                        <td>Globant</td>
+                        <td>Master</td>
+                        <td>100%</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td>
+                            <div class="perfil"> 
+                                <img src="https://img1.freepng.es/20180713/aaw/kisspng-user-profile-linkedin-netwerk-money-order-fulfillm-round-face-5b494408cd2468.5239235115315282008403.jpg" alt="" class="foto">
 
-                            <div class="datos">
-                                <h2>Pato Fara</h2>
-                                <p>pato@gmail.com</p>
+                                <div class="datos">
+                                    <h2>Pato Fara</h2>
+                                    <p>pato@gmail.com</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>España</td>
-                    <td>Acamica</td>
-                    <td>Mentor</td>
-                    <td>100%</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td class="checkbox"><input type="checkbox"></td>
-                    <td>
-                        <div class="perfil"> 
-                            <img src="https://i.pinimg.com/236x/8c/ad/b9/8cadb9243851ecdaea95bf7d55608a22.jpg" alt="" class="foto">
+                        </td>
+                        <td>España</td>
+                        <td>Acamica</td>
+                        <td>Mentor</td>
+                        <td>100%</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td>
+                            <div class="perfil"> 
+                                <img src="https://i.pinimg.com/236x/8c/ad/b9/8cadb9243851ecdaea95bf7d55608a22.jpg" alt="" class="foto">
 
-                            <div class="datos">
-                                <h2>Solchus</h2>
-                                <p>solramon@gmail.com</p>
+                                <div class="datos">
+                                    <h2>Solchus</h2>
+                                    <p>solramon@gmail.com</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>Argentina</td>
-                    <td>Sor maria</td>
-                    <td>Estudiante</td>
-                    <td>100%</td>
-                    <td>...</td>
-                </tr>
-            </tbody>
+                        </td>
+                        <td>Argentina</td>
+                        <td>Sor maria</td>
+                        <td>Estudiante</td>
+                        <td>100%</td>
+                        <td>...</td>
+                    </tr>
+                </tbody>
             </table>
         </section>
     </main>

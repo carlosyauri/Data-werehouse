@@ -8,31 +8,12 @@ btnAgregarContacto.addEventListener("click", () => {
     containerContacto.classList.toggle("noDisplay")
 })
 
-let listaCuenta = document.getElementsByClassName("listaCuenta")
-let listaCanal = document.getElementsByClassName("listaCanal")
-let listaReferencias = document.getElementsByClassName("listaReferencias")
 
-let cuentas;
-let canales;
-let referencias;
+
 
 cerrar.addEventListener("click", () => {
     fondoNegro.classList.toggle("noDisplay")
     containerContacto.classList.toggle("noDisplay")
-
-    cuentas = []
-    canales = []
-    referencias = []
-
-    for (let i = 0; i < listaCuenta.length; i++) {
-        cuentas.push(listaCuenta[i].value)  
-        canales.push(listaCanal[i].value)
-        referencias.push(listaReferencias[i].value)      
-    }
-
-    console.log(cuentas)
-    console.log(canales)
-    console.log(referencias)
 
 })
 
@@ -191,11 +172,14 @@ async function agregarRegion () {
   let divPreferencias = document.getElementById("divPreferencias")
   let divBtnNone = document.getElementById("divBtnNone")
 
-
   canal.addEventListener("click", () => {
       if(canal.value != "todos"){
         cuenta.disabled = false
       }
+
+      
+
+
   })
 
 
@@ -221,7 +205,7 @@ async function agregarRegion () {
   
   agregarCanal.addEventListener("click", ()=>{
 
-    let canales = ["linkedIn", "Facebook", "Instagram", "GitHub"]
+    let canales = ["LinkedIn", "Whatsapp", "GitHub", "Instagram"]
     let select = document.createElement("select")
     select.classList = "listaCanal"
     let input = document.createElement("input")
@@ -235,6 +219,7 @@ async function agregarRegion () {
     for (let i = 0; i < canales.length; i++) { 
         let option = document.createElement("option")
         option.innerHTML = canales[i]
+        option.id = i+1
         select.appendChild(option)
     }
 
@@ -242,6 +227,7 @@ async function agregarRegion () {
         
         let option = document.createElement("option")
         option.innerHTML = preferencias[i]
+        option.id = i+1
         selectPreferencias.appendChild(option)
 
     }
@@ -280,12 +266,31 @@ async function agregarRegion () {
 
   })
 
+    let listaCuenta = document.getElementsByClassName("listaCuenta")
+    let listaCanal = document.getElementsByClassName("listaCanal")
+    let listaReferencias = document.getElementsByClassName("listaReferencias")
+
+    let datosContacto;
+
+
     let agregar = document.getElementById("guardarContacto")
     agregar.addEventListener("click", () => {
 
+        datosContacto = []
+    
+        for (let i = 0; i < listaCuenta.length; i++) {
+            
+            let objet = {
+                canal: listaCanal[i].value,
+                cuenta: listaCuenta[i].value,
+                preferencias: listaReferencias[i].value
+            }
 
+            datosContacto.push(objet)   
+        }
 
-        postContacto(nombre.value, apellido.value, cargoUsuario.value, email.value, compania.value, regionId, paisId, ciudadId, canal.value, cuenta.value)
+  
+        postContacto(nombre.value, apellido.value, cargoUsuario.value, email.value, compania.value, regionId, paisId, ciudadId, datosContacto)
         location.href = "../html/index.html" 
     })
 
@@ -297,7 +302,7 @@ agregarRegion()
 
 /////////////////////////////////////// POST CONTACTOS ///////////////////////////////////////
 
-let postContacto = async (nombre, apellido, cargo, email, compania, id_region, id_pais, id_ciudad, canal_contacto, cuenta_contacto) => {
+let postContacto = async (nombre, apellido, cargo, email, compania, id_region, id_pais, id_ciudad, datosContacto) => {
 
     var data = {
         nombre,
@@ -308,8 +313,8 @@ let postContacto = async (nombre, apellido, cargo, email, compania, id_region, i
         id_region,
         id_pais,
         id_ciudad,
-        canal_contacto,
-        cuenta_contacto
+        datosContacto: JSON.stringify(datosContacto)
+
     }
 
     let searchApi = await fetch (`http://localhost:3000/contactos`, {
