@@ -176,10 +176,18 @@ header h2 {
 
 }
 
-#camara i {
+#camara input {
     color: white;
     font-size: 11px;
     margin-bottom: 2px;
+    width: 11px;
+    height: 17px;
+    border: none;
+    outline: none;
+}
+
+#inputCamara:hover{
+    cursor: pointer;
 }
 
 .agregar {

@@ -238,10 +238,18 @@ header h2 {
           align-items: center;
 }
 
-#camara i {
+#camara input {
   color: white;
   font-size: 11px;
   margin-bottom: 2px;
+  width: 11px;
+  height: 17px;
+  border: none;
+  outline: none;
+}
+
+#inputCamara:hover {
+  cursor: pointer;
 }
 
 .agregar {
@@ -969,6 +977,11 @@ tbody tr:hover {
   margin-left: 5px;
   font-family: 'Open Sans', sans-serif;
   font-weight: lighter;
+}
+
+#imgCargada {
+  border-radius: 44px;
+  min-height: 83px;
 }
 
 footer {

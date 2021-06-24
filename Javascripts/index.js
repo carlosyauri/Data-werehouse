@@ -1,3 +1,4 @@
+
 var cerrar = document.getElementById("nvoContacto");
 var fondoNegro = document.getElementById("fondoNegro");
 var containerContacto = document.getElementById("containerContacto");
@@ -14,6 +15,8 @@ btnAgregarContacto.addEventListener("click", () => {
 cerrar.addEventListener("click", () => {
     fondoNegro.classList.toggle("noDisplay")
     containerContacto.classList.toggle("noDisplay")
+
+    location.href = "../html/index.html"
 
 })
 
@@ -170,7 +173,7 @@ async function agregarRegion () {
   let divCuentas = document.getElementById("cuentas")
   let preferencias = document.getElementById("preferencias")
   let divPreferencias = document.getElementById("divPreferencias")
-  let divBtnNone = document.getElementById("divBtnNone")
+
 
   canal.addEventListener("click", () => {
       if(canal.value != "todos"){
@@ -184,8 +187,6 @@ async function agregarRegion () {
 
 
   cuenta.addEventListener("keyup",(e) => {
-
-    console.log(e.target.value.length)
 
     if(e.target.value.length > 0){
         preferencias.disabled = false
@@ -213,8 +214,7 @@ async function agregarRegion () {
     let selectPreferencias = document.createElement("select")
     selectPreferencias.classList = "listaReferencias"
     let preferencias = ["Sin preferencia", "Canal favorito", "No molestar"]
-    // let btn = document.createElement("button")
-    // btn.style = "border: none;"
+
 
     for (let i = 0; i < canales.length; i++) { 
         let option = document.createElement("option")
@@ -238,8 +238,6 @@ async function agregarRegion () {
     divCuentas.appendChild(input)
     divPreferencias.appendChild(selectPreferencias)
 
-    
-    // divBtnNone.insertBefore(btn,agregarCanal)
   })
 
   let barraNumerica = document.getElementById("barraNumerica")
@@ -284,14 +282,15 @@ async function agregarRegion () {
                 canal: listaCanal[i].value,
                 cuenta: listaCuenta[i].value,
                 preferencias: listaReferencias[i].value
+
             }
 
             datosContacto.push(objet)   
         }
 
-  
-        postContacto(nombre.value, apellido.value, cargoUsuario.value, email.value, compania.value, regionId, paisId, ciudadId, datosContacto)
+        postContacto(imageCargada, nombre.value, apellido.value, cargoUsuario.value, email.value, compania.value, regionId, paisId, ciudadId, datosContacto, barraProgreso.value)
         location.href = "../html/index.html" 
+        
     })
 
 
@@ -302,9 +301,10 @@ agregarRegion()
 
 /////////////////////////////////////// POST CONTACTOS ///////////////////////////////////////
 
-let postContacto = async (nombre, apellido, cargo, email, compania, id_region, id_pais, id_ciudad, datosContacto) => {
+let postContacto = async (img, nombre, apellido, cargo, email, compania, id_region, id_pais, id_ciudad, datosContacto, interes) => {
 
     var data = {
+        img,
         nombre,
         apellido,
         cargo,
@@ -313,7 +313,8 @@ let postContacto = async (nombre, apellido, cargo, email, compania, id_region, i
         id_region,
         id_pais,
         id_ciudad,
-        datosContacto: JSON.stringify(datosContacto)
+        datosContacto: JSON.stringify(datosContacto),
+        interes
 
     }
 
@@ -327,4 +328,50 @@ let postContacto = async (nombre, apellido, cargo, email, compania, id_region, i
 
     await searchApi.json()
 }
+
+// let camara = document.getElementById("inputCamara")
+// let reader = new FileReader();
+
+// camara.addEventListener("onchange", (e) => {
+    
+//     reader.readAsDataURL(e.target.files[0]);
+
+//     reader.onload = function(){
+//         let preview = document.getElementById('preview');
+//         let imagen = document.createElement('img');
+    
+//         imagen.src = reader.result;
+    
+//         preview.innerHTML = '';
+//         preview.append(imagen);
+//       };
+
+// })
+
+let imageCargada;
+
+
+document.getElementById("inputCamara").onchange = function(e) {
+    // Creamos el objeto de la clase FileReader
+    let reader = new FileReader();
+  
+    // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+    reader.readAsDataURL(e.target.files[0]);
+  
+    // Le decimos que cuando este listo ejecute el código interno
+    reader.onload = function(){
+      let preview = document.getElementById('preview'),
+              image = document.createElement('img');
+        
+      preview.style = "border: none;"
+      image.src = reader.result;
+      image.id = "imgCargada"
+      imageCargada = reader.result;
+  
+      preview.innerHTML = '';
+      preview.append(image);
+    };
+  }
+
+
 

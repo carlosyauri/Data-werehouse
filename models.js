@@ -84,13 +84,15 @@ contacto.init({
                type: DataTypes.INTEGER,
                autoIncrement: true,
                primaryKey: true
-          },         
+          },  
+          img: DataTypes.STRING,       
           nombre : DataTypes.STRING, 
           apellido: DataTypes.STRING,
           cargo: DataTypes.STRING,
           email: DataTypes.STRING,
           compania: DataTypes.STRING,
-          datosContacto: DataTypes.STRING
+          datosContacto: DataTypes.STRING,
+          interes: DataTypes.INTEGER
 }, {
     sequelize,
     modelName: "Contacto"
