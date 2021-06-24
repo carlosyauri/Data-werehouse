@@ -38,6 +38,131 @@ let getRegiones = async () => {
     
 }
 
+/////////////////////////////////////// GET CONTACTOS ///////////////////////////////////////
+
+let getContactos = async () => {
+
+    let serachApi = await fetch (`http://localhost:3000/contactos`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+  
+    let res = await serachApi.json()
+
+    if(res.exito)
+      return res
+    
+}
+
+
+
+/////////////////////   TRAER DATOS DE CONTACTOS   ////////////////////////////
+
+async function completarContactos () {
+
+    let arrayContactos = await getContactos()
+    let tbody = document.getElementById("tablaBody")
+    let array;
+
+    
+    
+   
+
+    for (let i = 0; i < arrayContactos.contacto.length; i++) {
+        
+        array = []
+        array = Object.values(arrayContactos.contacto[i])
+
+        console.log(array)
+
+        let tr = document.createElement("tr")
+
+        for (let j = 1; j < 7; j++) {
+            
+
+            if(j == 1){
+
+                let tdCheck = document.createElement("td")
+                tdCheck.classList = "checkbox"
+                let input = document.createElement("input")
+                input.type = "checkbox"
+                tdCheck.appendChild(input)
+                tr.appendChild(tdCheck)
+
+
+                let td = document.createElement ("td")
+
+                let divPerfil = document.createElement("div")
+                divPerfil.classList = "perfil"
+
+                let img = document.createElement("img")
+                img.classList = "foto"
+                img.src = arrayContactos.contacto[i].img
+
+                let divDatos = document.createElement("div")
+                divDatos.classList = "datos"
+                let h2 = document.createElement("h2")
+                let p = document.createElement("p")
+
+                h2.innerHTML =  `${arrayContactos.contacto[i].nombre} ${arrayContactos.contacto[i].apellido}`
+                p.innerHTML = `${arrayContactos.contacto[i].email}`
+
+                divDatos.appendChild(h2)
+                divDatos.appendChild(p)
+                
+                divPerfil.appendChild(img)
+                divPerfil.appendChild(divDatos)
+
+                td.appendChild(divPerfil)
+                tr.appendChild(td)
+
+
+            } else
+
+            if (j == 2){
+                let td = document.createElement("td")
+                td.innerHTML = `${arrayContactos.contacto[i].Pai.nombre}/${arrayContactos.contacto[i].Region.nombre}`
+                tr.appendChild(td)
+
+            }else
+
+            if( j != 1 && j != 2 && j != 6){
+
+                let td = document.createElement("td")
+                td.innerHTML = array[j]
+
+                tr.appendChild(td)
+
+            }else     
+        
+
+            if(j = 6){
+                let td = document.createElement("td")
+                td.innerHTML = "..."
+                tr.appendChild(td)
+
+            }  
+            
+        }
+
+        tbody.appendChild(tr)
+        
+    }
+   
+    // console.log(arrayContactos.contacto)
+    // console.log(JSON.parse(arrayContactos.contacto[0].datosContacto))
+
+}
+
+completarContactos()
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
 
 //////////////////////// CARGAR DATOS DE REGIONES - SIRVE PARA CREAR CONTACTOS///////////////////////////
 
@@ -162,6 +287,7 @@ async function agregarRegion () {
         } 
     })
   }
+
   let nombre = document.getElementById("nombre")
   let apellido = document.getElementById("apellido")
   let cargoUsuario = document.getElementById("cargoUsuario")
@@ -289,7 +415,10 @@ async function agregarRegion () {
         }
 
         postContacto(imageCargada, nombre.value, apellido.value, cargoUsuario.value, email.value, compania.value, regionId, paisId, ciudadId, datosContacto, barraProgreso.value)
+        
+
         location.href = "../html/index.html" 
+
         
     })
 
@@ -329,49 +458,43 @@ let postContacto = async (img, nombre, apellido, cargo, email, compania, id_regi
     await searchApi.json()
 }
 
-// let camara = document.getElementById("inputCamara")
-// let reader = new FileReader();
-
-// camara.addEventListener("onchange", (e) => {
-    
-//     reader.readAsDataURL(e.target.files[0]);
-
-//     reader.onload = function(){
-//         let preview = document.getElementById('preview');
-//         let imagen = document.createElement('img');
-    
-//         imagen.src = reader.result;
-    
-//         preview.innerHTML = '';
-//         preview.append(imagen);
-//       };
-
-// })
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 let imageCargada;
 
-
 document.getElementById("inputCamara").onchange = function(e) {
     // Creamos el objeto de la clase FileReader
+    let tamañoMax = 50000;
     let reader = new FileReader();
   
     // Leemos el archivo subido y se lo pasamos a nuestro fileReader
     reader.readAsDataURL(e.target.files[0]);
   
     // Le decimos que cuando este listo ejecute el código interno
+
     reader.onload = function(){
       let preview = document.getElementById('preview'),
               image = document.createElement('img');
         
-      preview.style = "border: none;"
+      
       image.src = reader.result;
       image.id = "imgCargada"
       imageCargada = reader.result;
-  
-      preview.innerHTML = '';
-      preview.append(image);
+
+      if(image.src.length > 60000){
+          alert("El tamaño de la imagen no debe superar los 60kB")
+          
+      }
+      
+      if(image.src.length <= 60000){
+        preview.style = "border: none;"
+        preview.innerHTML = '';
+        preview.append(image);
+      }
+
     };
-  }
+}
+
 
 
 

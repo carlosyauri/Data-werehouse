@@ -69,22 +69,16 @@ router.post("/", async(req, res) => {
 
 router.get("/", async(req, res) => {
     const contacto = await models.contacto.findAll({
-        attributes:["nombre", "apellido", "cargo", "email", "compania", "canal_contacto", "cuenta_contacto"],
+        attributes:["nombre", "apellido", "email", "compania", "cargo", "interes", "datosContacto", "img"],
         include: [
             {
                 model: models.region,
-                required: true,
                 attributes: ["nombre"]
             },
             {
                 model: models.pais,
-                required: true,
                 attributes: ["nombre"]
-            },{
-                model: models.ciudad,
-                required: true,
-                attributes: ["nombre"]
-            },
+            }
         ]
     })
 
