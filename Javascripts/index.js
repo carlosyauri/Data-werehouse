@@ -56,8 +56,6 @@ let getContactos = async () => {
     
 }
 
-
-
 /////////////////////   TRAER DATOS DE CONTACTOS   ////////////////////////////
 
 async function completarContactos () {
@@ -72,10 +70,12 @@ async function completarContactos () {
 
     for (let i = 0; i < arrayContactos.contacto.length; i++) {
         
+        iId = i
         array = []
         array = Object.values(arrayContactos.contacto[i])
 
         console.log(array)
+        
 
         let tr = document.createElement("tr")
 
@@ -128,26 +128,88 @@ async function completarContactos () {
 
             }else
 
-            if( j != 1 && j != 2 && j != 6){
+            if( j != 1 && j != 2 && j != 5 && j != 6){
 
                 let td = document.createElement("td")
                 td.innerHTML = array[j]
 
                 tr.appendChild(td)
 
-            }else     
+            }else
+            
+            if(j == 5){
+
+                let td = document.createElement("td")
+                let progress = document.createElement("progress")
+                progress.classList = "progressFront"
+                progress.max = "100"
+                progress.value = array[j]
+
+                td.appendChild(progress)
+
+                tr.appendChild(td)
+
+            }else
         
 
             if(j = 6){
                 let td = document.createElement("td")
-                td.innerHTML = "..."
+                td.classList = "btnHover"
+                let iEliminar = document.createElement("i")
+                let iEditar = document.createElement("i")
+                let divP = document.createElement("div")
+                divP.classList = "divBtnHover"
+                let p = document.createElement("p")
+                p.innerHTML = "..."
+
+                iEliminar.classList = "far fa-trash-alt"
+                iEliminar.style = "display: none"
+
+                iEditar.classList = "far fa-edit"
+                iEditar.style = "display: none"
+
+        
+ 
+
+                divP.appendChild(p)
+                divP.appendChild(iEliminar)
+                divP.appendChild(iEditar)
+
+                divP.addEventListener("mouseover", () => {
+                    p.style = "display: none"
+                    iEliminar.style = "display: inline"
+                    iEditar.style = "display: inline"
+                })
+
+                divP.addEventListener("mouseout", () => {
+                    p.style = "display: inline"
+                    iEliminar.style = "display: none"
+                    iEditar.style = "display: none"
+                })
+
+                iEliminar.addEventListener("click", () => {
+                    deleteContactos(arrayContactos.contacto[i].id)
+                    location.href = "../html/index.html"
+                })
+                
+                iEditar.addEventListener("click", () => {
+                    console.log(arrayContactos.contacto[i].id)
+
+                })
+
+
+                td.appendChild(divP)
                 tr.appendChild(td)
 
             }  
             
         }
 
+
+
+
         tbody.appendChild(tr)
+
         
     }
    
@@ -417,9 +479,6 @@ async function agregarRegion () {
         postContacto(imageCargada, nombre.value, apellido.value, cargoUsuario.value, email.value, compania.value, regionId, paisId, ciudadId, datosContacto, barraProgreso.value)
         
 
-        location.href = "../html/index.html" 
-
-        
     })
 
 
@@ -456,9 +515,30 @@ let postContacto = async (img, nombre, apellido, cargo, email, compania, id_regi
     })
 
     await searchApi.json()
+
+    location.href = "../html/index.html" 
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////// DELETE CONTACTOS ////////////////////////////////////
+
+
+let deleteContactos = async (id) => {
+
+    let searchApi = await fetch (`http://localhost:3000/contactos/${id}` , {
+      method: 'DELETE'
+    })
+  
+    await searchApi.json()
+  
+  }
+  
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 
 let imageCargada;
 

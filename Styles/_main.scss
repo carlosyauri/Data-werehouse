@@ -74,6 +74,8 @@ main h1 {
     width: 41px;
     height: 41px;
     margin-right: 8.5px;
+
+    display: none;
 }
 
 #arrowUp {
@@ -105,7 +107,7 @@ main h1 {
 }
 
 .exportar {
-    display: inline-flex;
+    display: none;
     justify-content: space-around;
     border: 1px solid #1D72C2;
     border-radius: 3.5px;
@@ -203,7 +205,9 @@ td, th {
     width: 70%;
 }
 .foto {
-    height: 28px;
+    border-radius: 13px;
+    min-height: 28px;
+    min-width: 28px;
 }
 .datos{
     margin-left: 7px;
@@ -311,6 +315,29 @@ select {
 
 tbody tr:hover {
     background: #E8E8E8;
+
+    // .btnHover p {
+    //     display: none;
+    // }
+    // .btnHover i {
+    //     display: inline;
+    //     font-family: "Font Awesome 5 Free";
+    //     font-style: normal;
+    // }
+}
+
+
+.divBtnHover {
+    width: 55px;
+    text-align: center;
+}
+
+.divBtnHover i{
+    margin-left: 5px;
+}
+
+.progressFront {
+    width: 60px;
 }
 
 .containerLogin {

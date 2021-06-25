@@ -255,5 +255,5 @@ let deleteCompania = async (id) => {
   
     await searchApi.json()
   
-  }
+}
   

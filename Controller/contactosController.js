@@ -69,7 +69,7 @@ router.post("/", async(req, res) => {
 
 router.get("/", async(req, res) => {
     const contacto = await models.contacto.findAll({
-        attributes:["nombre", "apellido", "email", "compania", "cargo", "interes", "datosContacto", "img"],
+        attributes:["nombre", "apellido", "email", "compania", "cargo", "interes", "datosContacto", "img", "id"],
         include: [
             {
                 model: models.region,

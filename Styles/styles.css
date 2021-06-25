@@ -491,6 +491,7 @@ main h1 {
   width: 41px;
   height: 41px;
   margin-right: 8.5px;
+  display: none;
 }
 
 #arrowUp {
@@ -527,9 +528,7 @@ main h1 {
 }
 
 .exportar {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: none;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   border: 1px solid #1D72C2;
@@ -634,7 +633,9 @@ td, th {
 }
 
 .foto {
-  height: 28px;
+  border-radius: 13px;
+  min-height: 28px;
+  min-width: 28px;
 }
 
 .datos {
@@ -748,6 +749,19 @@ select {
 
 tbody tr:hover {
   background: #E8E8E8;
+}
+
+.divBtnHover {
+  width: 55px;
+  text-align: center;
+}
+
+.divBtnHover i {
+  margin-left: 5px;
+}
+
+.progressFront {
+  width: 60px;
 }
 
 .containerLogin {
