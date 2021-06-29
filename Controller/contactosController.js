@@ -5,18 +5,17 @@ const router = express.Router();
 
 router.post("/", async(req, res) => {
 
-    const {img, nombre, apellido, cargo, email, compania, id_region, id_pais, id_ciudad, datosContacto, interes} = req.body;
+    const {img, nombre, apellido, cargo, email, idCompania, id_region, id_pais, id_ciudad, datosContacto, interes, direccion} = req.body;
     const nuevoContacto = {
         img,
         nombre,
         apellido,
         cargo,
         email,
-        compania,
         datosContacto,
-        interes
+        interes,
+        direccion
     }
-
 
     const pais = await models.pais.findAll({
         where: {RegionId: id_region}
@@ -42,6 +41,9 @@ router.post("/", async(req, res) => {
                     })
                     await models.contacto.update({CiudadId: id_ciudad},{
                         where: {CiudadId: null}
+                    })
+                    await models.contacto.update({CompaniumId: idCompania},{
+                        where: {CompaniumId: null}
                     })
                     
                     if(contacto) {
@@ -69,7 +71,7 @@ router.post("/", async(req, res) => {
 
 router.get("/", async(req, res) => {
     const contacto = await models.contacto.findAll({
-        attributes:["nombre", "apellido", "email", "compania", "cargo", "interes", "datosContacto", "img", "id"],
+        attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
         include: [
             {
                 model: models.region,
@@ -78,6 +80,14 @@ router.get("/", async(req, res) => {
             {
                 model: models.pais,
                 attributes: ["nombre"]
+            },
+            {
+                model: models.ciudad,
+                attributes: ["nombre"]
+            },
+            {
+                model: models.compania,
+                attributes:["nombre"]
             }
         ]
     })

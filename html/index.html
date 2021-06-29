@@ -23,7 +23,7 @@
         <div class="agregarContainer noDisplay" id="containerContacto">
 
             <div class="agregarHeader">
-                <h2 class="agregarTitulo">Nuevo contacto</h2>
+                <h2 class="agregarTitulo" id="tituloContacto">Nuevo contacto</h2>
                 <i class="fas fa-times" id="nvoContacto"></i>
             </div>
     
@@ -57,8 +57,11 @@
                         <input type="text" name="" id="email">
                     </div>
                     <div class="agregarDatos">
-                        <p>Companía<span>*</span></p>
-                        <input type="text" name="" id="compania" placeholder=" Ing nombre de la companía">
+                        <label for=""><p>Companía<span>*</span></p></label>
+                        <select name="" id="compania">
+                            <option value="todos" disabled selected>Seleccione una compania</option>
+
+                        </select>
                     </div>
                 </div>
     

@@ -13,6 +13,7 @@ let getCompania = async () => {
 
 }
 
+
 let getCiudades = async () => {
 
     let searchApi = await fetch (`http://localhost:3000/regiones/ciudades`, {

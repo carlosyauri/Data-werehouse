@@ -51,7 +51,7 @@ router.get("/", async(req, res) => {
 
     });
 
-    if(companias.length > 0) return res.status(200).json(companias)
+    if(companias.length >= 0) return res.status(200).json(companias)
     return res.status(400).json({
         message: "No se encontraron companias"
     })

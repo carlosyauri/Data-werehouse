@@ -92,9 +92,9 @@ contacto.init({
           apellido: DataTypes.STRING,
           cargo: DataTypes.STRING,
           email: DataTypes.STRING,
-          compania: DataTypes.STRING,
           datosContacto: DataTypes.STRING,
-          interes: DataTypes.STRING
+          interes: DataTypes.STRING,
+          direccion: DataTypes.STRING,
 }, {
     sequelize,
     modelName: "Contacto"

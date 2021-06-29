@@ -56,3 +56,7 @@ models.ciudad.hasMany(models.contacto)
 models.contacto.belongsTo(models.region)
 models.contacto.belongsTo(models.pais)
 models.contacto.belongsTo(models.ciudad)
+
+
+models.compania.hasMany(models.contacto)
+models.contacto.belongsTo(models.compania)

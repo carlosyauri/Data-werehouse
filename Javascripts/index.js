@@ -4,11 +4,12 @@ var fondoNegro = document.getElementById("fondoNegro");
 var containerContacto = document.getElementById("containerContacto");
 var btnAgregarContacto = document.getElementById("btn-agregar-contacto");
 
-btnAgregarContacto.addEventListener("click", () => {
-    fondoNegro.classList.toggle("noDisplay")
-    containerContacto.classList.toggle("noDisplay")
-})
 
+btnAgregarContacto.addEventListener("click", async() => {
+    fondoNegro.classList.toggle("noDisplay")
+    containerContacto.classList.toggle("noDisplay")    
+
+})
 
 
 
@@ -19,6 +20,8 @@ cerrar.addEventListener("click", () => {
     location.href = "../html/index.html"
 
 })
+
+
 
 /////////////////////////////////////// GET REGIONES ///////////////////////////////////////
 
@@ -31,12 +34,26 @@ let getRegiones = async () => {
         }
     })
   
+    let searchCompania = await fetch (`http://localhost:3000/compania`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    let compania = await searchCompania.json()
+
     let res = await serachApi.json()
 
-    if(res.exito)
-      return res
+    let obj = {
+        compania: compania,
+        regiones: res
+    }
+
+    return obj
     
 }
+
 
 /////////////////////////////////////// GET CONTACTOS ///////////////////////////////////////
 
@@ -48,33 +65,40 @@ let getContactos = async () => {
             'Content-Type': 'application/json'
         }
     })
-  
+
+
     let res = await serachApi.json()
 
-    if(res.exito)
-      return res
+    if(res.exito){
+        return res
+    }
+    if(res.message){
+        return false
+    }
     
+
+         
 }
+
+
 
 /////////////////////   TRAER DATOS DE CONTACTOS   ////////////////////////////
 
-async function completarContactos () {
 
+async function completar () {
+    
     let arrayContactos = await getContactos()
+    console.log(arrayContactos)
+
     let tbody = document.getElementById("tablaBody")
     let array;
-
-    
-    
-   
 
     for (let i = 0; i < arrayContactos.contacto.length; i++) {
         
         iId = i
         array = []
         array = Object.values(arrayContactos.contacto[i])
-
-        console.log(array)
+        
         
 
         let tr = document.createElement("tr")
@@ -128,11 +152,31 @@ async function completarContactos () {
 
             }else
 
-            if( j != 1 && j != 2 && j != 5 && j != 6){
+
+            if(j == 3){
+                
+
+                if(arrayContactos.contacto[i].CompaniumId == null ){
+                    
+                    let td = document.createElement("td")
+                    td.innerHTML = "Compania removida"
+                    tr.appendChild(td)
+                }
+
+                if(arrayContactos.contacto[i].CompaniumId != null){
+                    let td = document.createElement("td")
+                    td.innerHTML = arrayContactos.contacto[i].Companium.nombre
+                    tr.appendChild(td)
+                }            
+
+
+            }else
+
+
+            if( j == 4){
 
                 let td = document.createElement("td")
                 td.innerHTML = array[j]
-
                 tr.appendChild(td)
 
             }else
@@ -141,10 +185,14 @@ async function completarContactos () {
 
                 let td = document.createElement("td")
                 let progress = document.createElement("progress")
+                let p = document.createElement("p")
+                p.innerHTML = `${array[j]}%`
+                p.style = "display: inline"
                 progress.classList = "progressFront"
                 progress.max = "100"
                 progress.value = array[j]
 
+                td.appendChild(p)
                 td.appendChild(progress)
 
                 tr.appendChild(td)
@@ -169,19 +217,21 @@ async function completarContactos () {
                 iEditar.style = "display: none"
 
         
- 
+
 
                 divP.appendChild(p)
                 divP.appendChild(iEliminar)
                 divP.appendChild(iEditar)
 
-                divP.addEventListener("mouseover", () => {
+                tr.addEventListener("mouseover", () => {
+                    tr.style = "height: 61px;"
                     p.style = "display: none"
                     iEliminar.style = "display: inline"
                     iEditar.style = "display: inline"
                 })
 
-                divP.addEventListener("mouseout", () => {
+                tr.addEventListener("mouseout", () => {
+                    tr.style = "height: 61px;"
                     p.style = "display: inline"
                     iEliminar.style = "display: none"
                     iEditar.style = "display: none"
@@ -193,6 +243,58 @@ async function completarContactos () {
                 })
                 
                 iEditar.addEventListener("click", () => {
+                   
+                    fondoNegro.classList.toggle("noDisplay")
+                    containerContacto.classList.toggle("noDisplay")
+                    let titulo = document.getElementById("tituloContacto")
+                    titulo.innerHTML = "Modificar contacto"    
+
+                    // IMAGEN //
+                    let preview = document.getElementById("preview")
+                    preview.style = "border: none;"
+                    let perfil = document.getElementById("perfil-2")
+                    perfil.style = "display: none"
+                    let img = document.createElement("img")
+                    img.src = arrayContactos.contacto[i].img
+                    img.id = "imgCargada"
+                    preview.appendChild(img)
+
+                    // DATOS PRINCIPALES //
+
+                    let nombre = document.getElementById("nombre")
+                    nombre.value = arrayContactos.contacto[i].nombre
+
+                    let apellido = document.getElementById("apellido")
+                    apellido.value = arrayContactos.contacto[i].apellido
+
+                    let cargo = document.getElementById("cargoUsuario")
+                    cargo.value = arrayContactos.contacto[i].cargo
+
+                    let email = document.getElementById("email")
+                    email.value = arrayContactos.contacto[i].email
+
+
+                    let compania = document.getElementById("compania")
+                    compania.value = arrayContactos.contacto[i].Companium.nombre
+
+                    // OTROS DATOS //
+
+                    let region = document.getElementById("region")
+                    region.value = arrayContactos.contacto[i].Region.nombre
+
+                    let pais = document.getElementById("pais")
+                    pais.disabled = false
+                    pais.selected = false
+                    pais.value = `${arrayContactos.contacto[i].Pai.nombre}`
+
+                    let ciudad = document.getElementById("ciudad")
+                    ciudad.disabled = false
+                    ciudad.selected = false
+                    ciudad.value = arrayContactos.contacto[i].Ciudad.nombre
+
+                    let direccion = document.getElementById("direccion")
+                    direccion.value 
+
                     console.log(arrayContactos.contacto[i].id)
 
                 })
@@ -201,24 +303,21 @@ async function completarContactos () {
                 td.appendChild(divP)
                 tr.appendChild(td)
 
-            }  
-            
+            }      
         }
-
-
-
-
         tbody.appendChild(tr)
 
-        
     }
+    // }
+
+    
    
     // console.log(arrayContactos.contacto)
     // console.log(JSON.parse(arrayContactos.contacto[0].datosContacto))
 
 }
 
-completarContactos()
+completar()
 
 
 
@@ -231,15 +330,49 @@ completarContactos()
 async function agregarRegion () {
 
 
-  let arrayRegiones = await getRegiones()
-  let selectRegion = document.getElementById("region");
-  let selectPais = document.getElementById("pais")
-  let selectCiudad = document.getElementById("ciudad")
-  let direccion = document.getElementById("direccion")
-  let canal = document.getElementById("canal")
-  let regionId;
-  let paisId;
-  let ciudadId;
+    let selectRegion = document.getElementById("region");
+    let selectPais = document.getElementById("pais")
+    let selectCiudad = document.getElementById("ciudad")
+    let direccion = document.getElementById("direccion")
+    let canal = document.getElementById("canal")
+    let regionId;
+    let paisId;
+    let ciudadId;
+    let idCompania;
+
+
+    let ObjRegiones = await getRegiones()
+
+
+
+    let arr = Object.values(ObjRegiones)
+    let arrayRegiones = arr[1]
+    let arrayCompanias = arr[0]
+
+    console.log(arrayRegiones)
+    console.log(arrayCompanias)
+
+    let selecCompania = document.getElementById("compania")
+    
+    for (let i = 0; i < arrayCompanias.length; i++) {
+        let option = document.createElement("option")
+        option.innerHTML = arrayCompanias[i].nombre
+        selecCompania.appendChild(option)
+
+        selecCompania.addEventListener("click", (e) => {
+            if(e.target.value == arrayCompanias[i].nombre){
+                idCompania = arrayCompanias[i].id
+            }
+            
+        })
+    }
+
+
+
+
+
+  
+
   
 
   for (let i = 0; i < arrayRegiones.regiones.length; i++) {
@@ -354,13 +487,13 @@ async function agregarRegion () {
   let apellido = document.getElementById("apellido")
   let cargoUsuario = document.getElementById("cargoUsuario")
   let email = document.getElementById("email")
-  let compania = document.getElementById("compania")
   let cuenta = document.getElementById("cuenta")
   let agregarCanal = document.getElementById("agregarCanal")
   let divCanales = document.getElementById("canales")
   let divCuentas = document.getElementById("cuentas")
   let preferencias = document.getElementById("preferencias")
   let divPreferencias = document.getElementById("divPreferencias")
+  let direccionPrueba = document.getElementById("direccion")
 
 
   canal.addEventListener("click", () => {
@@ -432,7 +565,7 @@ async function agregarRegion () {
   let barraProgreso = document.getElementById("barraProgreso")
 
 
- 
+
 
   barraNumerica.addEventListener("click", (e) => {
     let num = e.target.value
@@ -476,7 +609,7 @@ async function agregarRegion () {
             datosContacto.push(objet)   
         }
 
-        postContacto(imageCargada, nombre.value, apellido.value, cargoUsuario.value, email.value, compania.value, regionId, paisId, ciudadId, datosContacto, barraProgreso.value)
+        postContacto(imageCargada, nombre.value, apellido.value, cargoUsuario.value, email.value, idCompania, regionId, paisId, ciudadId, datosContacto, barraProgreso.value, direccionPrueba.value)
         
 
     })
@@ -489,7 +622,7 @@ agregarRegion()
 
 /////////////////////////////////////// POST CONTACTOS ///////////////////////////////////////
 
-let postContacto = async (img, nombre, apellido, cargo, email, compania, id_region, id_pais, id_ciudad, datosContacto, interes) => {
+let postContacto = async (img, nombre, apellido, cargo, email, idCompania, id_region, id_pais, id_ciudad, datosContacto, interes, direccion) => {
 
     var data = {
         img,
@@ -497,12 +630,13 @@ let postContacto = async (img, nombre, apellido, cargo, email, compania, id_regi
         apellido,
         cargo,
         email,
-        compania,
+        idCompania,
         id_region,
         id_pais,
         id_ciudad,
         datosContacto: JSON.stringify(datosContacto),
-        interes
+        interes,
+        direccion
 
     }
 
@@ -574,7 +708,3 @@ document.getElementById("inputCamara").onchange = function(e) {
 
     };
 }
-
-
-
-

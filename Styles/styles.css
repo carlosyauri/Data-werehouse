@@ -761,6 +761,7 @@ tbody tr:hover {
 }
 
 .progressFront {
+  margin-left: 10px;
   width: 60px;
 }
 
