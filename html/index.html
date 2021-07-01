@@ -75,13 +75,13 @@
                     <div>
                         <label for="pais">Pais</label>
                         <select name="pais" id="pais" disabled>
-                            <option value="todos" class="placeholder" disabled selected>Seleccionar país</option>
+                            <option value="todos" class="placeholder" id="optionPais" disabled selected>Seleccionar país</option>
                         </select>  
                     </div>
                     <div>
                         <label for="ciudad">Ciudad</label>
                         <select name="ciudad" id="ciudad" disabled>
-                            <option value="todos" class="placeholder" disabled selected>Seleccionar ciudad</option>
+                            <option value="todos" class="placeholder" id="optionCiudad" disabled selected>Seleccionar ciudad</option>
                         </select>  
                     </div>
                     <div>
@@ -133,9 +133,10 @@
                 </div>
             </div>
 
-            <div class="btn">
+            <div class="btn" id="btns">
                 <button class="cancel" id="cancelarContacto">Cancelar</button>
                 <button class="guardar" id="guardarContacto">Guardar contacto</button>
+                <button class="guardar" id="confimarContacto" style="display: none;">Confimar contacto</button>
             </div>
             
         </div>

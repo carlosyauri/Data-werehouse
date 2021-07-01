@@ -80,7 +80,10 @@ let getContactos = async () => {
          
 }
 
-
+var idCompania;
+var regionId;
+var paisId;
+var ciudadId;
 
 /////////////////////   TRAER DATOS DE CONTACTOS   ////////////////////////////
 
@@ -283,17 +286,42 @@ async function completar () {
                     region.value = arrayContactos.contacto[i].Region.nombre
 
                     let pais = document.getElementById("pais")
+                    let optionPais = document.getElementById("optionPais")
                     pais.disabled = false
-                    pais.selected = false
-                    pais.value = `${arrayContactos.contacto[i].Pai.nombre}`
+                    optionPais.selected = true
+                    optionPais.disabled = false
+                    optionPais.innerHTML = arrayContactos.contacto[i].Pai.nombre
 
                     let ciudad = document.getElementById("ciudad")
+                    let optionCiudad = document.getElementById("optionCiudad")
                     ciudad.disabled = false
-                    ciudad.selected = false
-                    ciudad.value = arrayContactos.contacto[i].Ciudad.nombre
+                    optionCiudad.selected = true
+                    optionCiudad.disabled = false
+                    optionCiudad.innerHTML = arrayContactos.contacto[i].Ciudad.nombre
 
                     let direccion = document.getElementById("direccion")
-                    direccion.value 
+                    direccion.value = arrayContactos.contacto[i].direccion
+
+                    let barraProgreso = document.getElementById("barraProgreso")
+                    barraProgreso.value = arrayContactos.contacto[i].interes
+
+                    let barraNumerica = document.getElementById("barraNumerica")
+                    barraNumerica.value = `${arrayContactos.contacto[i].interes}%`
+                    
+                    let btnGuardar = document.getElementById("guardarContacto")
+                    btnGuardar.style = "display: none"
+
+                    let btnConfirmar = document.getElementById("confimarContacto")
+                    btnConfirmar.style = "display: inline"
+
+
+                    btnConfirmar.addEventListener("click", () => {
+                        putContactos(arrayContactos.contacto[i].id, imageCargada, nombre.value, apellido.value, cargo.value, email.value, idCompania, regionId, paisId, ciudadId, direccion.value, barraProgreso.value)
+                    })
+
+
+                    
+
 
                     console.log(arrayContactos.contacto[i].id)
 
@@ -327,6 +355,7 @@ completar()
 
 //////////////////////// CARGAR DATOS DE REGIONES - SIRVE PARA CREAR CONTACTOS///////////////////////////
 
+
 async function agregarRegion () {
 
 
@@ -335,10 +364,8 @@ async function agregarRegion () {
     let selectCiudad = document.getElementById("ciudad")
     let direccion = document.getElementById("direccion")
     let canal = document.getElementById("canal")
-    let regionId;
-    let paisId;
-    let ciudadId;
-    let idCompania;
+
+    
 
 
     let ObjRegiones = await getRegiones()
@@ -362,6 +389,7 @@ async function agregarRegion () {
         selecCompania.addEventListener("click", (e) => {
             if(e.target.value == arrayCompanias[i].nombre){
                 idCompania = arrayCompanias[i].id
+                console.log(idCompania)
             }
             
         })
@@ -396,8 +424,9 @@ async function agregarRegion () {
 
 
         if(regionIngresada == arrayRegiones.regiones[i].nombre){
+            
             regionId = arrayRegiones.regiones[i].id
-
+           
             //////////  ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVOS PAISES ///////////
     
             if(selectPais.options.length>1){
@@ -708,3 +737,35 @@ document.getElementById("inputCamara").onchange = function(e) {
 
     };
 }
+
+
+let putContactos = async (id, img, nombre, apellido, cargo, email, CompaniumId, RegionId, PaiId, CiudadId, direccion, interes) => {
+
+    var data = {
+      img,
+      nombre,
+      apellido,
+      cargo,
+      email,
+      CompaniumId,
+      RegionId,
+      PaiId,
+      CiudadId,
+      direccion,
+      interes
+    }
+  
+    let searchApi = await fetch (`http://localhost:3000/contactos/${id}` , {
+      method: 'PUT',
+          body: JSON.stringify(data),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+    })
+  
+    await searchApi.json()
+
+    location.href = "../html/index.html" 
+
+  }
+  
