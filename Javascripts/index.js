@@ -91,7 +91,8 @@ var ciudadId;
 async function completar () {
     
     let arrayContactos = await getContactos()
-    console.log(arrayContactos)
+  
+    let arrayDatosCanales = []
 
     let tbody = document.getElementById("tablaBody")
     let array;
@@ -102,7 +103,9 @@ async function completar () {
         array = []
         array = Object.values(arrayContactos.contacto[i])
         
+        arrayDatosCanales.push(JSON.parse(arrayContactos.contacto[i].datosContacto)) 
         
+        // console.log(arrayDatosCanales)
 
         let tr = document.createElement("tr")
 
@@ -314,17 +317,135 @@ async function completar () {
                     let btnConfirmar = document.getElementById("confimarContacto")
                     btnConfirmar.style = "display: inline"
 
+                    console.log("ACA", arrayDatosCanales[i])
+
+                    document.getElementById("agregarCanal").disabled = false
+
+                    let divCanales = document.getElementById("canales")
+                    let divCuentas = document.getElementById("cuentas")
+                    let divPreferencias = document.getElementById("divPreferencias")
+
+                    if (arrayDatosCanales[i].length == 1){
+
+                        let optionCanal = document.getElementById("optionGeneralCanal")
+                        optionCanal.innerHTML = arrayDatosCanales[i][0].canal
+                        optionCanal.value = arrayDatosCanales[i][0].canal
+
+
+                        let inputCuenta = document.getElementById("cuenta")
+                        inputCuenta.disabled = false
+                        inputCuenta.value = arrayDatosCanales[i][0].cuenta
+
+                        let optionGeneralPreferencia = document.getElementById("optionGeneralPreferencia")
+                        optionGeneralPreferencia.innerHTML = arrayDatosCanales[i][0].preferencias
+                        optionGeneralPreferencia.value = arrayDatosCanales[i][0].preferencias
+                        document.getElementById("preferencias").disabled = false
+
+                    }
+                    
+                    if(arrayDatosCanales.length > 1){
+
+                        for (let z = 1; z <  arrayDatosCanales[i].length; z++) {
+
+                            //CANALES//
+    
+                            let optionCanal = document.getElementById("optionGeneralCanal")
+                            optionCanal.innerHTML = arrayDatosCanales[i][0].canal
+                            optionCanal.value = arrayDatosCanales[i][0].canal
+    
+      
+                            let selectCanal = document.createElement("select")
+                            selectCanal.classList = "listaCanal"
+                            let option = document.createElement("option")
+                            option.disabled = true
+                            option.selected = true
+                            option.innerHTML = arrayDatosCanales[i][z].canal
+                            selectCanal.appendChild(option)
+                            divCanales.appendChild(selectCanal)
+    
+    
+                            let canales = ["LinkedIn", "Whatsapp", "GitHub", "Instagram"];
+                            for (let c = 0; c < canales.length; c++) {
+                                let option = document.createElement("option")
+                                option.innerHTML = canales[c]
+                                selectCanal.appendChild(option)                            
+                            }
+    
+    
+                            //CUENTAS//
+    
+                            let inputCuenta = document.getElementById("cuenta")
+                            inputCuenta.disabled = false
+                            inputCuenta.value = arrayDatosCanales[i][0].cuenta
+    
+    
+    
+                            let input = document.createElement("input")
+                            input.classList = "listaCuenta"
+                            input.value = arrayDatosCanales[i][z].cuenta
+                            divCuentas.appendChild(input)
+    
+    
+                            //PREFERENCIAS//
+    
+    
+                            let optionGeneralPreferencia = document.getElementById("optionGeneralPreferencia")
+                            optionGeneralPreferencia.innerHTML = arrayDatosCanales[i][0].preferencias
+                            optionGeneralPreferencia.value = arrayDatosCanales[i][0].preferencias
+                            document.getElementById("preferencias").disabled = false
+    
+    
+    
+                            let selectPreferencias = document.createElement("select")
+                            selectPreferencias.classList = "listaReferencias"
+                            let optionPrefe = document.createElement("option")
+                            optionPrefe.disabled = true
+                            optionPrefe.selected = true
+                            optionPrefe.innerHTML = arrayDatosCanales[i][z].preferencias
+                            selectPreferencias.appendChild(optionPrefe)
+                            divPreferencias.appendChild(selectPreferencias)
+    
+                            let preferencias = ["Sin preferencia", "Canal favorito", "No molestar"]
+    
+                            for (let p = 0; p < preferencias.length; p++) {
+    
+                                let option = document.createElement("option")
+                                option.innerHTML = preferencias[p]
+                                selectPreferencias.appendChild(option)
+                    
+                            }
+                   
+                  
+                        }
+
+                    }
+
+
+
+                    let listaCuenta = document.getElementsByClassName("listaCuenta")
+                    let listaCanal = document.getElementsByClassName("listaCanal")
+                    let listaReferencias = document.getElementsByClassName("listaReferencias")
+
 
                     btnConfirmar.addEventListener("click", () => {
-                        putContactos(arrayContactos.contacto[i].id, imageCargada, nombre.value, apellido.value, cargo.value, email.value, idCompania, regionId, paisId, ciudadId, direccion.value, barraProgreso.value)
+
+                        datosContacto = []
+    
+                        for (let i = 0; i < listaCuenta.length; i++) {
+                            
+                            let objet = {
+                                canal: listaCanal[i].value,
+                                cuenta: listaCuenta[i].value,
+                                preferencias: listaReferencias[i].value
+                
+                            }
+                
+                            datosContacto.push(objet)   
+                        }
+
+                        putContactos(arrayContactos.contacto[i].id, imageCargada, nombre.value, apellido.value, cargo.value, email.value, datosContacto, idCompania, regionId, paisId, ciudadId, direccion.value, barraProgreso.value)
                     })
-
-
-                    
-
-
-                    console.log(arrayContactos.contacto[i].id)
-
+                 
                 })
 
 
@@ -428,14 +549,21 @@ async function agregarRegion () {
             regionId = arrayRegiones.regiones[i].id
            
             //////////  ELIMINAR OPTIONS DE SELECT ANTES DE CARGAR NUEVOS PAISES ///////////
-    
-            if(selectPais.options.length>1){
+            let optionPais = document.getElementById ("optionPais")
+            optionPais.innerHTML = "Seleccionar pais"
+            optionPais.disabled = true
+            
+            let optionCiudad = document.getElementById("optionCiudad")
+            optionCiudad.innerHTML = "Seleccionar ciudad"
+            optionCiudad.disabled = true
+
+            if(selectPais.options.length >= 1){
                 for (let i = selectPais.options.length; i >= 1; i--) {
                     selectPais.remove(i);
                 }
             }
 
-            if(selectCiudad.options.length>1){
+            if(selectCiudad.options.length >= 1){
                 for (let i = selectCiudad.options.length; i >= 1; i--) {
                     selectCiudad.remove(i);
                 }
@@ -739,7 +867,7 @@ document.getElementById("inputCamara").onchange = function(e) {
 }
 
 
-let putContactos = async (id, img, nombre, apellido, cargo, email, CompaniumId, RegionId, PaiId, CiudadId, direccion, interes) => {
+let putContactos = async (id, img, nombre, apellido, cargo, email, datosContacto, CompaniumId, RegionId, PaiId, CiudadId, direccion, interes) => {
 
     var data = {
       img,
@@ -747,6 +875,7 @@ let putContactos = async (id, img, nombre, apellido, cargo, email, CompaniumId, 
       apellido,
       cargo,
       email,
+      datosContacto: JSON.stringify(datosContacto),
       CompaniumId,
       RegionId,
       PaiId,
