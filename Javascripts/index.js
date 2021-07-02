@@ -105,7 +105,7 @@ async function completar () {
         
         arrayDatosCanales.push(JSON.parse(arrayContactos.contacto[i].datosContacto)) 
         
-        // console.log(arrayDatosCanales)
+      
 
         let tr = document.createElement("tr")
 
@@ -118,6 +118,7 @@ async function completar () {
                 tdCheck.classList = "checkbox"
                 let input = document.createElement("input")
                 input.type = "checkbox"
+                input.id = array[8]
                 tdCheck.appendChild(input)
                 tr.appendChild(tdCheck)
 
@@ -778,6 +779,46 @@ async function agregarRegion () {
 
 agregarRegion()
 
+
+let boxGeneral = document.getElementById("boxGeneral")
+let btnAcionnes = document.getElementById("btn-acciones")
+let arrayIdContactos;
+
+boxGeneral.addEventListener("click", (e) => {
+
+    btnAcionnes.toggleAttribute("hidden")
+
+    arrayIdContactos = []
+
+    
+    let checks = document.getElementsByClassName("checkbox")
+
+ 
+    
+    if (e.target.checked == true){
+
+        for (let i = 1; i < checks.length; i++) {
+
+            arrayIdContactos.push(checks[i].firstChild.id)
+            checks[i].firstChild.checked = true;
+        }
+
+        console.log(arrayIdContactos)
+    }
+
+    if (e.target.checked == false){
+
+        for (let i = 1; i < checks.length; i++) {
+            checks[i].firstChild.checked = false;
+        }
+    }
+
+})
+
+
+
+
+
 /////////////////////////////////////// POST CONTACTOS ///////////////////////////////////////
 
 let postContacto = async (img, nombre, apellido, cargo, email, idCompania, id_region, id_pais, id_ciudad, datosContacto, interes, direccion) => {
@@ -814,7 +855,21 @@ let postContacto = async (img, nombre, apellido, cargo, email, idCompania, id_re
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////// DELETE CONTACTOS ////////////////////////////////////
+/////////////////////////////////////// DELETE CONTACTOS ///////////////////////////////////
+
+
+
+let eliminarTodo = document.getElementById("eliminarTodo")
+
+eliminarTodo.addEventListener("click", () => {
+
+    for (let i = 0; i < arrayIdContactos.length; i++) {
+        deleteContactos(arrayIdContactos[i])     
+    }
+
+    location.href = "../html/index.html" 
+
+})
 
 
 let deleteContactos = async (id) => {
@@ -898,4 +953,7 @@ let putContactos = async (id, img, nombre, apellido, cargo, email, datosContacto
     location.href = "../html/index.html" 
 
   }
+  
+
+
   

@@ -78,7 +78,7 @@ header h2 {
 }
 
 .span1, .span2, .span3, .span4 {
-  border: 1px solid #FFFFFF;
+  border: 1px solid #1D72C2;
   display: block;
   width: 75%;
   margin-top: 14px;
@@ -703,8 +703,8 @@ td, th {
 .campo input {
   font-size: 13px;
   border: none;
-  width: 255px;
-  margin-right: 25px;
+  width: 232px;
+  margin-right: 82px;
   border-bottom: 1px solid #CCCCCC;
   background: none;
 }
