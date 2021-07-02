@@ -3,6 +3,7 @@ var cerrar = document.getElementById("nvoContacto");
 var fondoNegro = document.getElementById("fondoNegro");
 var containerContacto = document.getElementById("containerContacto");
 var btnAgregarContacto = document.getElementById("btn-agregar-contacto");
+let btnCancelar = document.getElementById("cancelarContacto")
 
 
 btnAgregarContacto.addEventListener("click", async() => {
@@ -11,6 +12,10 @@ btnAgregarContacto.addEventListener("click", async() => {
 
 })
 
+
+btnCancelar.addEventListener("click",() => {
+    location.href = "../html/index.html"
+})
 
 
 cerrar.addEventListener("click", () => {
@@ -86,9 +91,10 @@ var paisId;
 var ciudadId;
 
 /////////////////////   TRAER DATOS DE CONTACTOS   ////////////////////////////
-
+let arrayIdContactos;
 
 async function completar () {
+    arrayIdContactos = [];
     
     let arrayContactos = await getContactos()
   
@@ -96,6 +102,7 @@ async function completar () {
 
     let tbody = document.getElementById("tablaBody")
     let array;
+
 
     for (let i = 0; i < arrayContactos.contacto.length; i++) {
         
@@ -105,7 +112,7 @@ async function completar () {
         
         arrayDatosCanales.push(JSON.parse(arrayContactos.contacto[i].datosContacto)) 
         
-      
+        
 
         let tr = document.createElement("tr")
 
@@ -149,12 +156,48 @@ async function completar () {
                 td.appendChild(divPerfil)
                 tr.appendChild(td)
 
+                
+
+                input.addEventListener("click", (e) =>{
+                    let valor = e.target.checked
+                    if(valor == true){
+
+                        tr.style = "background: rgb(213 235 255)"
+                        btnAcionnes.removeAttribute("hidden")
+
+                        arrayIdContactos.push(input.id)
+                        console.log(arrayIdContactos)
+
+                    }
+
+                    if(valor == false){
+
+                        let contador = (arrayIdContactos.length-1)
+                        if(contador < 1){
+
+                            btnAcionnes.setAttribute("hidden", true)
+                            boxGeneral.checked = false
+                        }
+                        
+                        tr.style = ""
+                        arrayIdContactos = arrayIdContactos.filter(function(i) { return i !== input.id })
+                        console.log(arrayIdContactos)
+                    }
+                })
+
+                
+                
+
 
             } else
 
             if (j == 2){
                 let td = document.createElement("td")
-                td.innerHTML = `${arrayContactos.contacto[i].Pai.nombre}/${arrayContactos.contacto[i].Region.nombre}`
+                let p = document.createElement("p")
+                p.style = "color: #CCCCCC; margin: 0; height: 10px; width: 130px"
+                p.innerHTML = arrayContactos.contacto[i].Region.nombre
+                td.innerHTML = arrayContactos.contacto[i].Pai.nombre
+                td.appendChild(p)
                 tr.appendChild(td)
 
             }else
@@ -231,14 +274,14 @@ async function completar () {
                 divP.appendChild(iEditar)
 
                 tr.addEventListener("mouseover", () => {
-                    tr.style = "height: 61px;"
+                    
                     p.style = "display: none"
                     iEliminar.style = "display: inline"
                     iEditar.style = "display: inline"
                 })
 
                 tr.addEventListener("mouseout", () => {
-                    tr.style = "height: 61px;"
+  
                     p.style = "display: inline"
                     iEliminar.style = "display: none"
                     iEditar.style = "display: none"
@@ -316,7 +359,11 @@ async function completar () {
                     btnGuardar.style = "display: none"
 
                     let btnConfirmar = document.getElementById("confimarContacto")
-                    btnConfirmar.style = "display: inline"
+                    btnConfirmar.style = "display: inline; background: #429c41; color: white"
+
+                    btnCancelar.style = "display: none"
+                    let btnEliminar = document.getElementById("eliminarContacto")
+                    btnEliminar.style = "display: inline; color: #429c41"
 
                     console.log("ACA", arrayDatosCanales[i])
 
@@ -447,6 +494,14 @@ async function completar () {
                         }
 
                         putContactos(arrayContactos.contacto[i].id, imageCargada, nombre.value, apellido.value, cargo.value, email.value, datosContacto, idCompania, regionId, paisId, ciudadId, direccion.value, barraProgreso.value)
+                    })
+
+
+                    let eliminarEditando = document.getElementById("eliminarContacto")
+                    eliminarEditando.addEventListener("click", () =>{
+                        deleteContactos(arrayContactos.contacto[i].id)
+                        location.href = "../html/index.html" 
+
                     })
                  
                 })
@@ -667,13 +722,19 @@ async function agregarRegion () {
 
 
   cuenta.addEventListener("keyup",(e) => {
-
+    let btnColor = document.getElementById("guardarContacto")
     if(e.target.value.length > 0){
         preferencias.disabled = false
+        
+        btnColor.style = "background: #429c41;"
+        btnCancelar.style = "color: #429c41"
+
     }
 
     if(e.target.value.length < 1){
         preferencias.disabled = true
+        btnColor.style = "background: #CCCCCC"
+        btnCancelar.style ="color: #CCCCCC"
     }
 
   })
@@ -782,34 +843,46 @@ agregarRegion()
 
 let boxGeneral = document.getElementById("boxGeneral")
 let btnAcionnes = document.getElementById("btn-acciones")
-let arrayIdContactos;
+
 
 boxGeneral.addEventListener("click", (e) => {
+    let checks = document.getElementsByClassName("checkbox")
+    console.log(arrayIdContactos)
 
-    btnAcionnes.toggleAttribute("hidden")
+    if(arrayIdContactos.length<1){
+        btnAcionnes.toggleAttribute("hidden")
+    }
+
+    // if(arrayIdContactos.length = checks.length){
+    //     boxGeneral.checked = true
+    // }
+    
 
     arrayIdContactos = []
 
     
-    let checks = document.getElementsByClassName("checkbox")
+    
+    // console.log(checks[1].firstChild.id)
 
- 
     
     if (e.target.checked == true){
 
         for (let i = 1; i < checks.length; i++) {
-
+            
             arrayIdContactos.push(checks[i].firstChild.id)
             checks[i].firstChild.checked = true;
+            checks[i].parentNode.style = "background: rgb(213, 235, 255)"
         }
 
         console.log(arrayIdContactos)
     }
 
     if (e.target.checked == false){
-
+        btnAcionnes.toggleAttribute("hidden")
         for (let i = 1; i < checks.length; i++) {
             checks[i].firstChild.checked = false;
+            checks[i].parentNode.style = ""
+
         }
     }
 

@@ -14,6 +14,7 @@ main {
     background: none;
     outline: none;
     border: none;
+    width: 92%;
 }
 
 .busqueda {
@@ -315,15 +316,7 @@ select {
 
 tbody tr:hover {
     background: #E8E8E8;
-
-    // .btnHover p {
-    //     display: none;
-    // }
-    // .btnHover i {
-    //     display: inline;
-    //     font-family: "Font Awesome 5 Free";
-    //     font-style: normal;
-    // }
+    height: 63px;
 }
 
 
@@ -444,7 +437,7 @@ tbody tr:hover {
     justify-content: center;
 }
 
-.containerBtn input {
+.containerBtn button {
     width: 38%;
     background: #1d72c2;
     border-radius: 4.8px;

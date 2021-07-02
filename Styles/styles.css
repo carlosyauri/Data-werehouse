@@ -57,6 +57,11 @@ header h2 {
   font-family: 'Open Sans', sans-serif;
 }
 
+#ih2 {
+  font-size: 40px;
+  margin-top: -8px;
+}
+
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -418,6 +423,7 @@ main {
   background: none;
   outline: none;
   border: none;
+  width: 92%;
 }
 
 .busqueda {
@@ -753,6 +759,7 @@ select {
 
 tbody tr:hover {
   background: #E8E8E8;
+  height: 63px;
 }
 
 .divBtnHover {
@@ -877,7 +884,7 @@ tbody tr:hover {
           justify-content: center;
 }
 
-.containerBtn input {
+.containerBtn button {
   width: 38%;
   background: #1d72c2;
   border-radius: 4.8px;
