@@ -447,7 +447,7 @@ async function completar () {
                     })
                  
                 })
-                console.log("hola")
+            
                 td.appendChild(divP)
                 tr.appendChild(td)
 
