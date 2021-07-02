@@ -137,7 +137,7 @@ btnAgregarCompania.addEventListener("click", () => {
 guardar.addEventListener("click", () => {
 
     postCompania(nombre.value, direccion.value, email.value, telefono.value, idCiudad)
-    location.href = "../html/compania.html" 
+    
 
 })
 
@@ -195,7 +195,9 @@ let postCompania = async (nombre, direccion, email, telefono, id_ciudad) => {
         }
     })
 
-    await serachApi.json()
+    await searchApi.json()
+    location.href = "../html/compania.html" 
+
 }
 
 let boxGeneral = document.getElementById("boxGeneral")

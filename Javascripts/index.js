@@ -343,11 +343,13 @@ async function completar () {
 
                     }
                     
-                    if(arrayDatosCanales.length > 1){
+                    if(arrayDatosCanales[i].length > 1){
 
                         for (let z = 1; z <  arrayDatosCanales[i].length; z++) {
 
                             //CANALES//
+
+           
     
                             let optionCanal = document.getElementById("optionGeneralCanal")
                             optionCanal.innerHTML = arrayDatosCanales[i][0].canal

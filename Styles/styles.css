@@ -34,6 +34,10 @@ button:hover {
   z-index: 3;
 }
 
+i:hover {
+  cursor: pointer;
+}
+
 header {
   width: 1440px;
   margin: 0 auto;
