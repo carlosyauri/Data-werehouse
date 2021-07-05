@@ -37,6 +37,7 @@ let getCiudades = async () => {
 // })
 
 let arrayIdCompanias;
+let idCiudad;
 
 async function completarCompanias (){
 
@@ -47,8 +48,8 @@ async function completarCompanias (){
 
     let tabla = document.getElementById("tablaBody")
 
-    for (let i = 0; i < companias.length; i++) {
-        array = Object.values(companias[i])
+    for (let x = 0; x < companias.length; x++) {
+        array = Object.values(companias[x])
         let tr = document.createElement("tr")
         let th = document.createElement("th")
         th.className = "checkbox"
@@ -119,10 +120,50 @@ async function completarCompanias (){
             }
 
             i.addEventListener("click", () => {
-                console.log(idCompania)
+                let ciudadSelect = document.getElementById("ciudad")
+                ciudadSelect.addEventListener("click", () => {
+                    guardar.style = "display: none"
+                    cancelar.style = "display: none"
+                })
+                console.log(companias[x])
+                guardar.style = "display: none"
+                cancelar.style = "display: none"
+
+                let h2 = document.getElementById("tituloEdit")
+                h2.innerHTML = "Modificar compania"
+
+                let btnEliminar = document.getElementById("eliminarBtn")
+                btnEliminar.style = "display: inline; color: rgb(66, 156, 65)"
+                let guardarEdicion = document.getElementById("guardarEdicion")
+                guardarEdicion.style = "display: inline; background: rgb(66, 156, 65); color: white"
                 
+                // guardar.style = "background: rgb(66, 156, 65); color: white"
+                // cancelar.style = "color: rgb(66, 156, 65)"
+
                 fondoNegro.classList.toggle("noDisplay")
                 containerContacto.classList.toggle("noDisplay")
+
+                nombre.value = companias[x].nombre
+                direccion.value = companias[x].direccion
+                email.value = companias[x].email
+                telefono.value = companias[x].telefono
+
+                let optionSelectCiudad = document.getElementById("optionGralCiudad")
+                optionSelectCiudad.innerHTML = companias[x].Ciudad.nombre
+                optionSelectCiudad.disabled = true
+
+                guardarEdicion.addEventListener("click", () => {
+                    putCompania(companias[x].id, nombre.value, direccion.value, email.value, telefono.value, idCiudad)
+                    location.href = "../html/compania.html"
+                })
+                
+
+                btnEliminar.addEventListener("click", () => {
+                    deleteCompania(companias[x].id)
+                    location.href = "../html/compania.html"
+                })
+                
+                
 
 
 
@@ -155,7 +196,7 @@ let nombre = document.getElementById("nombre")
 let direccion = document.getElementById("direccion")
 let email = document.getElementById("email")
 let telefono = document.getElementById("telefono")
-let idCiudad;
+
 
 
 cerrarAgregar.addEventListener("click", () => {
@@ -304,4 +345,29 @@ let deleteCompania = async (id) => {
     await searchApi.json()
   
 }
+
+
+let putCompania = async (id, nombre, direccion, email, telefono, CiudadId) => {
+
+    var data = {
+      nombre,
+      direccion,
+      email,
+      telefono,
+      CiudadId
+    }
+  
+    let searchApi = await fetch (`http://localhost:3000/compania/${id}` , {
+      method: 'PUT',
+          body: JSON.stringify(data),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+    })
+  
+    await searchApi.json()
+
+    location.href = "../html/compania.html" 
+
+  }
   

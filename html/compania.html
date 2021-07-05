@@ -20,7 +20,7 @@
         <div class="agregarContainer containerRegion-c noDisplay" id="containerContacto">
 
             <div class="agregarHeader">
-                <h2 class="agregarTitulo">Nueva compania</h2>
+                <h2 class="agregarTitulo" id="tituloEdit">Nueva compania</h2>
                 <i class="fas fa-times" id="nvoContacto"></i>
             </div>
     
@@ -50,15 +50,17 @@
                     <div>
                         <label for="ciudad">Ciudad</label>
                         <select name="" id="ciudad">
-                            <option value ="todos" selected>Selec. una ciudad</option>
+                            <option value ="todos" id="optionGralCiudad" selected>Selec. una ciudad</option>
                         </select>
                     </div>
                 </div>
                 
             </div>
             <div class="btn">
+                <button class="cancel" id="eliminarBtn" style="display: none;">Eliminar compania</button>
                 <button class="cancel" id="cancelar">Cancelar</button>
                 <button class="guardar" id="guardar" disabled>Guardar compania</button>
+                <button class="guardar" id="guardarEdicion" style="display: none;">Guardar compania</button>
             </div>
             
         </div>

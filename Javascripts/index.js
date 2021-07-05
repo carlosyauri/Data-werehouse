@@ -210,6 +210,7 @@ async function completar () {
                     
                     let td = document.createElement("td")
                     td.innerHTML = "Compania removida"
+                    td.style = "color: red"
                     tr.appendChild(td)
                 }
 
