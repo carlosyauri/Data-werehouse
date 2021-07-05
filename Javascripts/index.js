@@ -293,6 +293,30 @@ async function completar () {
                 })
                 
                 iEditar.addEventListener("click", () => {
+
+
+
+                    let cuentaInput = document.getElementById("cuenta")
+
+                    agregarCanal.style = "background: #1D72C2; color: white"
+
+                    cuentaInput.addEventListener("keyup",(e) => {
+
+    
+                        if(e.target.value.length > 0){       
+   
+                            btnCancelar.style = "display: none"
+                            btnGuardar.style = "display: none"
+                    
+                        }
+                    
+                        if(e.target.value.length < 1){
+
+                            btnCancelar.style ="display: none"
+                            btnGuardar.style = "display: none"
+                        }
+                    
+                      })
                    
                     fondoNegro.classList.toggle("noDisplay")
                     containerContacto.classList.toggle("noDisplay")
@@ -323,9 +347,12 @@ async function completar () {
                     let email = document.getElementById("email")
                     email.value = arrayContactos.contacto[i].email
 
-
-                    let compania = document.getElementById("compania")
-                    compania.value = arrayContactos.contacto[i].Companium.nombre
+     
+                    if (arrayContactos.contacto[i].Companium != null){
+                        let compania = document.getElementById("compania")
+                        compania.value = arrayContactos.contacto[i].Companium.nombre
+                    }
+                    
 
                     // OTROS DATOS //
 
@@ -723,9 +750,9 @@ async function agregarRegion () {
 
   cuenta.addEventListener("keyup",(e) => {
     let btnColor = document.getElementById("guardarContacto")
-    if(e.target.value.length > 0){
+    if(e.target.value.length > 0){       
+
         preferencias.disabled = false
-        
         btnColor.style = "background: #429c41;"
         btnCancelar.style = "color: #429c41"
 
@@ -742,6 +769,7 @@ async function agregarRegion () {
   preferencias.addEventListener("click", (e)=>{
       if(e.target.value != ""){
           agregarCanal.disabled = false
+          agregarCanal.style = "background: #1D72C2; color: white"
       }
   })
   
@@ -846,6 +874,7 @@ let btnAcionnes = document.getElementById("btn-acciones")
 
 
 boxGeneral.addEventListener("click", (e) => {
+
     let checks = document.getElementsByClassName("checkbox")
     console.log(arrayIdContactos)
 

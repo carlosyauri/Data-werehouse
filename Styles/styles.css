@@ -1010,6 +1010,31 @@ tbody tr:hover {
   min-height: 83px;
 }
 
+.agregarDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.agregarDiv button {
+  border: 1px solid #CCCCCC;
+  width: 190px;
+  height: 35px;
+  outline: none;
+  font-size: 12px;
+  background: white;
+  color: #CCCCCC;
+  margin-right: 317px;
+  margin-top: -50px;
+}
+
+.agregarDiv button i {
+  margin-right: 10px;
+}
+
 footer {
   max-width: 1440px;
   margin: 0 auto;

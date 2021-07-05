@@ -29,8 +29,18 @@ let getCiudades = async () => {
 }
 
 
+
+// let selectCiudad = document.getElementById("ciudad")
+
+// selectCiudad.addEventListener("click", (e) => {
+//     let valor = 
+// })
+
+let arrayIdCompanias;
+
 async function completarCompanias (){
 
+    arrayIdCompanias = []
     
     let companias = await getCompania()
     let array = []
@@ -50,6 +60,33 @@ async function completarCompanias (){
 
         th.appendChild(input)
         tr.appendChild(th)
+
+        input.addEventListener("click", (e) =>{
+            let valor = e.target.checked
+            if(valor == true){
+
+                tr.style = "background: rgb(213 235 255)"
+                btnAcionnes.removeAttribute("hidden")
+
+                arrayIdCompanias.push(input.id)
+                console.log(arrayIdCompanias)
+
+            }
+
+            if(valor == false){
+
+                let contador = (arrayIdCompanias.length-1)
+                if(contador < 1){
+
+                    btnAcionnes.setAttribute("hidden", true)
+                    boxGeneral.checked = false
+                }
+                
+                tr.style = ""
+                arrayIdCompanias = arrayIdCompanias.filter(function(i) { return i !== input.id })
+                console.log(arrayIdCompanias)
+            }
+        })
 
         for (let j = 1; j < array.length; j++) {
            
@@ -83,6 +120,12 @@ async function completarCompanias (){
 
             i.addEventListener("click", () => {
                 console.log(idCompania)
+                
+                fondoNegro.classList.toggle("noDisplay")
+                containerContacto.classList.toggle("noDisplay")
+
+
+
             })
 
 
@@ -116,13 +159,11 @@ let idCiudad;
 
 
 cerrarAgregar.addEventListener("click", () => {
-    fondoNegro.classList.toggle("noDisplay")
-    container.classList.toggle("noDisplay")
+    location.href = "../html/compania.html" 
 })
 
 cancelar.addEventListener("click", () => {
-    fondoNegro.classList.toggle("noDisplay")
-    container.classList.toggle("noDisplay")
+    location.href = "../html/compania.html" 
 })
 
 
@@ -162,6 +203,9 @@ async function agregarCiudades () {
     
             if(ciudadIngresada == ciudades.ciudades[i].nombre){
                 idCiudad = ciudades.ciudades[i].id
+                guardar.disabled = false
+                guardar.style = "background: #429c41; color: white"
+                cancelar.style = "color: #429c41"
             }
 
         })
@@ -202,18 +246,17 @@ let postCompania = async (nombre, direccion, email, telefono, id_ciudad) => {
 
 let boxGeneral = document.getElementById("boxGeneral")
 let btnAcionnes = document.getElementById("btn-acciones")
-let arrayIdCompanias;
+
 
 boxGeneral.addEventListener("click", (e) => {
-
-    btnAcionnes.toggleAttribute("hidden")
-
-    arrayIdCompanias = []
-
-    
     let checks = document.getElementsByClassName("checkbox")
 
- 
+    if(arrayIdCompanias.length < 1){
+        btnAcionnes.toggleAttribute("hidden")
+    }
+  
+    arrayIdCompanias = []
+
     
     if (e.target.checked == true){
 
@@ -221,15 +264,17 @@ boxGeneral.addEventListener("click", (e) => {
 
             arrayIdCompanias.push(checks[i].firstChild.id)
             checks[i].firstChild.checked = true;
+            checks[i].parentNode.style = "background: rgb(213, 235, 255)"
         }
 
         console.log(arrayIdCompanias)
     }
 
     if (e.target.checked == false){
-
+        btnAcionnes.toggleAttribute("hidden")
         for (let i = 1; i < checks.length; i++) {
             checks[i].firstChild.checked = false;
+            checks[i].parentNode.style = ""
         }
     }
 

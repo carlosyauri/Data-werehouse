@@ -547,3 +547,24 @@ tbody tr:hover {
     border-radius: 44px;
     min-height: 83px;
 }
+
+.agregarDiv {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.agregarDiv button {
+    border: 1px solid #CCCCCC;
+    width: 190px;
+    height: 35px;
+    outline: none;
+    font-size: 12px;
+    background: white;
+    color: #CCCCCC;
+    margin-right: 317px;
+    margin-top: -50px;
+}
+
+.agregarDiv button i {
+    margin-right: 10px;
+}
