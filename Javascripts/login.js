@@ -1,4 +1,6 @@
 
+
+
 let password = document.getElementById("password");
 let email = document.getElementById("email")
 let login = document.getElementById("login")
@@ -26,9 +28,30 @@ noEye.addEventListener("click", () =>{
 
 ////// LOGIN //////
 
-login.addEventListener("click", () => {
+login.addEventListener("click", async() => {
 
     getLogin(email.value, password.value)
+
+
+        await Swal.fire({
+            title: "Bienvenido",
+            text: "Usted se ha logeado como: Carlos Yauri",
+            // html:
+            icon: "success",
+            allowOutsideClick: false,
+            allosEscapeKey: false,
+            allowEnterKey: false,
+            stopKeydownPropagation: false,
+        })
+
+        location.href =  "../html/index.html"
+
+    
+
+    
+
+
+    
 
 })
 
@@ -53,7 +76,7 @@ let getLogin = async (email, password) => {
     if(res.exito){
 
         localStorage.setItem("token", res.exito.token)
-        location.href = "../html/index.html"
+        
         
     }
 
