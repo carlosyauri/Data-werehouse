@@ -68,8 +68,9 @@ async function completarCompanias (){
 
                 tr.style = "background: rgb(213 235 255)"
                 btnAcionnes.removeAttribute("hidden")
-
+                document.getElementById("mostrador").removeAttribute("hidden")
                 arrayIdCompanias.push(input.id)
+                document.getElementById("mostrador").innerHTML = `${arrayIdCompanias.length} seleccionados`
                 console.log(arrayIdCompanias)
 
             }
@@ -80,12 +81,13 @@ async function completarCompanias (){
                 if(contador < 1){
 
                     btnAcionnes.setAttribute("hidden", true)
+                    document.getElementById("mostrador").setAttribute("hidden", true)
                     boxGeneral.checked = false
                 }
                 
                 tr.style = ""
                 arrayIdCompanias = arrayIdCompanias.filter(function(i) { return i !== input.id })
-                console.log(arrayIdCompanias)
+                document.getElementById("mostrador").innerHTML = `${arrayIdCompanias.length} seleccionados`
             }
         })
 
@@ -294,6 +296,7 @@ boxGeneral.addEventListener("click", (e) => {
 
     if(arrayIdCompanias.length < 1){
         btnAcionnes.toggleAttribute("hidden")
+        document.getElementById("mostrador").toggleAttribute("hidden")
     }
   
     arrayIdCompanias = []
@@ -307,12 +310,13 @@ boxGeneral.addEventListener("click", (e) => {
             checks[i].firstChild.checked = true;
             checks[i].parentNode.style = "background: rgb(213, 235, 255)"
         }
-
+        document.getElementById("mostrador").innerHTML = `${arrayIdCompanias.length} seleccionados`
         console.log(arrayIdCompanias)
     }
 
     if (e.target.checked == false){
         btnAcionnes.toggleAttribute("hidden")
+        document.getElementById("mostrador").toggleAttribute("hidden")
         for (let i = 1; i < checks.length; i++) {
             checks[i].firstChild.checked = false;
             checks[i].parentNode.style = ""

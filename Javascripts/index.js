@@ -94,6 +94,7 @@ var ciudadId;
 let arrayIdContactos;
 
 async function completar () {
+    
     arrayIdContactos = [];
     
     let arrayContactos = await getContactos()
@@ -106,20 +107,18 @@ async function completar () {
 
 
     let ordenarContado = document.getElementById("ordenarContacto")
-    let cantidadAnterior;
 
-    ordenarContado.addEventListener("click", (e) => {
 
-        // if(cantidadAnterior = undefined){
-        //     if(cantidadAnterior >= 1){
-        //         for (let i = 0; i <= cantidadAnterior; i++) {
-        //             tbody.firstChild.remove()
-        //         }
-        //     }
-        // }
+    ordenarContado.addEventListener("click", () => {
         
 
-        cantidadAnterior = tbody.children.length
+        let cantidadAnterior = tbody.children.length
+        if(cantidadAnterior > 0){
+            for (let i = 0; i < cantidadAnterior; i++) {
+                tbody.firstChild.remove()
+            }
+        }
+
         console.log(cantidadAnterior)
 
         let validador = 0;
@@ -129,13 +128,14 @@ async function completar () {
                 validador = 1
             }   
             
-            i = i + 1
+            i += 1
         }
 
 
 
 
         if(validador == 1){
+
             console.log("El vector está ordenado de forma decreciente")
             arrayContactos.contacto.sort(function (a, b) {
                 if (a.nombre > b.nombre) {
@@ -144,21 +144,24 @@ async function completar () {
                 if (a.nombre < b.nombre) {
                   return -1;
                 }
-                // a must be equal to b
+
                 return 0;
             });
 
-            // if(cantidadAnterior >= 1){
-            //     for (let i = 0; i <= cantidadAnterior; i++) {
-            //         tbody.firstChild.remove()
-            //     }
-            // }
+  
+                // if(cantidadAnterior >= 0){
+                //     for (let i = 0; i <= cantidadAnterior; i++) {
+                //         tbody.firstChild.remove()
+                //     }
+                // }
+          
 
 
         }else {
             console.log(arrayContactos.contacto.reverse())
  
             console.log("El vector está ordenado de forma creciente")
+            console.log("ASDASDASD", arrayContactos.contacto.length)
         }  
         
         
@@ -608,21 +611,23 @@ async function completar () {
                     td.appendChild(divP)
                     tr.appendChild(td)
     
-                }      
-            }
-            
-            tbody.appendChild(tr)
-            
-        }
-        let nuevaCantidad = tbody.children.length
-        console.log(nuevaCantidad)
-        // console.log(cantidadAnterior-tbody.children.length)
+                }
 
-        // if(cantidadAnterior >= 1){
-        //     for (let i = 0; i <= cantidadAnterior; i++) {
-        //         tbody.firstChild.remove()
-        //     }
-        // }
+                
+            }
+
+            tbody.appendChild(tr)
+
+        }
+
+        let nuevaCantidad = tbody.children.length
+
+        let vueltas = nuevaCantidad - cantidadAnterior
+
+   
+        for (let i = 0; i < vueltas; i++) {
+            tbody.firstChild.remove()
+        }
 
 
     })
