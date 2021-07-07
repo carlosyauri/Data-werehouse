@@ -259,28 +259,32 @@
                 </form>
         </section>
 
-        <section id="btn-acciones" hidden>
-            <div class="btn-acciones">
-                <p>Acciones generales: </p>
-                <i class="far fa-trash-alt" id="eliminarTodo"><span> Eliminar todo</span></i>
-            </div>            
-        </section>
-
+        
+        <div class="contador">
+            <section id="btn-acciones" hidden>
+                <div class="btn-acciones">
+                    <p>Acciones generales: </p>
+                    <i class="far fa-trash-alt" id="eliminarTodo"><span> Eliminar todo</span></i>
+                </div>
+            </section>
+            <p class="mostrarContador" id="mostrador" hidden></p>
+        </div>
+               
         <section id="sector-2">
             <table id="tabla">
                 <thead class="container-head">
                     <tr class="titulos">
                         <th class="checkbox"><input type="checkbox" id="boxGeneral"></th>
-                        <th>Contacto<i class="fas fa-exchange-alt hola" ></i></th>
-                        <th>Pais/Region<i class="fas fa-exchange-alt hola" ></i></th>
-                        <th>Compañia<i class="fas fa-exchange-alt hola" ></i></th>
-                        <th>Cargo<i class="fas fa-exchange-alt hola" ></i></th>
-                        <th>Interes<i class="fas fa-exchange-alt hola" ></i></th>
+                        <th>Contacto<i class="fas fa-exchange-alt hola" id="ordenarContacto"></i></th>
+                        <th>Pais/Region<i class="fas fa-exchange-alt hola" id="ordenarPais"></i></th>
+                        <th>Compañia<i class="fas fa-exchange-alt hola" id="ordenarCompania"></i></th>
+                        <th>Cargo<i class="fas fa-exchange-alt hola" id="ordenarCargo"></i></th>
+                        <th>Interes<i class="fas fa-exchange-alt hola" style="display: none;"></i></th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="tablaBody">
-                    
+
                 </tbody>
             </table>
         </section>

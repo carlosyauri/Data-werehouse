@@ -589,7 +589,6 @@ table {
   margin-left: 27.5px;
   margin-right: 28.5px;
   color: black;
-  margin-top: 73px;
   font-size: 12.1px;
   font-family: 'Open Sans', sans-serif;
   table-layout: fixed;
@@ -972,9 +971,9 @@ tbody tr:hover {
   width: 1440px;
   margin: 0 auto;
   height: 45px;
-  margin-left: 30px;
-  margin-top: 10px;
-  margin-bottom: -45px;
+  margin-left: 26px;
+  margin-top: -55px;
+  margin-bottom: 10px;
 }
 
 #btn-acciones:hover {
@@ -1033,6 +1032,18 @@ tbody tr:hover {
 
 .agregarDiv button i {
   margin-right: 10px;
+}
+
+.mostrarContador {
+  margin: 0;
+  margin-top: 20px;
+  margin-left: 28px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.contador {
+  margin-top: 95px;
 }
 
 footer {
