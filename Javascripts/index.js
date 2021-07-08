@@ -1,4 +1,9 @@
 
+let nombreUsuarioLogeado = document.getElementById("nombreUsuarioLogeado")
+let token = JSON.parse(localStorage.getItem("oketn"))
+
+console.log(token)
+nombreUsuarioLogeado.innerHTML = `${token.exito.nombre.nombre}!`
 
 var cerrar = document.getElementById("nvoContacto");
 var fondoNegro = document.getElementById("fondoNegro");

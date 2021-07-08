@@ -407,6 +407,21 @@ header h2 {
   font-size: 12px;
 }
 
+.logoConUsuario {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.logoConUsuario p {
+  margin-left: 15px;
+  margin-top: 20px;
+  color: #d5ebff;
+}
+
 main {
   width: 1440px;
   margin: 0 auto;

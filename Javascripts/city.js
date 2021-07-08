@@ -1,3 +1,6 @@
+let nombreUsuarioLogeado = document.getElementById("nombreUsuarioLogeado")
+let token = JSON.parse(localStorage.getItem("oketn"))
+nombreUsuarioLogeado.innerHTML = `${token.exito.nombre.nombre}!`
 
 let newRegion = document.getElementById("button-new-region")
 let fondoNegro = document.getElementById("fondoNegro");

@@ -31,18 +31,20 @@ noEye.addEventListener("click", () =>{
 login.addEventListener("click", async() => {
 
     getLogin(email.value, password.value)
-
-
-        await Swal.fire({
-            title: "Bienvenido",
-            text: "Usted se ha logeado como: Carlos Yauri",
+        
+        
+        await Swal.fire({ 
+            title: `Bienvenido`,
+            text: `Usted se ha logeado correctamente!`,
             // html:
             icon: "success",
+            grow: ``,
             allowOutsideClick: false,
             allosEscapeKey: false,
             allowEnterKey: false,
             stopKeydownPropagation: false,
         })
+
 
         location.href =  "../html/index.html"
 
@@ -76,7 +78,8 @@ let getLogin = async (email, password) => {
     if(res.exito){
 
         localStorage.setItem("token", res.exito.token)
-        
+        localStorage.setItem("oketn", JSON.stringify(res))
+      
         
     }
 

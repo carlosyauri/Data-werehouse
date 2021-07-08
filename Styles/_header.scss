@@ -339,3 +339,14 @@ header h2 {
     outline: none;
     font-size: 12px;
 }
+
+.logoConUsuario {
+    display: flex;
+    align-items: stretch;
+}
+
+.logoConUsuario p {
+    margin-left: 15px;
+    margin-top: 20px;
+    color : rgb(213, 235, 255)
+}
