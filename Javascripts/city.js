@@ -1,5 +1,4 @@
 
-
 let newRegion = document.getElementById("button-new-region")
 let fondoNegro = document.getElementById("fondoNegro");
 let containerContacto = document.getElementById("containerContacto");
@@ -51,6 +50,16 @@ if(res.exito)
 ////////////////////////////////////////////////////////////////////////////////////////
 
 newRegion.addEventListener("click", () => {
+
+  document.getElementById("region").addEventListener("keyup", (e) => {
+    if(e.target.value.length > 0){
+      document.getElementById("guardar").style = "background: rgb(66, 156, 65)"
+      document.getElementById("cancelar").style = "color: rgb(66, 156, 65)"
+    }else{
+      document.getElementById("guardar").style = ""
+      document.getElementById("cancelar").style = ""
+    }
+  })
   fondoNegro.classList.toggle("noDisplay")
   containerContacto.classList.toggle("noDisplay")
   body.classList.toggle("noHidden")
@@ -147,6 +156,16 @@ async function completar (){
 
         let guardarPais = document.getElementById("guardarPais")
         let paisNombre = document.getElementById("pais")
+
+        paisNombre.addEventListener("keyup", (e) => {
+          if(e.target.value.length > 0){
+            document.getElementById("guardarPais").style = "background: rgb(66, 156, 65)"
+            document.getElementById("cancelarPais").style = "color: rgb(66, 156, 65)"
+          }else{
+            document.getElementById("guardarPais").style = ""
+            document.getElementById("cancelarPais").style = ""
+          }
+        })
         
         guardarPais.addEventListener("click", () =>{
           body.classList.toggle("noHidden")
@@ -270,6 +289,16 @@ async function completar (){
     
             let guardarCiudad = document.getElementById("guardarCiudad");
             let ciudadNombre = document.getElementById("ciudad");
+
+            ciudadNombre.addEventListener("keyup", (e) => {
+              if(e.target.value.length > 0){
+                document.getElementById("guardarCiudad").style = "background: rgb(66, 156, 65)"
+                document.getElementById("cancelarCiudad").style = "color: rgb(66, 156, 65)"
+              }else{
+                document.getElementById("guardarCiudad").style = ""
+                document.getElementById("cancelarCiudad").style = ""
+              }
+            })
        
  
             guardarCiudad.addEventListener("click", () => {
@@ -378,6 +407,7 @@ let guardar = document.getElementById("guardar")
 guardar.addEventListener("click", ()=>{
 
     let nombreRegion = document.getElementById("region")
+
     postRegion(nombreRegion.value)
     location.href = "../html/city.html"
     
