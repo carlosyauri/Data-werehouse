@@ -416,10 +416,23 @@ header h2 {
           align-items: stretch;
 }
 
-.logoConUsuario p {
+.nombreUsuario {
   margin-left: 15px;
-  margin-top: 20px;
   color: #d5ebff;
+  margin-bottom: 0px;
+  margin-top: 12px;
+}
+
+#cerrarSesion {
+  margin-top: 0;
+  color: #d5ebff;
+  margin-left: 16px;
+  font-size: 11px;
+}
+
+#cerrarSesion:hover {
+  cursor: pointer;
+  color: red;
 }
 
 main {

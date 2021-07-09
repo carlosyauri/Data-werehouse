@@ -2,6 +2,9 @@ let nombreUsuarioLogeado = document.getElementById("nombreUsuarioLogeado")
 let token = JSON.parse(localStorage.getItem("oketn"))
 nombreUsuarioLogeado.innerHTML = `${token.exito.nombre.nombre}!`
 
+if(token.exito.nombre.isadmin == false){
+    document.getElementById("htmlUsuarios").style = "display: none"
+}
 
 let getCompania = async () => {
 

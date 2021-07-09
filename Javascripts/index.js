@@ -1,9 +1,19 @@
+window.history.forward("../html/login.html")
+
 
 let nombreUsuarioLogeado = document.getElementById("nombreUsuarioLogeado")
 let token = JSON.parse(localStorage.getItem("oketn"))
-
-console.log(token)
 nombreUsuarioLogeado.innerHTML = `${token.exito.nombre.nombre}!`
+
+if(token.exito.nombre.isadmin == false){
+    document.getElementById("htmlUsuarios").style = "display: none"
+  }
+
+let cerrarSesion = document.getElementById("cerrarSesion")
+cerrarSesion.addEventListener("click", () => {
+    localStorage.clear()
+    location.href ="../html/login.html#!"
+})
 
 var cerrar = document.getElementById("nvoContacto");
 var fondoNegro = document.getElementById("fondoNegro");

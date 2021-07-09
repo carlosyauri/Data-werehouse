@@ -345,8 +345,22 @@ header h2 {
     align-items: stretch;
 }
 
-.logoConUsuario p {
+.nombreUsuario {
     margin-left: 15px;
-    margin-top: 20px;
-    color : rgb(213, 235, 255)
+
+    color : rgb(213, 235, 255);
+    margin-bottom: 0px;
+    margin-top: 12px;
+}
+
+#cerrarSesion { 
+    margin-top: 0;
+    color : rgb(213, 235, 255);
+    margin-left: 16px;
+    font-size: 11px;
+}
+
+#cerrarSesion:hover{
+    cursor: pointer;
+    color: red
 }
