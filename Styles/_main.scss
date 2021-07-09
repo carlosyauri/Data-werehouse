@@ -583,3 +583,21 @@ tbody tr:hover {
 .contador {
     margin-top: 95px;
 }
+
+.sugerencias {
+    border: 1px solid #CCCCCC;
+    border-radius: 3.5px;
+    border-radius: 3.5px;
+    width: 502px;
+    margin-left: 29.5px;
+    box-shadow: #bebebe 2px 3px 7px 0px;
+    position: absolute;
+    background: white;
+    
+    display: none;
+}
+
+.sugerencias div {
+    font-size: 15px;
+    padding: 10px;
+}
