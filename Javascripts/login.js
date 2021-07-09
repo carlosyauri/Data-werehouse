@@ -1,4 +1,5 @@
 
+
 window.history.forward()
 
 
@@ -55,6 +56,18 @@ let email = document.getElementById("email")
 let login = document.getElementById("login")
 let incorrecto = document.getElementById("incorrecto")
 
+email.addEventListener("keyup", (e) => {
+    if(e.target.value.length > 0){
+        incorrecto.setAttribute("hidden", true)
+    }
+})
+
+password.addEventListener("keyup", (e) => {
+    if(e.target.value.length > 0){
+        incorrecto.setAttribute("hidden", true)
+    }
+})
+
 
 let eye = document.getElementById("eyeDisplay");
 let noEye = document.getElementById("eyeNoDisplay");
@@ -81,7 +94,7 @@ login.addEventListener("click", async() => {
 
     let result = await getLogin(email.value, password.value)
 
-    // let nombre = JSON.parse(result.exito.nombre)
+    if(result != "faltan campos" && result != "email o password invalidas"){
         
         await Swal.fire({ 
             title: `Bienvenido ${result.exito.nombre.nombre}`,
@@ -96,8 +109,9 @@ login.addEventListener("click", async() => {
         })
 
         location.href =  "../html/index.html"
-
-  
+    } else{
+        return
+    }
 
 })
 
@@ -125,10 +139,9 @@ let getLogin = async (email, password) => {
         localStorage.setItem("oketn", JSON.stringify(res))
         return res
         
-    }
-
-    else {
+    }else{
         incorrecto.removeAttribute("hidden")
+        return res.error
     }
 
 }

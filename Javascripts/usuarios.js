@@ -2,6 +2,17 @@ let nombreUsuarioLogeado = document.getElementById("nombreUsuarioLogeado")
 let token = JSON.parse(localStorage.getItem("oketn"))
 nombreUsuarioLogeado.innerHTML = `${token.exito.nombre.nombre}!`
 
+
+
+let cerrarSesion = document.getElementById("cerrarSesion")
+cerrarSesion.addEventListener("click", () => {
+    localStorage.clear()
+    location.href ="../html/login.html#!"
+})
+
+document.getElementById("cerrarSesion").style = "display: none"
+document.getElementById("nombreUsuario").style = "margin-top: 20px"
+
 let nombre = document.getElementById("nombre");
 let apellido = document.getElementById("apellido");
 let email = document.getElementById("email");

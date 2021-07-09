@@ -6,6 +6,15 @@ if(token.exito.nombre.isadmin == false){
   document.getElementById("htmlUsuarios").style = "display: none"
 }
 
+let cerrarSesion = document.getElementById("cerrarSesion")
+cerrarSesion.addEventListener("click", () => {
+    localStorage.clear()
+    location.href ="../html/login.html#!"
+})
+
+document.getElementById("cerrarSesion").style = "display: none"
+document.getElementById("nombreUsuario").style = "margin-top: 20px"
+
 let newRegion = document.getElementById("button-new-region")
 let fondoNegro = document.getElementById("fondoNegro");
 let containerContacto = document.getElementById("containerContacto");
