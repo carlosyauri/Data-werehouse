@@ -2,7 +2,76 @@ const express = require("express");
 const models = require("../models")
 const router = express.Router();
 
+router.post("/contactosIniciales", async(req,res) => {
 
+    const contactos = await models.contacto.findAll();
+    if (contactos.length > 0) {
+        return res.send("Ya se crearon contactos iniciales, no puede volver a realizar esta acción")
+    }
+
+    const nuevoContacto = [
+        {
+            img: "../assets/perfil-1.jpg",
+            nombre: "Juan",
+            apellido: "Cruz",
+            cargo: "CEO",
+            email: "juancruz@gmail.com",
+            datosContacto: `[{"canal":"LinkedIn","cuenta":"juanperezDeveloper","preferencias":"Sin preferencia"},{"canal":"Whatsapp","cuenta":"0303456","preferencias":"Canal favorito"}]`,
+            interes: 50,
+            RegionId: 1,
+            PaiId: 1,
+            CiudadId: 1,
+            CompaniumId: 1
+        },
+        {
+            img: "../assets/perfil-2.jpg",
+            nombre: "Joshua",
+            apellido: "Jmenilsky",
+            cargo: "Encargado de limpieza",
+            email: "joshua@gmail.com",
+            datosContacto: `[{"canal":"LinkedIn","cuenta":"joshuaSJ","preferencias":"Canal favorito"},{"canal":"Whatsapp","cuenta":"123456789","preferencias":"Sin preferencia"}]`,
+            interes: 25,
+            RegionId: 2,
+            PaiId: 4,
+            CiudadId: 11,
+            CompaniumId: 2
+        },        {
+            img: "../assets/perfil-3.jpg",
+            nombre: "Franco",
+            apellido: "Lopez",
+            cargo: "Piletero",
+            email: "francolopez@gmail.com",
+            datosContacto: `[{"canal":"Instagram","cuenta":"tuPileteroFranco","preferencias":"Canal favorito"},{"canal":"Whatsapp","cuenta":"157189456","preferencias":"Sin preferencia"}]`,
+            interes: 100,
+            RegionId: 3,
+            PaiId: 7,
+            CiudadId: 6,
+            CompaniumId: 3
+        },        {
+            img: "../assets/perfil-4.jpg",
+            nombre: "Fabri",
+            apellido: "ruffini",
+            cargo: "Cerrero",
+            email: "fabriRuffini@gmail.com",
+            datosContacto: `[{"canal":"LinkedIn","cuenta":"FabriRuffini","preferencias":"Sin preferencia"},{"canal":"Whatsapp","cuenta":"000111333","preferencias":"Canal favorito"}]`,
+            interes: 75,
+            RegionId: 1,
+            PaiId: 2,
+            CiudadId: 10,
+            CompaniumId: 4
+        },
+    ]
+
+    nuevoContacto.forEach(e =>{
+        models.contacto.create(e)
+    })
+
+    res.status(200).json({
+        exito: "Contactos creados con exito", nuevoContacto
+    })
+
+
+})
 router.post("/", async(req, res) => {
 
     const {img, nombre, apellido, cargo, email, idCompania, id_region, id_pais, id_ciudad, datosContacto, interes, direccion} = req.body;

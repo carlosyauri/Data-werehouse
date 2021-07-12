@@ -470,10 +470,11 @@ main {
   margin-left: 29.5px;
 }
 
-#arrow {
+#cerrar {
   margin-top: 13px;
   margin-right: 15.5px;
   color: #546D79;
+  display: none;
 }
 
 main h1 {

@@ -37,6 +37,51 @@ router.post("/", datosCiudad, async(req, res) => {
     
 })
 
+router.post("/companiasIniciales", async(req, res) => {
+    const companias = await models.compania.findAll();
+    if (companias.length > 0) {
+        return res.send("Ya se crearon companias iniciales, no puede volver a realizar esta acción")
+    }
+
+    const nuevaCompania = [
+        {
+            nombre: "Acamica",
+            direccion: "Av acamica 123",
+            email: "acamica@gmail.com",
+            telefono: "123456789",
+            CiudadId: 7
+        },
+        {
+            nombre: "Mister Burger",
+            direccion: "Av armada argentina 123",
+            email: "mrburger@gmail.com",
+            telefono: "3513146422",
+            CiudadId: 1
+        },
+        {
+            nombre: "YAURI SA",
+            direccion: "na west 13",
+            email: "yauriSA@gmail.com",
+            telefono: "0303456",
+            CiudadId: 11
+        },        
+        {
+            nombre: "Hard buy",
+            direccion: "Justo de urquiza 768",
+            email: "hardbuy@gmail.com",
+            telefono: "154657823",
+            CiudadId: 13
+        },
+    ]
+    nuevaCompania.forEach(e =>{
+        models.compania.create(e)
+    })
+
+    res.status(200).json({
+        exito: "Companias creadas con exito", nuevaCompania
+    })
+})
+
 router.get("/", async(req, res) => {
 
     const companias = await models.compania.findAll({

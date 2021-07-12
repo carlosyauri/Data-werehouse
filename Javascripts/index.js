@@ -4,8 +4,39 @@ window.history.forward("../html/login.html")
 let busquedaLupa = document.getElementById("busquedaLupa")
 let inputBusqueda = document.getElementById("input")
 
-busquedaLupa.addEventListener("click", async() => {
-    
+busquedaLupa.addEventListener("click", async() => {   
+
+    if(inputBusqueda.value.length > 0){
+        busquedaGeneral()
+        document.getElementById("cerrar").style = "display: inline"
+        document.getElementById("busquedaLupa").style = "display: none"
+    }
+
+})
+
+
+inputBusqueda.addEventListener("keypress", async(e)=>{
+    e.keyCode
+    if (e.keyCode == 13){
+        busquedaGeneral() 
+        document.getElementById("cerrar").style = "display: inline"
+        document.getElementById("busquedaLupa").style = "display: none"
+    }
+})
+
+inputBusqueda.addEventListener("keyup", (e) => {
+    if(e.target.value == ""){
+        location.href = "../html/index.html"
+    }
+})
+
+
+document.getElementById("cerrar").addEventListener("click", () => {
+    document.getElementById("cerrar").style= "display: none"
+    location.href = "../html/index.html"
+})
+
+async function busquedaGeneral () {
     let contactosEncontrados = await getContactSearch(inputBusqueda.value)
 
     if(contactosEncontrados.message){
@@ -19,40 +50,19 @@ busquedaLupa.addEventListener("click", async() => {
         document.getElementById("sector-2").appendChild(img)
         document.getElementById("sector-2").appendChild(p)
     }
-
-
-
-    
-
-
     
     arrayIdContactos = [];
     let arrayDatosCanales = []
     let tbody = document.getElementById("tablaBody")
     let array;
-    let indicador = 0
+
 
     let vueltas = tbody.children.length
     console.log(vueltas)
 
     for (let i = 0; i <= vueltas; i++){
-
-        // if(i < vueltas){
             tbody.firstChild.remove()
-        // }
-        // if(i == vueltas && indicador == 0){
-        //     indicador = 1
-        //     tbody.firstChild.remove()
-
-            
-        // }
-        // if(i == vueltas && indicador == 1){
-        //     return
-        // }
-        
     }
-
-    
 
     for (let i = 0; i < contactosEncontrados.length; i++) {
         
@@ -503,12 +513,8 @@ busquedaLupa.addEventListener("click", async() => {
 
     }
 
-    
-    
-    
   
-})
-
+}
 
 async function fetchApi(url, method){
 
