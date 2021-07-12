@@ -94,7 +94,301 @@ router.get("/", async(req, res) => {
 
     if(contacto.length>0) return res.status(200).json({exito: "Operacion exitosa", contacto});
     res.status(400).json({message: "No se encontraron contactos"})
+
+    
 })
+
+router.get("/:busqueda", async (req, res)=>{
+
+    const contactos = await models.contacto.findAll({
+        include: [
+            {
+                model: models.region,
+                attributes: ["nombre"],
+            },
+            {
+                model: models.pais,
+                attributes: ["nombre"],
+            },
+            {
+                model: models.ciudad,
+                attributes: ["nombre"]
+            },
+            {
+                model: models.compania,
+                attributes:["nombre"],
+            }
+        ],
+
+        where:{nombre: req.params.busqueda},
+    });
+
+
+    if(contactos.length>0) {
+        return res.status(200).json(contactos);
+    }else{
+        
+        const contactos = await models.contacto.findAll({
+            include: [
+                {
+                    model: models.region,
+                    attributes: ["nombre"],                       
+                    where:{nombre: req.params.busqueda},
+                },
+                {
+                    model: models.pais,
+                    attributes: ["nombre"],
+                },
+                {
+                    model: models.ciudad,
+                    attributes: ["nombre"]
+                },
+                {
+                    model: models.compania,
+                    attributes:["nombre"],
+                }
+            ],
+
+        });
+
+        if(contactos.length>0) {
+            return res.status(200).json(contactos);
+        }else{
+
+            const contactos = await models.contacto.findAll({
+                include: [
+                    {
+                        model: models.region,
+                        attributes: ["nombre"],                       
+                        
+                    },
+                    {
+                        model: models.pais,
+                        attributes: ["nombre"],
+                        where:{nombre: req.params.busqueda},
+                    },
+                    {
+                        model: models.ciudad,
+                        attributes: ["nombre"]
+                    },
+                    {
+                        model: models.compania,
+                        attributes:["nombre"],
+                    }
+                ],
+    
+            });
+
+            if(contactos.length>0) {
+                return res.status(200).json(contactos);
+            }else{
+                const contactos = await models.contacto.findAll({
+                    include: [
+                        {
+                            model: models.region,
+                            attributes: ["nombre"],                       
+                            
+                        },
+                        {
+                            model: models.pais,
+                            attributes: ["nombre"],
+                            
+                        },
+                        {
+                            model: models.ciudad,
+                            attributes: ["nombre"],
+                            where:{nombre: req.params.busqueda},
+                        },
+                        {
+                            model: models.compania,
+                            attributes:["nombre"],
+                        }
+                    ],
+        
+                });
+
+                if(contactos.length>0) {
+                    return res.status(200).json(contactos);
+                }else{
+                    const contactos = await models.contacto.findAll({
+                        include: [
+                            {
+                                model: models.region,
+                                attributes: ["nombre"],                       
+                                
+                            },
+                            {
+                                model: models.pais,
+                                attributes: ["nombre"],
+                                
+                            },
+                            {
+                                model: models.ciudad,
+                                attributes: ["nombre"]
+                            },
+                            {
+                                model: models.compania,
+                                attributes:["nombre"],
+                                where:{nombre: req.params.busqueda},
+                            }
+                        ],
+            
+                    });
+
+                    if(contactos.length>0) {
+                        return res.status(200).json(contactos);
+                    }else{
+
+                        const contactos = await models.contacto.findAll({
+                            include: [
+                                {
+                                    model: models.region,
+                                    attributes: ["nombre"],
+                                },
+                                {
+                                    model: models.pais,
+                                    attributes: ["nombre"],
+                                },
+                                {
+                                    model: models.ciudad,
+                                    attributes: ["nombre"]
+                                },
+                                {
+                                    model: models.compania,
+                                    attributes:["nombre"],
+                                }
+                            ],
+                    
+                            where:{cargo: req.params.busqueda},
+                        });
+                        if(contactos.length>0) {
+                            return res.status(200).json(contactos);
+                        }else{
+
+                            const contactos = await models.contacto.findAll({
+                                include: [
+                                    {
+                                        model: models.region,
+                                        attributes: ["nombre"],
+                                    },
+                                    {
+                                        model: models.pais,
+                                        attributes: ["nombre"],
+                                    },
+                                    {
+                                        model: models.ciudad,
+                                        attributes: ["nombre"]
+                                    },
+                                    {
+                                        model: models.compania,
+                                        attributes:["nombre"],
+                                    }
+                                ],
+                        
+                                where:{email: req.params.busqueda},
+                            });
+                            if(contactos.length>0) {
+                                return res.status(200).json(contactos);
+                            }else{
+                                
+                                const contactos = await models.contacto.findAll({
+                                    include: [
+                                        {
+                                            model: models.region,
+                                            attributes: ["nombre"],
+                                        },
+                                        {
+                                            model: models.pais,
+                                            attributes: ["nombre"],
+                                        },
+                                        {
+                                            model: models.ciudad,
+                                            attributes: ["nombre"]
+                                        },
+                                        {
+                                            model: models.compania,
+                                            attributes:["nombre"],
+                                        }
+                                    ],
+                            
+                                    where:{direccion: req.params.busqueda},
+                                });
+                                if(contactos.length>0) {
+                                    return res.status(200).json(contactos);
+                                }else{
+
+                                    const contactos = await models.contacto.findAll({
+                                        include: [
+                                            {
+                                                model: models.region,
+                                                attributes: ["nombre"],
+                                            },
+                                            {
+                                                model: models.pais,
+                                                attributes: ["nombre"],
+                                            },
+                                            {
+                                                model: models.ciudad,
+                                                attributes: ["nombre"]
+                                            },
+                                            {
+                                                model: models.compania,
+                                                attributes:["nombre"],
+                                            }
+                                        ],
+                                
+                                        where:{interes: req.params.busqueda},
+                                    });
+                                    if(contactos.length>0) {
+                                        return res.status(200).json(contactos);
+                                    }else{
+                                        const contactos = await models.contacto.findAll({
+                                            include: [
+                                                {
+                                                    model: models.region,
+                                                    attributes: ["nombre"],
+                                                },
+                                                {
+                                                    model: models.pais,
+                                                    attributes: ["nombre"],
+                                                },
+                                                {
+                                                    model: models.ciudad,
+                                                    attributes: ["nombre"]
+                                                },
+                                                {
+                                                    model: models.compania,
+                                                    attributes:["nombre"],
+                                                }
+                                            ],
+                                    
+                                            where:{apellido: req.params.busqueda},
+                                        });
+                                        if(contactos.length>0) {
+                                            return res.status(200).json(contactos);
+                                        }else{
+                                            return res.status(400).json({message: 'No se encontraron contactos'})
+                                        }
+                                    }
+                                    
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+            }
+    
+        }
+
+    }
+
+
+
+})
+
+
 
 router.put("/:id", async(req, res) => {
     const conctactoActualizado = await models.contacto.update(req.body,{

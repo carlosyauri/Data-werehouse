@@ -452,6 +452,7 @@ main {
   outline: none;
   border: none;
   width: 92%;
+  margin-left: 5px;
 }
 
 .busqueda {

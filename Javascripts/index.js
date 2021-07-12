@@ -1,45 +1,42 @@
 
 window.history.forward("../html/login.html")
 
+let busquedaLupa = document.getElementById("busquedaLupa")
 let inputBusqueda = document.getElementById("input")
-inputBusqueda.addEventListener("keyup", (e) => {
-    if(e.target.value.length>0){
-        document.getElementById("sugerencias").style = "display: inline"
 
-        // getContactSearch(e.target.value)
-
-        
-    }else{
-        document.getElementById("sugerencias").style = "display: none"
-    }
+busquedaLupa.addEventListener("click", async() => {
+    
+    let info = await getContactSearch(inputBusqueda.value)
+    console.log(info)
 })
 
-// async function fetchApi(url, method){
+
+async function fetchApi(url, method){
 
    
-//             const res = await fetch(url, {
-//                 method: method,
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 }
-//             });
-//             const data = res.json();
-//             if(data){
-//                 return await data;
-//             }
+            const res = await fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const data = res.json();
+            if(data){
+                return await data;
+            }
             
 
         
 
-// }
+}
 
-// async function getContactSearch(obj){
+async function getContactSearch(busqueda){
 
-//     const searchedContacts = fetchApi(`http://localhost:3000/contactos/search?=${obj}`, 'GET')
+    const searchedContacts = fetchApi(`http://localhost:3000/contactos/${busqueda}`, 'GET')
 
-//     return searchedContacts
+    return searchedContacts
 
-// }
+}
 
 
 
