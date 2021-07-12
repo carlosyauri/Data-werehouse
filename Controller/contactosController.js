@@ -121,6 +121,7 @@ router.get("/:busqueda", async (req, res)=>{
         ],
 
         where:{nombre: req.params.busqueda},
+        attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
     });
 
 
@@ -129,6 +130,7 @@ router.get("/:busqueda", async (req, res)=>{
     }else{
         
         const contactos = await models.contacto.findAll({
+            attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
             include: [
                 {
                     model: models.region,
@@ -156,6 +158,7 @@ router.get("/:busqueda", async (req, res)=>{
         }else{
 
             const contactos = await models.contacto.findAll({
+                attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
                 include: [
                     {
                         model: models.region,
@@ -183,6 +186,7 @@ router.get("/:busqueda", async (req, res)=>{
                 return res.status(200).json(contactos);
             }else{
                 const contactos = await models.contacto.findAll({
+                    attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
                     include: [
                         {
                             model: models.region,
@@ -211,6 +215,7 @@ router.get("/:busqueda", async (req, res)=>{
                     return res.status(200).json(contactos);
                 }else{
                     const contactos = await models.contacto.findAll({
+                        attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
                         include: [
                             {
                                 model: models.region,
@@ -240,6 +245,7 @@ router.get("/:busqueda", async (req, res)=>{
                     }else{
 
                         const contactos = await models.contacto.findAll({
+                            attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
                             include: [
                                 {
                                     model: models.region,
@@ -266,6 +272,7 @@ router.get("/:busqueda", async (req, res)=>{
                         }else{
 
                             const contactos = await models.contacto.findAll({
+                                attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
                                 include: [
                                     {
                                         model: models.region,
@@ -292,6 +299,7 @@ router.get("/:busqueda", async (req, res)=>{
                             }else{
                                 
                                 const contactos = await models.contacto.findAll({
+                                    attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
                                     include: [
                                         {
                                             model: models.region,
@@ -318,6 +326,7 @@ router.get("/:busqueda", async (req, res)=>{
                                 }else{
 
                                     const contactos = await models.contacto.findAll({
+                                        attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
                                         include: [
                                             {
                                                 model: models.region,
@@ -343,6 +352,7 @@ router.get("/:busqueda", async (req, res)=>{
                                         return res.status(200).json(contactos);
                                     }else{
                                         const contactos = await models.contacto.findAll({
+                                            attributes:["nombre", "apellido", "email", "CompaniumId", "cargo", "interes", "datosContacto", "img", "id", "direccion"],
                                             include: [
                                                 {
                                                     model: models.region,
@@ -369,22 +379,15 @@ router.get("/:busqueda", async (req, res)=>{
                                         }else{
                                             return res.status(400).json({message: 'No se encontraron contactos'})
                                         }
-                                    }
-                                    
+                                    }                                  
                                 }
                             }
-
                         }
                     }
                 }
-
-            }
-    
+            }   
         }
-
     }
-
-
 
 })
 

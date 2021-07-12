@@ -6,8 +6,507 @@ let inputBusqueda = document.getElementById("input")
 
 busquedaLupa.addEventListener("click", async() => {
     
-    let info = await getContactSearch(inputBusqueda.value)
-    console.log(info)
+    let contactosEncontrados = await getContactSearch(inputBusqueda.value)
+
+    if(contactosEncontrados.message){
+        document.getElementById("tabla").style = "display: none"
+        let img = document.createElement("img")
+        img.src = "../assets/icon-busqueda-sin-resultado.svg"
+        img.style = "width: 20%; margin-left: 510px;"
+        let p = document.createElement("p")
+        p.innerHTML = "No se encontraron resultados"
+        p.style = "font-size: 20px; color: #50E3C2;text-align: center; line-height: 33px; font-weight: 600; margin-right: 123px;"
+        document.getElementById("sector-2").appendChild(img)
+        document.getElementById("sector-2").appendChild(p)
+    }
+
+
+
+    
+
+
+    
+    arrayIdContactos = [];
+    let arrayDatosCanales = []
+    let tbody = document.getElementById("tablaBody")
+    let array;
+    let indicador = 0
+
+    let vueltas = tbody.children.length
+    console.log(vueltas)
+
+    for (let i = 0; i <= vueltas; i++){
+
+        // if(i < vueltas){
+            tbody.firstChild.remove()
+        // }
+        // if(i == vueltas && indicador == 0){
+        //     indicador = 1
+        //     tbody.firstChild.remove()
+
+            
+        // }
+        // if(i == vueltas && indicador == 1){
+        //     return
+        // }
+        
+    }
+
+    
+
+    for (let i = 0; i < contactosEncontrados.length; i++) {
+        
+        iId = i
+        array = []
+        
+
+
+        array = Object.values(contactosEncontrados[i])
+
+        console.log(array)
+        
+        arrayDatosCanales.push(JSON.parse(contactosEncontrados[i].datosContacto)) 
+        
+        
+
+        let tr = document.createElement("tr")
+
+        for (let j = 1; j < 7; j++) {
+            
+
+            if(j == 1){
+
+                let tdCheck = document.createElement("td")
+                tdCheck.classList = "checkbox"
+                let input = document.createElement("input")
+                input.type = "checkbox"
+                input.id = array[8]
+                tdCheck.appendChild(input)
+                tr.appendChild(tdCheck)
+
+
+                let td = document.createElement ("td")
+
+                let divPerfil = document.createElement("div")
+                divPerfil.classList = "perfil"
+
+                let img = document.createElement("img")
+                img.classList = "foto"
+                img.src = contactosEncontrados[i].img
+
+                let divDatos = document.createElement("div")
+                divDatos.classList = "datos"
+                let h2 = document.createElement("h2")
+                let p = document.createElement("p")
+
+                h2.innerHTML =  `${contactosEncontrados[i].nombre} ${contactosEncontrados[i].apellido}`
+                p.innerHTML = `${contactosEncontrados[i].email}`
+
+                divDatos.appendChild(h2)
+                divDatos.appendChild(p)
+                
+                divPerfil.appendChild(img)
+                divPerfil.appendChild(divDatos)
+
+                td.appendChild(divPerfil)
+                tr.appendChild(td)
+
+                
+
+                input.addEventListener("click", (e) =>{
+                    let valor = e.target.checked
+                    if(valor == true){
+
+                        tr.style = "background: rgb(213 235 255)"
+                        btnAcionnes.removeAttribute("hidden")
+                        document.getElementById("mostrador").removeAttribute("hidden")
+
+                        arrayIdContactos.push(input.id)
+
+
+                        document.getElementById("mostrador").innerHTML = `${arrayIdContactos.length} seleccionados`
+
+                    }
+
+                    if(valor == false){
+
+                        let contador = (arrayIdContactos.length-1)
+                        if(contador < 1){
+
+                            btnAcionnes.setAttribute("hidden", true)
+                            document.getElementById("mostrador").setAttribute("hidden", true)
+                            boxGeneral.checked = false
+                        }
+                        
+                        tr.style = ""
+                        arrayIdContactos = arrayIdContactos.filter(function(i) { return i !== input.id })
+                        document.getElementById("mostrador").innerHTML = `${arrayIdContactos.length} seleccionados`
+                    }
+                })
+
+                
+                
+
+
+            } else
+
+            if (j == 2){
+                let td = document.createElement("td")
+                let p = document.createElement("p")
+                p.style = "color: #CCCCCC; margin: 0; height: 10px; width: 130px"
+                p.innerHTML = contactosEncontrados[i].Region.nombre
+                td.innerHTML = contactosEncontrados[i].Pai.nombre
+                td.appendChild(p)
+                tr.appendChild(td)
+
+            }else
+
+
+            if(j == 3){
+                
+
+                if(contactosEncontrados[i].CompaniumId == null ){
+                    
+                    let td = document.createElement("td")
+                    td.innerHTML = "Compania removida"
+                    td.style = "color: red"
+                    tr.appendChild(td)
+                }
+
+                if(contactosEncontrados[i].CompaniumId != null){
+                    let td = document.createElement("td")
+                    td.innerHTML = contactosEncontrados[i].Companium.nombre
+                    tr.appendChild(td)
+                }            
+
+
+            }else
+
+
+            if( j == 4){
+
+                let td = document.createElement("td")
+                td.innerHTML = array[j]
+                tr.appendChild(td)
+
+            }else
+            
+            if(j == 5){
+
+                let td = document.createElement("td")
+                let progress = document.createElement("progress")
+                let p = document.createElement("p")
+                p.innerHTML = `${array[j]}%`
+                p.style = "display: inline"
+                progress.classList = "progressFront"
+                progress.max = "100"
+                progress.value = array[j]
+
+                td.appendChild(p)
+                td.appendChild(progress)
+
+                tr.appendChild(td)
+
+            }else
+        
+
+            if(j = 6){
+                let td = document.createElement("td")
+                td.classList = "btnHover"
+                let iEliminar = document.createElement("i")
+                let iEditar = document.createElement("i")
+                let divP = document.createElement("div")
+                divP.classList = "divBtnHover"
+                let p = document.createElement("p")
+                p.innerHTML = "..."
+
+                iEliminar.classList = "far fa-trash-alt"
+                iEliminar.style = "display: none"
+
+                iEditar.classList = "far fa-edit"
+                iEditar.style = "display: none"
+
+        
+
+
+                divP.appendChild(p)
+                divP.appendChild(iEliminar)
+                divP.appendChild(iEditar)
+
+                tr.addEventListener("mouseover", () => {
+                    
+                    p.style = "display: none"
+                    iEliminar.style = "display: inline"
+                    iEditar.style = "display: inline"
+                })
+
+                tr.addEventListener("mouseout", () => {
+  
+                    p.style = "display: inline"
+                    iEliminar.style = "display: none"
+                    iEditar.style = "display: none"
+                })
+
+                iEliminar.addEventListener("click", () => {
+                    deleteContactos(contactosEncontrados[i].id)
+                    location.href = "../html/index.html"
+                })
+                
+                iEditar.addEventListener("click", () => {
+
+
+
+                    let cuentaInput = document.getElementById("cuenta")
+
+                    agregarCanal.style = "background: #1D72C2; color: white"
+
+                    cuentaInput.addEventListener("keyup",(e) => {
+
+    
+                        if(e.target.value.length > 0){       
+   
+                            btnCancelar.style = "display: none"
+                            btnGuardar.style = "display: none"
+                    
+                        }
+                    
+                        if(e.target.value.length < 1){
+
+                            btnCancelar.style ="display: none"
+                            btnGuardar.style = "display: none"
+                        }
+                    
+                      })
+                   
+                    fondoNegro.classList.toggle("noDisplay")
+                    containerContacto.classList.toggle("noDisplay")
+                    let titulo = document.getElementById("tituloContacto")
+                    titulo.innerHTML = "Modificar contacto"    
+
+                    // IMAGEN //
+                    let preview = document.getElementById("preview")
+                    preview.style = "border: none;"
+                    let perfil = document.getElementById("perfil-2")
+                    perfil.style = "display: none"
+                    let img = document.createElement("img")
+                    img.src = contactosEncontrados[i].img
+                    img.id = "imgCargada"
+                    preview.appendChild(img)
+
+                    // DATOS PRINCIPALES //
+
+                    let nombre = document.getElementById("nombre")
+                    nombre.value = contactosEncontrados[i].nombre
+
+                    let apellido = document.getElementById("apellido")
+                    apellido.value = contactosEncontrados[i].apellido
+
+                    let cargo = document.getElementById("cargoUsuario")
+                    cargo.value = contactosEncontrados[i].cargo
+
+                    let email = document.getElementById("email")
+                    email.value = contactosEncontrados[i].email
+
+     
+                    if (contactosEncontrados[i].Companium != null){
+                        let compania = document.getElementById("compania")
+                        compania.value = contactosEncontrados[i].Companium.nombre
+                    }
+                    
+
+                    // OTROS DATOS //
+
+                    let region = document.getElementById("region")
+                    region.value = contactosEncontrados[i].Region.nombre
+
+                    let pais = document.getElementById("pais")
+                    let optionPais = document.getElementById("optionPais")
+                    pais.disabled = false
+                    optionPais.selected = true
+                    optionPais.disabled = false
+                    optionPais.innerHTML = contactosEncontrados[i].Pai.nombre
+
+                    let ciudad = document.getElementById("ciudad")
+                    let optionCiudad = document.getElementById("optionCiudad")
+                    ciudad.disabled = false
+                    optionCiudad.selected = true
+                    optionCiudad.disabled = false
+                    optionCiudad.innerHTML = contactosEncontrados[i].Ciudad.nombre
+
+                    let direccion = document.getElementById("direccion")
+                    direccion.value = contactosEncontrados[i].direccion
+
+                    let barraProgreso = document.getElementById("barraProgreso")
+                    barraProgreso.value = contactosEncontrados[i].interes
+
+                    let barraNumerica = document.getElementById("barraNumerica")
+                    barraNumerica.value = `${contactosEncontrados[i].interes}%`
+                    
+                    let btnGuardar = document.getElementById("guardarContacto")
+                    btnGuardar.style = "display: none"
+
+                    let btnConfirmar = document.getElementById("confimarContacto")
+                    btnConfirmar.style = "display: inline; background: #429c41; color: white"
+
+                    btnCancelar.style = "display: none"
+                    let btnEliminar = document.getElementById("eliminarContacto")
+                    btnEliminar.style = "display: inline; color: #429c41"
+
+
+
+                    document.getElementById("agregarCanal").disabled = false
+
+                    let divCanales = document.getElementById("canales")
+                    let divCuentas = document.getElementById("cuentas")
+                    let divPreferencias = document.getElementById("divPreferencias")
+
+                    if (arrayDatosCanales[i].length == 1){
+
+                        let optionCanal = document.getElementById("optionGeneralCanal")
+                        optionCanal.innerHTML = arrayDatosCanales[i][0].canal
+                        optionCanal.value = arrayDatosCanales[i][0].canal
+
+
+                        let inputCuenta = document.getElementById("cuenta")
+                        inputCuenta.disabled = false
+                        inputCuenta.value = arrayDatosCanales[i][0].cuenta
+
+                        let optionGeneralPreferencia = document.getElementById("optionGeneralPreferencia")
+                        optionGeneralPreferencia.innerHTML = arrayDatosCanales[i][0].preferencias
+                        optionGeneralPreferencia.value = arrayDatosCanales[i][0].preferencias
+                        document.getElementById("preferencias").disabled = false
+
+                    }
+                    
+                    if(arrayDatosCanales[i].length > 1){
+
+                        for (let z = 1; z <  arrayDatosCanales[i].length; z++) {
+
+                            //CANALES//
+
+           
+    
+                            let optionCanal = document.getElementById("optionGeneralCanal")
+                            optionCanal.innerHTML = arrayDatosCanales[i][0].canal
+                            optionCanal.value = arrayDatosCanales[i][0].canal
+    
+      
+                            let selectCanal = document.createElement("select")
+                            selectCanal.classList = "listaCanal"
+                            let option = document.createElement("option")
+                            option.disabled = true
+                            option.selected = true
+                            option.innerHTML = arrayDatosCanales[i][z].canal
+                            selectCanal.appendChild(option)
+                            divCanales.appendChild(selectCanal)
+    
+    
+                            let canales = ["LinkedIn", "Whatsapp", "GitHub", "Instagram"];
+                            for (let c = 0; c < canales.length; c++) {
+                                let option = document.createElement("option")
+                                option.innerHTML = canales[c]
+                                selectCanal.appendChild(option)                            
+                            }
+    
+    
+                            //CUENTAS//
+    
+                            let inputCuenta = document.getElementById("cuenta")
+                            inputCuenta.disabled = false
+                            inputCuenta.value = arrayDatosCanales[i][0].cuenta
+    
+    
+    
+                            let input = document.createElement("input")
+                            input.classList = "listaCuenta"
+                            input.value = arrayDatosCanales[i][z].cuenta
+                            divCuentas.appendChild(input)
+    
+    
+                            //PREFERENCIAS//
+    
+    
+                            let optionGeneralPreferencia = document.getElementById("optionGeneralPreferencia")
+                            optionGeneralPreferencia.innerHTML = arrayDatosCanales[i][0].preferencias
+                            optionGeneralPreferencia.value = arrayDatosCanales[i][0].preferencias
+                            document.getElementById("preferencias").disabled = false
+    
+    
+    
+                            let selectPreferencias = document.createElement("select")
+                            selectPreferencias.classList = "listaReferencias"
+                            let optionPrefe = document.createElement("option")
+                            optionPrefe.disabled = true
+                            optionPrefe.selected = true
+                            optionPrefe.innerHTML = arrayDatosCanales[i][z].preferencias
+                            selectPreferencias.appendChild(optionPrefe)
+                            divPreferencias.appendChild(selectPreferencias)
+    
+                            let preferencias = ["Sin preferencia", "Canal favorito", "No molestar"]
+    
+                            for (let p = 0; p < preferencias.length; p++) {
+    
+                                let option = document.createElement("option")
+                                option.innerHTML = preferencias[p]
+                                selectPreferencias.appendChild(option)
+                    
+                            }
+                   
+                  
+                        }
+
+                    }
+
+
+
+                    let listaCuenta = document.getElementsByClassName("listaCuenta")
+                    let listaCanal = document.getElementsByClassName("listaCanal")
+                    let listaReferencias = document.getElementsByClassName("listaReferencias")
+
+
+                    btnConfirmar.addEventListener("click", () => {
+
+                        datosContacto = []
+    
+                        for (let i = 0; i < listaCuenta.length; i++) {
+                            
+                            let objet = {
+                                canal: listaCanal[i].value,
+                                cuenta: listaCuenta[i].value,
+                                preferencias: listaReferencias[i].value
+                
+                            }
+                
+                            datosContacto.push(objet)   
+                        }
+
+                        putContactos(contactosEncontrados[i].id, imageCargada, nombre.value, apellido.value, cargo.value, email.value, datosContacto, idCompania, regionId, paisId, ciudadId, direccion.value, barraProgreso.value)
+                    })
+
+
+                    let eliminarEditando = document.getElementById("eliminarContacto")
+                    eliminarEditando.addEventListener("click", () =>{
+                        deleteContactos(contactosEncontrados[i].id)
+                        location.href = "../html/index.html" 
+
+                    })
+                 
+                })
+            
+                td.appendChild(divP)
+                tr.appendChild(td)
+
+            }      
+        }
+        
+        tbody.appendChild(tr)
+
+    }
+
+    
+    
+    
+  
 })
 
 
@@ -23,6 +522,9 @@ async function fetchApi(url, method){
             const data = res.json();
             if(data){
                 return await data;
+            }
+            if(data.message){
+                return message
             }
             
 
@@ -154,7 +656,6 @@ let arrayIdContactos;
 async function completar () {
 
     let arrayContactos = await getContactos()
-    console.log(arrayContactos)
     if(arrayContactos){
         if(arrayContactos.contacto.length > 0){
 
@@ -2284,14 +2785,12 @@ async function completar () {
         
             })
             ////////////////////////////////////////////////////////////////////////////
+
         
             for (let i = 0; i < arrayContactos.contacto.length; i++) {
                 
                 iId = i
                 array = []
-                
-        
-                let arrayPrueba = Object.values(arrayContactos.contacto)
         
                 array = Object.values(arrayContactos.contacto[i])
         
