@@ -115,11 +115,13 @@ Postman petition collection is incuded on files(DataWarehouse.postman_collection
 
 6 - Ready to use!
 
-Sign in using the following information:
+Login with the following user for full administrator (you can create users):
 
     User: mentor@gmail.com
     Password: Mentor123!
     
+Login with the following user for basic administrator (You cannot create users):
+
     User: carlos@gmail.com
     Password: Carlos123!
     
